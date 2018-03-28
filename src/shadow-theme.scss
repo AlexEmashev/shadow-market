@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+// Include common styles for Angular material.
+@include mat-core();
+
+// Custom theme file for the project.
+body {
+    //background-color: white;
+}
