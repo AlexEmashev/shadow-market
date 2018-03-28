@@ -3,9 +3,14 @@ import { NgModule } from '@angular/core';
 
 // Import material style.
 import { MatButtonModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+
+// Import application modules
+import { ToolbarModule } from './toolbar/toolbar.module';
+import { SideMenuModule } from './side-menu/side-menu.module';
 
 
 @NgModule({
@@ -14,8 +19,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     MatButtonModule,
+    MatToolbarModule,
     BrowserAnimationsModule,
-    BrowserModule
+    BrowserModule,
+    ToolbarModule,
+    SideMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
