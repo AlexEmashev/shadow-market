@@ -7,8 +7,11 @@ import { MatToolbarModule,
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HeaderComponent } from '../header/header.component';
+import { HeaderComponent } from './header.component';
 
+/**
+* Main app Toolbar.
+*/
 @NgModule({
   imports: [
     CommonModule,

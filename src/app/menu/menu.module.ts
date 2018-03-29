@@ -6,7 +6,7 @@ import {
  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MenuComponent } from '../menu/menu.component';
+import { MenuComponent } from './menu.component';
 
 @NgModule({
   imports: [
@@ -25,4 +25,4 @@ import { MenuComponent } from '../menu/menu.component';
     MenuComponent
   ]
 })
-export class SideMenuModule { }
+export class MainSidenavModule { }

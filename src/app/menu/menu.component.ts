@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { ToolbarService } from '../toolbar.service';
+import { ToolbarService } from '../toolbar/toolbar.service';
 import { MatSidenav } from '@angular/material';
 
 @Component({

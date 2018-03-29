@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 
 // Import application modules
 import { ToolbarModule } from './toolbar/toolbar.module';
-import { SideMenuModule } from './side-menu/side-menu.module';
-import { ToolbarService } from './toolbar.service';
+import { MainSidenavModule } from './menu/menu.module';
+import { ToolbarService } from './toolbar/toolbar.service';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { ToolbarService } from './toolbar.service';
   imports: [
     BrowserModule,
     ToolbarModule,
-    SideMenuModule
+    MainSidenavModule
   ],
   providers: [
     ToolbarService
