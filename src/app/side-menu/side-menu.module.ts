@@ -18,6 +18,9 @@ import { MenuComponent } from '../menu/menu.component';
   exports: [
     MenuComponent
   ],
+  providers: [
+
+  ],
   declarations: [
     MenuComponent
   ]

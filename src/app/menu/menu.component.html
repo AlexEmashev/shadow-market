@@ -1,10 +1,10 @@
 <mat-sidenav-container class="main-sidenav-container">
-  <mat-sidenav #drawer mode="push" class="main-sidenav"
+  <mat-sidenav #mainSidenav mode="push" class="main-sidenav"
     position="over">
     <span class="sidenav-fill">Sidebar.</span>
     Check me.
+    <div>{{message}}</div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <button mat-button (click)="drawer.toggle()">Toggle sidenav</button>
   </mat-sidenav-content>
 </mat-sidenav-container>

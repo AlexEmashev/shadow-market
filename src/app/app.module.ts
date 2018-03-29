@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 // Import application modules
 import { ToolbarModule } from './toolbar/toolbar.module';
 import { SideMenuModule } from './side-menu/side-menu.module';
+import { ToolbarService } from './toolbar.service';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { SideMenuModule } from './side-menu/side-menu.module';
     ToolbarModule,
     SideMenuModule
   ],
-  providers: [],
+  providers: [
+    ToolbarService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
