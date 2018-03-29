@@ -1,5 +1,10 @@
-<mat-drawer-container>
-  <mat-drawer>
-    <span>Sidebar.</span>
-  </mat-drawer>
-</mat-drawer-container>
+<mat-sidenav-container class="main-sidenav-container">
+  <mat-sidenav #drawer mode="push" class="main-sidenav"
+    position="over">
+    <span class="sidenav-fill">Sidebar.</span>
+    Check me.
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-button (click)="drawer.toggle()">Toggle sidenav</button>
+  </mat-sidenav-content>
+</mat-sidenav-container>

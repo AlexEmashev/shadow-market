@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatToolbarModule } from '@angular/material';
+import { MatToolbarModule,
+        MatButtonModule,
+        MatIconModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 import { HeaderComponent } from '../header/header.component';
 
@@ -11,6 +13,8 @@ import { HeaderComponent } from '../header/header.component';
   imports: [
     CommonModule,
     MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
     BrowserAnimationsModule
   ],
   // Export components, so they be available for other components to use

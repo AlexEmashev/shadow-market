@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MatSidenavModule
+  MatSidenavModule,
+  MatButtonModule,
  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,6 +12,7 @@ import { MenuComponent } from '../menu/menu.component';
   imports: [
     CommonModule,
     MatSidenavModule,
+    MatButtonModule,
     BrowserAnimationsModule
   ],
   exports: [
