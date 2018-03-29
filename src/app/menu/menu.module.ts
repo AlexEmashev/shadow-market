@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   MatSidenavModule,
   MatButtonModule,
+  MatMenuModule
  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -13,6 +14,7 @@ import { MenuComponent } from './menu.component';
     CommonModule,
     MatSidenavModule,
     MatButtonModule,
+    MatMenuModule,
     BrowserAnimationsModule
   ],
   exports: [

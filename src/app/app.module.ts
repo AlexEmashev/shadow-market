@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { ToolbarModule } from './toolbar/toolbar.module';
 import { MainSidenavModule } from './menu/menu.module';
 import { ToolbarService } from './toolbar/toolbar.service';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
