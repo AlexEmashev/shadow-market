@@ -1,16 +1,29 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from "./main/main.component";
-
+import { SettingsComponent } from './settings/settings.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AboutComponent } from './about/about.component';
+import { ResourcesComponent } from './resources/resources.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+/**
+ * List of available routes in the app.
+ */
 const routes: Routes = [
-  { path: '', redirectTo: '/main', pathMatch: 'full'}
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'resources', component: ResourcesComponent },
+  { path: 'settings', component: SettingsComponent},
+  { path: 'about', component: AboutComponent },
+  { path: '**', component: PageNotFoundComponent }
 ]
 
+/**
+ * Main routing module in the app.
+ */
 @NgModule({
   imports: [
-    CommonModule
+    RouterModule.forRoot(routes, {enableTracing: true})
   ],
-  declarations: []
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

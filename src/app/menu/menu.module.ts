@@ -8,6 +8,8 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MenuComponent } from './menu.component';
+import { ContentModule } from '../content/content.module';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { MenuComponent } from './menu.component';
     MatSidenavModule,
     MatButtonModule,
     MatMenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ContentModule,
+    AppRoutingModule
   ],
   exports: [
     MenuComponent

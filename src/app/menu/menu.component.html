@@ -1,11 +1,12 @@
 <mat-sidenav-container class="main-sidenav-container">
   <mat-sidenav #mainSidenav mode="push" class="main-sidenav"
     position="over">
-    <a mat-button class="main-sidenav-item">Main</a>
-    <a mat-button class="main-sidenav-item">Resources</a>
-    <a mat-button class="main-sidenav-item">Settings</a>
-    <a mat-button class="main-sidenav-item">About</a>
+    <a mat-button routerLink="/dashboard" routerLinkActive="active" class="main-sidenav-item">Dashboard</a>
+    <a mat-button routerLink="/resources" routerLinkActive="active" class="main-sidenav-item">Resources</a>
+    <a mat-button routerLink="/settings" routerLinkActive="active" class="main-sidenav-item">Settings</a>
+    <a mat-button routerLink="/about" routerLinkActive="active" class="main-sidenav-item">About</a>
   </mat-sidenav>
   <mat-sidenav-content>
+    <app-content></app-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
