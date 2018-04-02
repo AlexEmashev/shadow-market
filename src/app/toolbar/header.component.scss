@@ -1,10 +1,16 @@
+.main-header {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+  position: fixed;
+  z-index: 2;
+}
+
 .header-fill {
   flex: 1 1 auto;
 }
 
 .header-title {
   font-size: 26px;
-  vertical-align: middle;
-  padding-left: 18px;
   font-weight: 500;
+  padding-left: 18px;
+  vertical-align: middle;
 }

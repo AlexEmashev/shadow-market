@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 /**
  * App pages
  */
+import { CatalogModule } from './catalog/catalog.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SettingsModule } from './settings/settings.module';
 import { ResourcesModule } from './resources/resources.module';
@@ -32,6 +33,7 @@ import { ContentModule } from './content/content.module';
     MainSidenavModule,
     ContentModule,
     SettingsModule,
+    CatalogModule,
     DashboardModule,
     ResourcesModule,
     AboutModule,
