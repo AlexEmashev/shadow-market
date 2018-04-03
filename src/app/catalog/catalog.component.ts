@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogItem } from './catalog-item';
 import { CatalogService } from './catalog.service';
-import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-catalog',
@@ -24,7 +23,6 @@ export class CatalogComponent implements OnInit {
   getCatalogItems(): void {
     this.catalogService.getItems()
       .subscribe(items => this.catalog = items);
-    console.dir(this.catalog);
   }
 
 }

@@ -1,0 +1,29 @@
+<mat-card class="catalog-item">
+  <mat-card-content class="catalog-item-content">
+    <div class="catalog-item-image-container">
+      <img src="{{catalogItem.photo_link}}"
+          alt="{{catalogItem.title}}">
+    </div>
+    <div class="catalog-item-description">
+      <h2 class="catalog-item-title">{{catalogItem.title}}</h2>
+      <div class="catalog-item-description-details">
+        <span class="catalog-item-description-icon">
+          <button mat-icon-button>
+            <i class="material-icons catalog-item-description-like">favorite</i>
+          </button>
+          <span class="catalog-item-description-likes-count">{{catalogItem.likes}}</span>
+        </span>
+        <span class="catalog-item-description-icon">
+          <i class="material-icons">visibility</i> {{catalogItem.views}}
+        </span>
+      </div>
+      <div class="catalog-item-description-text">
+        {{catalogItem.description}}
+      </div>
+    </div>
+    <div class="catalog-item-price">
+      <span class="catalog-item-price-amount">{{catalogItem.cost}} $</span>
+      <button class="catalog-item-price-buy" mat-raised-button color="primary">Buy</button>
+    </div>
+  </mat-card-content>
+</mat-card>
