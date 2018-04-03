@@ -46,6 +46,11 @@ $catalog-image-max-width: $catalog-max-width - ($catalog-item-margin * 2) - ($st
     &-like {
       color: #676b6e;
     }
+    &-likes-count {
+      left: -5px;
+      margin-right: 7px;
+      position: relative;
+    }
     &-text {
       margin-top: 9px;
     }
