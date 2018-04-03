@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, HostListener } from '@angular/core';
 import { ToolbarService } from '../toolbar/toolbar.service';
+import { UserSettingsService } from '../user-settings.service';
+import { AppRoles, AppThemes, UserSettings } from '../user-settings';
 import { MatSidenav } from '@angular/material';
 
 
@@ -32,7 +34,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   }
 
 
-  constructor(private toolbar: ToolbarService) { }
+  constructor(private toolbar: ToolbarService, private userSettings: UserSettingsService) { }
 
   ngOnInit() {
     // Subscribe to the observable and connect it to a message.

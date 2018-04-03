@@ -3,8 +3,17 @@
       <i class="material-icons md-32">menu</i>
     </button>
   <span class="header-fill">
-    <span class="header-title">ShadowLab</span></span>
-  <button mat-icon-button>
-    <i class="material-icons md-32">color_lens</i>
+    <span class="header-title">ShadowLab</span>
+  </span>
+
+  <span class="header-service-controls">
+    <button mat-icon-button>
+      <i class="material-icons md-32">color_lens</i>
+    </button>
+  </span>
+  <span class="header-user-controls">
+  <button mat-button>
+    <i class="material-icons md-32">person</i> {{userSettings.name}}
   </button>
+  </span>
 </mat-toolbar>

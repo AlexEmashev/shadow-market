@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolbarService } from './toolbar.service';
+import { UserSettingsService } from '../user-settings.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,7 @@ import { ToolbarService } from './toolbar.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private toolbar: ToolbarService) {
+  constructor(private toolbar: ToolbarService, private userSettings: UserSettingsService) {
    }
 
   ngOnInit() {

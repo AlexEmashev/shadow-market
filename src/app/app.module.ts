@@ -8,6 +8,7 @@ import { ToolbarModule } from './toolbar/toolbar.module';
 import { MainSidenavModule } from './menu/menu.module';
 import { ToolbarService } from './toolbar/toolbar.service';
 import { AppRoutingModule } from './app-routing.module';
+import { UserSettingsService } from './user-settings.service';
 /**
  * App pages
  */
@@ -41,7 +42,8 @@ import { ContentModule } from './content/content.module';
     PageNotFoundModule
   ],
   providers: [
-    ToolbarService
+    ToolbarService,
+    UserSettingsService
   ],
   bootstrap: [AppComponent]
 })
