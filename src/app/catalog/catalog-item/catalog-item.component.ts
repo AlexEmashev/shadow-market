@@ -27,10 +27,3 @@ export class CatalogItemComponent implements OnInit {
   }
 
 }
-
-//
-// @Component({
-//   selector: 'delete-confirmation-dialog',
-//   template: 'Hi!'
-// })
-// export class DeleteConfirmationComponent {}

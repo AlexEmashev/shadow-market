@@ -68,6 +68,15 @@ export class MenuComponent implements OnInit, AfterViewInit {
   }
 
   /**
+   * Clicking menu item handler.
+   */
+  onMenuItemClick() {
+    if (window.innerWidth < this.menuBreakpoing) {
+      this.mainSidenav.close();
+    }
+  }
+
+  /**
    * Switches Sidenav mode depending on the screen width.
    */
   switchSidenavMode() {
