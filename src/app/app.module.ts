@@ -23,10 +23,9 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
  */
 import { ContentModule } from './content/content.module';
 
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

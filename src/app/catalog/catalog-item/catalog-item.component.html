@@ -24,9 +24,20 @@
     <div class="catalog-item-price">
       <span class="catalog-item-price-amount">{{catalogItem.cost}} $</span>
       <button class="catalog-item-price-buy" mat-raised-button color="primary">Buy</button>
-      <button class="mat-icon-button">
-        <i class="material-icons">more_horiz</i>
-      </button>
     </div>
+    <button mat-icon-button class="catalog-item-edit-menu" [matMenuTriggerFor]="itemMenu">
+      <i class="material-icons">more_vert</i>
+    </button>
   </mat-card-content>
 </mat-card>
+
+<mat-menu #itemMenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>mode_edit</mat-icon>
+    <span>Edit</span>
+  </button>
+  <button mat-menu-item (click)="openConfirmDeleteDialog()">
+    <mat-icon>delete</mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>

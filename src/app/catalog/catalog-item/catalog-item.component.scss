@@ -1,8 +1,11 @@
 @import '../../breakpoints';
 
+// Secondary active elements color.
+$secondary-active-color: #676b6e;
+
 .catalog-item {
   margin: 20px;
-  padding: 7px;
+  padding: 30px 20px;
 
   &-title {
     font-size: 24px;
@@ -17,6 +20,13 @@
     @media all and (max-width: $media-width-small) {
       flex-wrap: wrap;
     }
+  }
+
+  &-edit-menu {
+    position: absolute;
+    right: 2px;
+    top: -1px;
+    color: $secondary-active-color;
   }
 
   &-image-container {
@@ -35,7 +45,7 @@
       }
     }
     &-like {
-      color: #676b6e;
+      color: $secondary-active-color;
     }
     &-likes-count {
       left: -5px;
@@ -46,13 +56,24 @@
       margin-top: 9px;
     }
   }
+
+  &-title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
   &-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     min-width: 100px;
+
     &-amount {
       display: block;
-      font-size: 20px;
+      font-size: 24px;
+      line-height: 30px;
       font-weight: 500;
-      margin: 10px auto;
+      margin: 0 0 15px 0;
       text-align: center;
     }
     &-buy {
