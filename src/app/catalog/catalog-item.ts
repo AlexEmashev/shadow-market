@@ -1,7 +1,7 @@
 /**
  * Describes single catalog item.
  */
-export class CatalogItem {
+export interface CatalogItem {
   id: number;
   user_id: number;
   title: string;
