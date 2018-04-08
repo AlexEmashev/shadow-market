@@ -28,4 +28,17 @@ export class MyItemsComponent implements OnInit {
       .subscribe(item => this.catalog.push(item));
   }
 
+  /**
+   * Removes item from the collection.
+   */
+  deleteItem(item: CatalogItem) {
+    console.log('Delete:', item);
+  }
+
+  /**
+   * Edit item.
+   */
+  editItem(item: CatalogItem) {
+    console.log('Edit:', item);
+  }
 }

@@ -1,4 +1,9 @@
 <div class="catalog-container">
-  <app-catalog-item *ngFor="let catalogItem of catalog" [catalogItem]="catalogItem" class="catalog-item">
+  <app-catalog-item *ngFor="let catalogItem of catalog"
+    [editMode]="true"
+    [catalogItem]="catalogItem"
+    (onDeleteClick)="deleteItem($event)"
+    (onEditClick)="editItem($event)"
+    class="catalog-item">
   </app-catalog-item>
 </div>

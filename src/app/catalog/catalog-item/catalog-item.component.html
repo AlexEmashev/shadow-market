@@ -25,14 +25,17 @@
       <span class="catalog-item-price-amount">{{catalogItem.cost}} $</span>
       <button class="catalog-item-price-buy" mat-raised-button color="primary">Buy</button>
     </div>
-    <button mat-icon-button class="catalog-item-edit-menu" [matMenuTriggerFor]="itemMenu">
+    <button mat-icon-button
+      class="catalog-item-edit-menu"
+      *ngIf="editMode"
+      [matMenuTriggerFor]="itemMenu">
       <i class="material-icons">more_vert</i>
     </button>
   </mat-card-content>
 </mat-card>
 
 <mat-menu #itemMenu="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="editItem()">
     <mat-icon>mode_edit</mat-icon>
     <span>Edit</span>
   </button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CatalogItem } from '../catalog-item';
 import { MatDialog } from '@angular/material';
 import { DeleteConfirmationComponent } from '../../delete-confirmation/delete-confirmation.component';
@@ -11,10 +11,16 @@ import { UserSettingsService } from '../../user-settings.service';
   styleUrls: ['./catalog-item.component.scss']
 })
 export class CatalogItemComponent implements OnInit {
-@Input() catalogItem: CatalogItem;
+  @Input() catalogItem: CatalogItem;
+  @Input() editMode: boolean;
+  @Output() onDeleteClick: EventEmitter<CatalogItem> = new EventEmitter();
+  @Output() onEditClick: EventEmitter<CatalogItem> = new EventEmitter();
+
   constructor(private catalogService: CatalogService,
     private userSettings: UserSettingsService,
-    public confirmDeleteDialog: MatDialog) { }
+    public confirmDeleteDialog: MatDialog) {
+    }
+
 
   ngOnInit() {
   }
@@ -23,19 +29,26 @@ export class CatalogItemComponent implements OnInit {
    * Opens delete confirmation dialog.
    */
   openConfirmDeleteDialog(): void {
-    console.log('Delete clicked');
     const dialogRef = this.confirmDeleteDialog.open(DeleteConfirmationComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.deleteItem();
       }
-      console.log('Result is ', result);
     });
   }
 
+  /**
+   * Emits item deleting on parent
+   */
   deleteItem(): void {
+    this.onDeleteClick.emit(this.catalogItem);
+  }
 
-    this.catalogService.deleteItem(this.catalogItem.id, this.userSettings.id).subscribe(x => console.log(x));
+  /**
+   * Emits item editing on parent
+   */
+  editItem(): void {
+    this.onEditClick.emit(this.catalogItem);
   }
 
 }
