@@ -49,8 +49,8 @@
     min-width: 130px;
     justify-content: center;
     span {
-      margin-bottom: 9px;
       color: #adadad;
+      margin-bottom: 9px;
     }
     button {
       height: 80px;
@@ -78,6 +78,10 @@
     span {
       font-size: 24px;
       font-weight: 500;
+    }
+
+    input {
+      text-align: right;
     }
   }
 
