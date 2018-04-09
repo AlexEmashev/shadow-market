@@ -8,6 +8,7 @@ import { Http } from '@angular/http';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
 import { MyItemsComponent } from './my-items/my-items.component';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
+import { CatalogItemEditComponent } from './catalog-item-edit/catalog-item-edit.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confi
     CatalogComponent,
     CatalogItemComponent,
     MyItemsComponent,
-    DeleteConfirmationComponent],
+    DeleteConfirmationComponent,
+    CatalogItemEditComponent],
   bootstrap: [DeleteConfirmationComponent],
   providers: [
     CatalogService // Will be created a single instance of the service and will be injected whernever required.

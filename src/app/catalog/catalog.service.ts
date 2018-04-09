@@ -24,17 +24,23 @@ export class CatalogService {
   /**
    * Returns items belonging current user.
    */
-  getItemsByID(userId: number): Observable<CatalogItem> {
+  getItemsByUserID(userId: number): Observable<CatalogItem> {
     return from(CATALOG).pipe(filter(catalogItem => catalogItem.user_id === userId));
+  }
+
+  /**
+   * Returns catalog item by id.
+   */
+  getItem(id: number): Observable<CatalogItem> {
+    return from(CATALOG).pipe(filter(item => item.id === id));
   }
 
   /**
    * Detele selected item (either by Id or itemm itself).
    */
-  deleteItem(catalotItem: CatalogItem|number, userId: number): Observable<CatalogItem> {
-    const itemId = typeof catalotItem === 'number' ? catalotItem : catalotItem.id;
-
-    return from(CATALOG).pipe(filter((item) => (item.id !== itemId) && (item.user_id !== userId)));
+  deleteItem(catalogItem: CatalogItem, userId: number): Observable<CatalogItem> {
+    // ToDo: Actually remove an item from BD.
+    return of(catalogItem);
   }
 
 }

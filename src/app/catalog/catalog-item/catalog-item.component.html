@@ -23,7 +23,8 @@
     </div>
     <div class="catalog-item-price">
       <span class="catalog-item-price-amount">{{catalogItem.cost}} $</span>
-      <button class="catalog-item-price-buy" mat-raised-button color="primary">Buy</button>
+      <button class="catalog-item-price-buy" *ngIf="editMode == undefined"
+      mat-raised-button color="primary">Buy</button>
     </div>
     <button mat-icon-button
       class="catalog-item-edit-menu"
