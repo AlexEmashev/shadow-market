@@ -5,7 +5,10 @@ import { CatalogItemComponent } from './catalog-item/catalog-item.component';
 import { CatalogService } from './catalog.service';
 import { MatCardModule } from '@angular/material/card';
 import { Http } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MyItemsComponent } from './my-items/my-items.component';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import { CatalogItemEditComponent } from './catalog-item-edit/catalog-item-edit.component';
@@ -13,11 +16,14 @@ import { CatalogItemEditComponent } from './catalog-item-edit/catalog-item-edit.
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   declarations: [
     CatalogComponent,
