@@ -29,6 +29,14 @@ export class CatalogService {
   }
 
   /**
+   * Returns item by id, only if item is  owner is current user.
+   */
+  getItemByUserID(itemID: number, userId: number): Observable<CatalogItem> {
+    return from(CATALOG).pipe(
+      filter(item => (item.user_id === userId) && (item.id === itemID)));
+  }
+
+  /**
    * Returns catalog item by id.
    */
   getItem(id: number): Observable<CatalogItem> {

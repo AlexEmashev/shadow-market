@@ -31,7 +31,7 @@ import {CatalogItem} from './catalog-item';
      likes: 1,
      views: 1
    },
-   { id: 2,
+   { id: 3,
      user_id: 2,
      title: 'Not My Lovely Item #3',
      description: 'There is not much special over here, just a simple description of a mock item.',

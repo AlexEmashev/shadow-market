@@ -9,6 +9,7 @@ import { MainSidenavModule } from './menu/menu.module';
 import { ToolbarService } from './toolbar/toolbar.service';
 import { AppRoutingModule } from './app-routing.module';
 import { UserSettingsService } from './user-settings.service';
+import { AuthGuardService } from './auth-guard.service';
 /**
  * App pages
  */
@@ -18,6 +19,7 @@ import { SettingsModule } from './settings/settings.module';
 import { ResourcesModule } from './resources/resources.module';
 import { AboutModule } from './about/about.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { RouteNotAllowedModule } from './route-not-allowed/route-not-allowed.module';
 /**
  * Module of main routing container.
  */
@@ -38,11 +40,13 @@ import { ContentModule } from './content/content.module';
     ResourcesModule,
     AboutModule,
     AppRoutingModule,
-    PageNotFoundModule
+    PageNotFoundModule,
+    RouteNotAllowedModule
   ],
   providers: [
     ToolbarService,
-    UserSettingsService
+    UserSettingsService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
