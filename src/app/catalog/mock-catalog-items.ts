@@ -8,8 +8,8 @@ import {CatalogItem} from './catalog-item';
      user_id: 2,
      title: 'Brand new item',
      description: 'There is not much special over here, just a simple description of a mock item.',
-     photo_link: '/assets/items/mock.svg',
-     cost: 4.99,
+     photos: ['/assets/items/mock.svg'],
+     price: 4.99,
      likes: 3,
      views: 10
    },
@@ -17,8 +17,8 @@ import {CatalogItem} from './catalog-item';
      user_id: 1,
      title: 'My Lovely Item #1',
      description: 'There is not much special over here, just a simple description of a mock item.',
-     photo_link: '/assets/items/mock.svg',
-     cost: 4.99,
+     photos: ['/assets/items/6blender.jpg','/assets/items/mock.svg'],
+     price: 4.99,
      likes: 3,
      views: 10
    },
@@ -26,8 +26,8 @@ import {CatalogItem} from './catalog-item';
      user_id: 1,
      title: 'My Lovely Item #2',
      description: 'There is not much special over here, just a simple description of a mock item.',
-     photo_link: '/assets/items/mock.svg',
-     cost: 9.99,
+     photos: ['/assets/items/mock.svg'],
+     price: 9.99,
      likes: 1,
      views: 1
    },
@@ -35,8 +35,8 @@ import {CatalogItem} from './catalog-item';
      user_id: 2,
      title: 'Not My Lovely Item #3',
      description: 'There is not much special over here, just a simple description of a mock item.',
-     photo_link: '/assets/items/mock.svg',
-     cost: 19.99,
+     photos: ['/assets/items/mock.svg'],
+     price: 19.99,
      likes: 5,
      views: 150
    },

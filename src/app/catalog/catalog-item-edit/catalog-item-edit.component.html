@@ -1,40 +1,41 @@
 <mat-card class="catalog-item">
   <mat-card-content class="catalog-item-content">
-    <div class="catalog-item-title">
-      <mat-form-field floatLabel="never">
-        <input matInput placeholder="Item title" [(ngModel)]="item.title">
-      </mat-form-field>
-    </div>
-    <div class="catalog-item-images-container">
-      <div class="catalog-item-image">
-        <img src="{{item.photo_link}}" alt="Main image">
+    <form [formGroup]="formItemEdit" (ngSubmit)="onSubmit()">
+      <div class="catalog-item-title">
+        <mat-form-field floatLabel="never">
+          <input matInput placeholder="Item title" formControlName="title">
+        </mat-form-field>
       </div>
-      <div class="catalog-item-image">
-        <img src="{{item.photo_link}}" alt="Main image">
+      <div class="catalog-item-images-container" formArrayName="photos">
+        <div *ngFor="let one_photo of formItemEdit.get('photos').controls; let i=index;">
+            <div class="catalog-item-image" [formGroupName]="i">
+              <input type="hidden" formControlName="photo" #imageUrl>
+              <img src="{{imageUrl.value}}" alt="">
+            </div>
+        </div>
+        <div class="catalog-item-image-add">
+          <span>Add image</span>
+          <button mat-fab color="primary">
+            <i class="material-icons catalog-item-add-icon">add_circle_outline</i>
+          </button>
+        </div>
       </div>
-      <div class="catalog-item-image-add">
-        <span>Add image</span>
-        <button mat-fab color="primary">
-          <i class="material-icons catalog-item-add-icon">add_circle_outline</i>
-        </button>
+      <div class="catalog-item-description-container">
+        <mat-form-field floatLabel="never">
+          <textarea matInput matTextareaAutosize
+            placeholder="Description" formControlName="description">
+          </textarea>
+        </mat-form-field>
       </div>
-    </div>
-    <div class="catalog-item-description-container">
-      <mat-form-field floatLabel="never">
-        <textarea matInput matTextareaAutosize
-          placeholder="Description"
-          [(ngModel)]="item.description">
-        </textarea>
-      </mat-form-field>
-    </div>
-    <div class="catalog-item-price-container">
-      <mat-form-field floatLabel="never">
-        <input matInput placeholder="Price" [(ngModel)]="item.cost">
-        <span matSuffix class="price-suffix">$</span>
-      </mat-form-field>
-    </div>
-    <div class="catalog-item-footer">
-      <button mat-raised-button color="primary">Save</button>
-    </div>
+      <div class="catalog-item-price-container">
+        <mat-form-field floatLabel="never">
+          <input matInput type="number" placeholder="Price" formControlName="price">
+          <span matSuffix class="price-suffix">$</span>
+        </mat-form-field>
+      </div>
+      <div class="catalog-item-footer">
+        <button mat-raised-button color="primary">Save</button>
+      </div>
+    </form>
   </mat-card-content>
 </mat-card>

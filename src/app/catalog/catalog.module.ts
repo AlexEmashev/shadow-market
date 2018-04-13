@@ -5,7 +5,7 @@ import { CatalogItemComponent } from './catalog-item/catalog-item.component';
 import { CatalogService } from './catalog.service';
 import { MatCardModule } from '@angular/material/card';
 import { Http } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,6 +23,7 @@ import { CatalogItemEditComponent } from './catalog-item-edit/catalog-item-edit.
     MatMenuModule,
     MatDialogModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
     MatInputModule
   ],
   declarations: [
