@@ -4,7 +4,14 @@
       <div class="catalog-item-title">
         <mat-form-field floatLabel="never">
           <input matInput placeholder="Item title" formControlName="title">
+          <mat-error *ngIf="formItemEdit.get('title').hasError('required')">
+            Please provide title for an item
+          </mat-error>
+          <mat-error *ngIf="formItemEdit.get('title').hasError('minlength')">
+            Title should be longer than 3 characters
+          </mat-error>
         </mat-form-field>
+
       </div>
       <div class="catalog-item-images-container" formArrayName="photos">
         <div *ngFor="let one_photo of formItemEdit.get('photos').controls; let i=index;">
@@ -22,15 +29,27 @@
       </div>
       <div class="catalog-item-description-container">
         <mat-form-field floatLabel="never">
-          <textarea matInput matTextareaAutosize
+          <textarea matInput matAutosizeMinRows
             placeholder="Description" formControlName="description">
           </textarea>
+          <mat-error *ngIf="formItemEdit.get('description').hasError('required')">
+            Please let the people know more about the item
+          </mat-error>
+          <mat-error *ngIf="formItemEdit.get('description').hasError('minlength')">
+            Please provide more elaborate description. It should be longer than 10 characters.
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="catalog-item-price-container">
         <mat-form-field floatLabel="never">
-          <input matInput type="number" placeholder="Price" formControlName="price">
+          <input matInput #priceInput
+            (blur)="onPriceChanged(priceInput.value)"
+            type="number" placeholder="Price"
+            formControlName="price">
           <span matSuffix class="price-suffix">$</span>
+          <mat-error *ngIf="formItemEdit.get('price').hasError('min')">
+            Price cannot be negative number
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="catalog-item-footer">

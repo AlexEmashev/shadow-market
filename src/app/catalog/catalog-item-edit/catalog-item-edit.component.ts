@@ -37,10 +37,10 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    */
   initForm(): void {
     this.formItemEdit = this.formBuilder.group({
-      title: '',
-      description: '',
+      title: ['', [Validators.required, Validators.minLength(4)]],
+      description: ['', [Validators.required, Validators.minLength(10)]],
       photos: this.formBuilder.array([]),
-      price: 0
+      price: [0, [Validators.min(0)]]
     });
   }
 
@@ -113,6 +113,16 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     }
 
     return saveItem;
+  }
+
+  /**
+   * Allow to user to enter only digits.
+   */
+  onPriceChanged(value: string) {
+    console.log("Key has been pressed",value);
+    if (value === "") {
+      this.formItemEdit.get('price').setValue(0);
+    }
   }
 
   /**
