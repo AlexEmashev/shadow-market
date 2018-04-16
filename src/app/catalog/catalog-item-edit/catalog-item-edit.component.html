@@ -13,21 +13,9 @@
         </mat-form-field>
 
       </div>
-      <div class="catalog-item-images-container" formArrayName="photos">
-        <div *ngFor="let one_photo of formItemEdit.get('photos').controls; let i=index;">
-            <div class="catalog-item-image" [formGroupName]="i">
-              <input type="hidden" formControlName="photo" #imageUrl>
-              <img src="{{imageUrl.value}}" alt="">
-            </div>
-        </div>
-        <div class="catalog-item-image-add">
-          <span>Add image</span>
-          <button mat-fab color="primary" (click)=onAddPhotoClick>
-            <i class="material-icons catalog-item-add-icon">add_circle_outline</i>
-          </button>
-        </div>
-      </div>
+
       <app-images-edit [images]="item.photos"></app-images-edit>
+
       <div class="catalog-item-description-container">
         <mat-form-field floatLabel="never">
           <textarea matInput matAutosizeMinRows

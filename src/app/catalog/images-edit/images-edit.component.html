@@ -9,7 +9,9 @@
     </button>
   </div>
 
-  <div *ngFor="let image of imageSet; let i=index;" class="image-container">
+  <div *ngFor="let image of imageSet; let i=index;" class="image-container"
+    [class.image-deleted]="image.state === 1 "
+  >
     <button mat-icon-button title="Remove item"
       (click)="onRemoveItemClick(i)" type="button">
       <i class="material-icons remove-item">highlight_off</i>

@@ -10,7 +10,7 @@ export interface ImageElement {
  * State of image in collection
  */
 export enum ImageState {
-  added,
-  deleted,
-  not_changed
+  added = 0,
+  deleted = 1,
+  not_changed = 2
 }

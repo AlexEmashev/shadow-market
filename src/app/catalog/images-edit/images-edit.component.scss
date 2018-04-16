@@ -9,6 +9,10 @@
   overflow-y: hidden;
 }
 
+.image-deleted {
+  display: none !important;
+}
+
 .image-container {
   height: 100%;
   margin: 3px;
