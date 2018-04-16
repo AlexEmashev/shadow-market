@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MyItemsComponent } from './my-items/my-items.component';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import { CatalogItemEditComponent } from './catalog-item-edit/catalog-item-edit.component';
+import { ImagesEditComponent } from './images-edit/images-edit.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { CatalogItemEditComponent } from './catalog-item-edit/catalog-item-edit.
     CatalogItemComponent,
     MyItemsComponent,
     DeleteConfirmationComponent,
-    CatalogItemEditComponent],
+    CatalogItemEditComponent,
+    ImagesEditComponent],
   bootstrap: [DeleteConfirmationComponent],
   providers: [
     CatalogService // Will be created a single instance of the service and will be injected whernever required.

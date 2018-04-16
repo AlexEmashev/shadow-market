@@ -22,11 +22,12 @@
         </div>
         <div class="catalog-item-image-add">
           <span>Add image</span>
-          <button mat-fab color="primary">
+          <button mat-fab color="primary" (click)=onAddPhotoClick>
             <i class="material-icons catalog-item-add-icon">add_circle_outline</i>
           </button>
         </div>
       </div>
+      <app-images-edit [images]="item.photos"></app-images-edit>
       <div class="catalog-item-description-container">
         <mat-form-field floatLabel="never">
           <textarea matInput matAutosizeMinRows
