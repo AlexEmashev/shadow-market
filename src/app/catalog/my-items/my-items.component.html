@@ -1,3 +1,9 @@
+<div class="new-item">
+  <button mat-raised-button color="primary">
+    <i class="material-icons" (click)="addNewItem()">add</i>
+    <!-- <i class="material-icons">add_circle</i> -->
+    Add new</button>
+</div>
 <div class="catalog-container">
   <app-catalog-item *ngFor="let catalogItem of catalog"
     [editMode]="true"

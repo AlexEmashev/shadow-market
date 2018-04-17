@@ -32,6 +32,13 @@ export class MyItemsComponent implements OnInit {
   }
 
   /**
+   * Redirects to the form of new item creation.
+   */
+  addNewItem(): void {
+    console.info("ToDo: Create new item!");
+  }
+
+  /**
    * Removes item from the collection.
    */
   deleteItem(item: CatalogItem) {

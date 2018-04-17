@@ -1,3 +1,20 @@
+.new-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
+
+  button {
+    flex-grow: 1;
+    max-width: 150px;
+    min-width: 100px;
+
+    .material-icons {
+      margin-right: 5px;
+    }
+  }
+}
+
 .catalog-container {
   margin: 0 auto;
   max-width: 980px;

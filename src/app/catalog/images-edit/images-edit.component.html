@@ -1,21 +1,17 @@
-<div class="images-container" #imagesContainer id="imagesContainer">
-  <div class="image-add">
-    <input type="file" (change)="attachImage($event.target.files)"
-    style="display: none" accept="image/x-png,image/gif,image/jpeg"
-    multiple #addImage />
-    <span>Add image</span>
-    <button mat-fab color="primary" type="button" (click)="addImage.click()">
-      <i class="material-icons catalog-item-add-icon">add_circle_outline</i>
-    </button>
-  </div>
-
-  <div *ngFor="let image of imageSet; let i=index;" class="image-container"
-    [class.image-deleted]="image.state === 1 "
-  >
-    <button mat-icon-button title="Remove item"
-      (click)="onRemoveItemClick(i)" type="button">
-      <i class="material-icons remove-item">highlight_off</i>
-    </button>
-    <img src="{{image.url}}" alt="">
-  </div>
+<div class="images-container">
+  <!-- <div class="inner-container"> -->
+    <div *ngFor="let image of imageSet; let i=index;" class="image-container" [class.image-deleted]="image.state === 1 ">
+      <button mat-icon-button title="Remove item" (click)="onRemoveItemClick(i)" type="button">
+        <i class="material-icons remove-item">highlight_off</i>
+      </button>
+      <img src="{{image.url}}" alt="">
+    </div>
+    <div class="image-add">
+      <input type="file" (change)="attachImage($event.target.files)" style="display: none" accept="image/x-png,image/gif,image/jpeg" multiple #addImage />
+      <span>Add image</span>
+      <button mat-fab color="primary" type="button" (click)="addImage.click()">
+        <i class="material-icons catalog-item-add-icon">add_circle_outline</i>
+      </button>
+    </div>
+  <!-- </div> -->
 </div>

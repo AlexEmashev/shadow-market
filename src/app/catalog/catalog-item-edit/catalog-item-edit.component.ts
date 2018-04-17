@@ -116,6 +116,22 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Handler for adding image.
+   */
+  imageAdded(base64: string): void {
+    // ToDo: imlement logic.
+    // ToDo: Think through what to do, when item is in creating mode.
+  }
+
+  /**
+   * Handler for deleting image.
+   */
+  imageDeleted(url: string): void {
+    // ToDo: imlement logic.
+    // ToDo: Think through what to do, when item is in creating mode.
+  }
+
+  /**
    * Allow to user to enter only digits.
    */
   onPriceChanged(value: string) {

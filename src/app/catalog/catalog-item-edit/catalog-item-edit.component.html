@@ -14,7 +14,9 @@
 
       </div>
 
-      <app-images-edit [images]="item.photos"></app-images-edit>
+      <app-images-edit [images]="item.photos"
+        (onImageAdded)="imageAdded(base64)"
+        (onImageDeleted)="imageDeleted(url)"></app-images-edit>
 
       <div class="catalog-item-description-container">
         <mat-form-field floatLabel="never">
