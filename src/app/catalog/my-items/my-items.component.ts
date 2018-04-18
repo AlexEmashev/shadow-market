@@ -35,7 +35,8 @@ export class MyItemsComponent implements OnInit {
    * Redirects to the form of new item creation.
    */
   addNewItem(): void {
-    console.info("ToDo: Create new item!");
+    //"my-items/create"
+    this.router.navigate([this.router.url, 'create']);
   }
 
   /**

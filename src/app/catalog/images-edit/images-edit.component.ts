@@ -14,20 +14,27 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * Validates ImagesEditComponent.
+ * At least one image is required.
  */
-export function validateImages(c: ImagesEditComponent) {
+export function validateImages(c: FormControl) {
   // Control should have at lease one image. This image shouldn't be deleted.
   const presentedElements: ImageElement[] = c.value.filter((item: ImageElement) => {
     return item.state === ImageState.added || item.state === ImageState.not_changed
   });
-  console.log('Validation starts: ', presentedElements.length);
-  console.log('Form value:', c.value);
   return presentedElements.length > 0 ? null :
     {validateImages: {valid: false}};
 }
 
 /**
- * Form control for manipulating with images.
+ * Form control for manipulating images.
+ * Usage in reactive forms:
+  <app-images-edit formControlName="photos"
+   (onImageAdded)="imageAdded(base64)"
+   (onImageDeleted)="imageDeleted(url)">
+  </app-images-edit>
+   <mat-error *ngIf="formItemEdit.get('photos').hasError('validateImages')">
+     Please provide at least one image
+   </mat-error>
  */
 @Component({
   selector: 'app-images-edit',
@@ -43,14 +50,24 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
   private _onChange: any;
   private _onTouched: any;
   private isDisabled: boolean;
+
+  // setValue(images: ImageElement[]) {
+  //   this.value = images;
+  // }
+  //
+  // patchValue(images: ImageElement[]) {
+  //   this.setValue(images);
+  // }
+  //
+  // reset() {
+  //   this.value = [];
+  // }
+
   /**
    * Represents current set of images
    */
   value: ImageElement[];
-  /**
-   * Array of images.
-   */
-  @Input() images: string[];
+
   /**
    * Fires when image added.
    * Payload: image coded in Base64
@@ -66,14 +83,12 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit() {
     this.isDisabled = false;
-    //this.value = this.initImages(this.images);
   }
 
 
 // Start ControlValueAccessor interface implementation
 
   writeValue(images: ImageElement[]): void {
-    console.log('!!! writeValue', images);
     this.value = images;
   }
 
@@ -90,20 +105,27 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
   }
 // End ControlValueAccessor interface implementation
 
-
-  // private initImages(imagesAry: string[]): ImageElement[] {
-  //   // Construct internal representation of images.
-  //   return imagesAry.map(img_url => {
-  //     return { url: img_url, state: ImageState.not_changed }
-  //   });
-  // }
-
   /**
-   * Attaches image
+   * Attaches image to the item.
    */
   private attachImage(files: any) {
     for (let i = 0; i < files.length; i++) {
-      this.getBase64(files[i]);
+      let reader = new FileReader();
+      reader.readAsDataURL(files[i]);
+      reader.onload = () => {
+        this.value.unshift({ url: reader.result, state: ImageState.added });
+        // Send event outside, item has been added
+        this.onImageAdded.emit(reader.result);
+        // Trigger element changed.
+        if (typeof(this._onChange) === 'function') {
+          this._onChange(this.value);
+        }
+
+        if (typeof(this._onTouched) === 'function') {
+          this._onTouched(this.value);
+        }
+      };
+      reader.onerror = () => { console.log("Base64 image:", reader.result); };
     }
   }
 
@@ -111,6 +133,7 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
    * Removes image from internal presentation collection.
    */
   private onRemoveItemClick(index: number) {
+    //ToDo: If image just has been added we can delete it from collection.
     this.value[index].state = ImageState.deleted;
     // Send event outside, item has been deleted
     this.onImageDeleted.emit(this.value[index].url);
@@ -122,27 +145,5 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
     if (typeof(this._onTouched) === 'function') {
       this._onTouched(this.value);
     }
-  }
-
-  /**
-   * Encodes passed file to Base64
-   */
-  private getBase64(file) {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      this.value.unshift({ url: reader.result, state: ImageState.added });
-      // Send event outside, item has been added
-      this.onImageAdded.emit(reader.result);
-      // Trigger element changed.
-      if (typeof(this._onChange) === 'function') {
-        this._onChange(this.value);
-      }
-
-      if (typeof(this._onTouched) === 'function') {
-        this._onTouched(this.value);
-      }
-    };
-    reader.onerror = () => { console.log("Base64 image:", reader.result); };
   }
 }

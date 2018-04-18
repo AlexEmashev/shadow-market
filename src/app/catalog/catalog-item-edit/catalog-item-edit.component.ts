@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { validateImages } from '../images-edit/images-edit.component';
 import { ImageElement, ImageState } from '../images-edit/image_element';
+import { UserSettingsService } from '../../user-settings.service';
 
 @Component({
   selector: 'app-catalog-item-edit',
@@ -30,17 +31,44 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
+    private userSettings: UserSettingsService,
     private catalogService: CatalogService ) { }
+
+    /**
+     * Initializes form.
+     */
+    ngOnInit(): void {
+      // ToDo: actually get user id, not set it to null.
+      // If ID is among the parameters, load image. In other case, form in creating mode.
+      if (this.route.snapshot.paramMap.get('id') !== null) {
+        this.getItem(+this.route.snapshot.paramMap.get('id'))
+          .subscribe((item) => this.initForm(item));
+
+      } else {
+        const new_item = {
+          id: null,
+          user_id: null,
+          title: null,
+          description: null,
+          photos: [],
+          price: 0,
+          likes: 0,
+          views: 0
+        }
+        this.initForm(new_item);
+      }
+    }
 
   /**
    * Initializes form with empty values.
    */
-  initForm(): void {
+  initForm(item): void {
+    this.item = item;
     this.formItemEdit = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(4)]],
-      description: ['', [Validators.required, Validators.minLength(10)]],
-      photos: [[], [validateImages]],
-      price: [0, [Validators.min(0)]]
+      title: [this.item.title, [Validators.required, Validators.minLength(4)]],
+      description: [this.item.description, [Validators.required, Validators.minLength(10)]],
+      photos: [this.item.photos, [validateImages]],
+      price: [this.item.price, [Validators.min(0)]]
     });
   }
 
@@ -48,7 +76,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Updates form with current item values.
    */
   updateFormData(): void {
-    console.log('New change: ', this.item);
     this.formItemEdit.reset(
       {
         title: this.item.title,
@@ -57,23 +84,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         photos: this.item.photos
       });
     // this.setPhotos(this.item.photos);
-  }
-
-  /**
-   * Adds photos to the form.
-   */
-  // setPhotos(photos: string[]): void {
-  //   const photosFGs = photos.map(photo => this.formBuilder.group({"photo": photo}));
-  //   const photoFormArray = this.formBuilder.array(photosFGs);
-  //   this.formItemEdit.setControl('photos', photoFormArray);
-  // }
-
-  /**
-   * Initializes form.
-   */
-  ngOnInit(): void {
-    this.initForm();
-    this.getItem();
   }
 
   /**
@@ -86,11 +96,8 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   /**
    * Returns item for editing.
    */
-  getItem(): void {
-    const id: number = +this.route.snapshot.paramMap.get('id');
-    this.catalogService.getItem(id)
-      .pipe(map(item => this.item = item))
-      .subscribe(item => this.updateFormData());
+  getItem(id): Observable<CatalogItem> {
+    return this.catalogService.getItem(id).pipe(map(item => this.item = item));
   }
 
   /**
@@ -99,15 +106,13 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   prepareSaveItem(): CatalogItem {
     // Get form data, which were entered by user
     const formData = this.formItemEdit.value;
-    console.log('Form data:', formData);
-    const photos: ImageElement[] = formData.photos;
 
     const saveItem: CatalogItem = {
       id: this.item.id,
       user_id: this.item.user_id,
       title: formData.title,
       description: formData.description,
-      photos: photos,
+      photos: formData.photos,
       price: formData.price,
       likes: this.item.likes,
       views: this.item.views
@@ -146,7 +151,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Submits the item changes.
    */
   onSubmit() {
-    console.log("On Submit clicked!");
     this.prepareSaveItem();
   }
 

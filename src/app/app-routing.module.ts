@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/catalog', pathMatch: 'full'},
   { path: 'catalog', component: CatalogComponent },
   { path: 'my-items', component: MyItemsComponent },
+  { path: 'my-items/create', component: CatalogItemEditComponent},
   { path: 'my-items/:id', component: CatalogItemEditComponent, canActivate: [AuthGuardService] },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'resources', component: ResourcesComponent },
