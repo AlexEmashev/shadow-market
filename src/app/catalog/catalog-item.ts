@@ -1,3 +1,5 @@
+import { ImageElement, ImageState } from './images-edit/image_element';
+
 /**
  * Describes single catalog item.
  */
@@ -11,7 +13,7 @@ export interface CatalogItem {
   /** Item description */
   description: string;
   /** Links to item photos */
-  photos: string[];
+  photos: ImageElement[];
   /** Item price */
   price: number;
   /** Likes count of item */

@@ -1,4 +1,5 @@
 import {CatalogItem} from './catalog-item';
+import { ImageElement, ImageState } from './images-edit/image_element';
 
 /**
  * Mock catalog items. Will be removed when data-source is implemented.
@@ -8,7 +9,9 @@ import {CatalogItem} from './catalog-item';
      user_id: 2,
      title: 'Brand new item',
      description: 'There is not much special over here, just a simple description of a mock item.',
-     photos: ['/assets/items/mock.svg'],
+     photos: [
+       {url: '/assets/items/mock.svg', state: ImageState.not_changed}
+     ],
      price: 4.99,
      likes: 3,
      views: 10
@@ -17,7 +20,10 @@ import {CatalogItem} from './catalog-item';
      user_id: 1,
      title: 'My Lovely Item #1',
      description: 'There is not much special over here, just a simple description of a mock item.',
-     photos: ['/assets/items/6blender.jpg','/assets/items/mock.svg'],
+     photos: [
+       {url: '/assets/items/mock.svg', state: ImageState.not_changed},
+       {url: '/assets/items/6blender.jpg', state: ImageState.not_changed}
+     ],
      price: 4.99,
      likes: 3,
      views: 10
@@ -26,7 +32,9 @@ import {CatalogItem} from './catalog-item';
      user_id: 1,
      title: 'My Lovely Item #2',
      description: 'There is not much special over here, just a simple description of a mock item.',
-     photos: ['/assets/items/mock.svg'],
+     photos: [
+      {url: '/assets/items/mock.svg', state: ImageState.not_changed}
+     ],
      price: 9.99,
      likes: 1,
      views: 1
@@ -35,7 +43,9 @@ import {CatalogItem} from './catalog-item';
      user_id: 2,
      title: 'Not My Lovely Item #3',
      description: 'There is not much special over here, just a simple description of a mock item.',
-     photos: ['/assets/items/mock.svg'],
+     photos: [
+      {url: '/assets/items/mock.svg', state: ImageState.not_changed}
+     ],
      price: 19.99,
      likes: 5,
      views: 150

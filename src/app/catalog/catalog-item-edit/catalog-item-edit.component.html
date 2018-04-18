@@ -14,9 +14,12 @@
 
       </div>
 
-      <app-images-edit [images]="item.photos"
+      <app-images-edit formControlName="photos"
         (onImageAdded)="imageAdded(base64)"
         (onImageDeleted)="imageDeleted(url)"></app-images-edit>
+        <mat-error *ngIf="formItemEdit.get('photos').hasError('validateImages')">
+          Please provide at least one image
+        </mat-error>
 
       <div class="catalog-item-description-container">
         <mat-form-field floatLabel="never">

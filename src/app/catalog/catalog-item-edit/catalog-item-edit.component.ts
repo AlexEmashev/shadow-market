@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
+import { validateImages } from '../images-edit/images-edit.component';
+import { ImageElement, ImageState } from '../images-edit/image_element';
 
 @Component({
   selector: 'app-catalog-item-edit',
@@ -28,9 +30,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
-    private catalogService: CatalogService ) {
-
-    }
+    private catalogService: CatalogService ) { }
 
   /**
    * Initializes form with empty values.
@@ -39,7 +39,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     this.formItemEdit = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(4)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      photos: this.formBuilder.array([]),
+      photos: [[], [validateImages]],
       price: [0, [Validators.min(0)]]
     });
   }
@@ -53,19 +53,20 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
       {
         title: this.item.title,
         description: this.item.description,
-        price: this.item.price
+        price: this.item.price,
+        photos: this.item.photos
       });
-    this.setPhotos(this.item.photos);
+    // this.setPhotos(this.item.photos);
   }
 
   /**
    * Adds photos to the form.
    */
-  setPhotos(photos: string[]): void {
-    const photosFGs = photos.map(photo => this.formBuilder.group({"photo": photo}));
-    const photoFormArray = this.formBuilder.array(photosFGs);
-    this.formItemEdit.setControl('photos', photoFormArray);
-  }
+  // setPhotos(photos: string[]): void {
+  //   const photosFGs = photos.map(photo => this.formBuilder.group({"photo": photo}));
+  //   const photoFormArray = this.formBuilder.array(photosFGs);
+  //   this.formItemEdit.setControl('photos', photoFormArray);
+  // }
 
   /**
    * Initializes form.
@@ -99,7 +100,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     // Get form data, which were entered by user
     const formData = this.formItemEdit.value;
     console.log('Form data:', formData);
-    const photos: string[] = formData.photos;
+    const photos: ImageElement[] = formData.photos;
 
     const saveItem: CatalogItem = {
       id: this.item.id,
@@ -146,6 +147,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    */
   onSubmit() {
     console.log("On Submit clicked!");
+    this.prepareSaveItem();
   }
 
 }
