@@ -1,6 +1,6 @@
 <mat-card class="catalog-item">
   <mat-card-content class="catalog-item-content">
-    <form [formGroup]="formItemEdit" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formItemEdit" (ngSubmit)="onSubmit()" novalidate>
       <div class="catalog-item-title">
         <mat-form-field floatLabel="never">
           <input matInput placeholder="Item title" formControlName="title">
@@ -37,17 +37,22 @@
       <div class="catalog-item-price-container">
         <mat-form-field floatLabel="never">
           <input matInput #priceInput
+            pattern="[0-9.]+"
             (blur)="onPriceChanged(priceInput.value)"
-            type="number" placeholder="Price"
+            (keydown)="onPriceKeyDown($event)"
+            type="text" placeholder="Price"
             formControlName="price">
           <span matSuffix class="price-suffix">$</span>
+          <mat-error *ngIf="formItemEdit.get('price').hasError('required')">
+            Please set price for your item.
+          </mat-error>
           <mat-error *ngIf="formItemEdit.get('price').hasError('min')">
             Price cannot be negative number
           </mat-error>
         </mat-form-field>
       </div>
       <div class="catalog-item-footer">
-        <button mat-raised-button color="primary">Save</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
       </div>
     </form>
   </mat-card-content>

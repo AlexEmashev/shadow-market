@@ -51,18 +51,6 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
   private _onTouched: any;
   private isDisabled: boolean;
 
-  // setValue(images: ImageElement[]) {
-  //   this.value = images;
-  // }
-  //
-  // patchValue(images: ImageElement[]) {
-  //   this.setValue(images);
-  // }
-  //
-  // reset() {
-  //   this.value = [];
-  // }
-
   /**
    * Represents current set of images
    */

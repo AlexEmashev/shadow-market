@@ -32,7 +32,18 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     private router: Router,
     private location: Location,
     private userSettings: UserSettingsService,
-    private catalogService: CatalogService ) { }
+    private catalogService: CatalogService ) {
+      this.item = {
+        id: null,
+        user_id: null,
+        title: null,
+        description: null,
+        photos: [],
+        price: null,
+        likes: 0,
+        views: 0
+      }
+    }
 
     /**
      * Initializes form.
@@ -43,32 +54,26 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
       if (this.route.snapshot.paramMap.get('id') !== null) {
         this.getItem(+this.route.snapshot.paramMap.get('id'))
           .subscribe((item) => this.initForm(item));
-
       } else {
-        const new_item = {
-          id: null,
-          user_id: null,
-          title: null,
-          description: null,
-          photos: [],
-          price: 0,
-          likes: 0,
-          views: 0
-        }
-        this.initForm(new_item);
+        this.initForm(this.item);
       }
     }
 
   /**
    * Initializes form with empty values.
    */
-  initForm(item): void {
-    this.item = item;
+  initForm(item: CatalogItem): void {
+    console.log('Initform', item);
+    // Make a copy of passed object.
+    Object.assign(this.item, item);
+    this.item.photos = item.photos.map(photo => { return {url: photo.url, state: photo.state}; });
+    console.log(this.item === item);
+    // this.item = item;
     this.formItemEdit = this.formBuilder.group({
       title: [this.item.title, [Validators.required, Validators.minLength(4)]],
       description: [this.item.description, [Validators.required, Validators.minLength(10)]],
       photos: [this.item.photos, [validateImages]],
-      price: [this.item.price, [Validators.min(0)]]
+      price: [this.item.price, [Validators.required, Validators.min(0)]]
     });
   }
 
@@ -97,7 +102,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Returns item for editing.
    */
   getItem(id): Observable<CatalogItem> {
-    return this.catalogService.getItem(id).pipe(map(item => this.item = item));
+    return this.catalogService.getItem(id);
   }
 
   /**
@@ -141,17 +146,60 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Allow to user to enter only digits.
    */
   onPriceChanged(value: string) {
-    console.log("Key has been pressed",value);
+    const prev_value = this.formItemEdit.get('price').value;
+
     if (value === "") {
-      this.formItemEdit.get('price').setValue(0);
+      this.formItemEdit.get('price').setValue("");
     }
+    else if (/^\d*\.?\d*$/.test(value)) {
+      const new_value = (+value).toFixed(2)
+      this.formItemEdit.get('price').setValue(new_value);
+    } else {
+      this.formItemEdit.get('price').setValue(prev_value);
+    }
+  }
+
+  /**
+   * Check user's price input on the fly.
+   */
+  onPriceKeyDown(e: KeyboardEvent): boolean {
+    const new_char:string = e.key;
+    const prev_value = this.formItemEdit.get('price').value;
+
+    if (/\./.test(prev_value) && new_char === '.') {
+      // Check if dot pressed but there's already one
+      return false;
+    } else if (/\d/.test(new_char)) {
+      // Check if this is a digit, then allow it.
+      return true;
+    } else if ([46, 8, 9, 27, 13, 110, 190].indexOf(e.keyCode) !== -1 ||
+        // Allow: Ctrl+A
+        (e.keyCode == 65 && e.ctrlKey === true) ||
+        // Allow: Ctrl+C
+        (e.keyCode == 67 && e.ctrlKey === true) ||
+        // Allow: Ctrl+V
+        (e.keyCode == 86 && e.ctrlKey === true) ||
+        // Allow: Ctrl+X
+        (e.keyCode == 88 && e.ctrlKey === true) ||
+        // Allow: home, end, left, right
+        (e.keyCode >= 35 && e.keyCode <= 39)) {
+          // let it happen, don't do anything
+          return true;
+        } else {
+          return false;
+        }
   }
 
   /**
    * Submits the item changes.
    */
   onSubmit() {
-    this.prepareSaveItem();
+    if (this.formItemEdit.valid) {
+      this.prepareSaveItem();
+      this.location.back();
+    } else {
+      console.log('Form is invalid! Kokoko!');
+    }
   }
 
 }
