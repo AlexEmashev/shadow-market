@@ -25,7 +25,7 @@ export class AuthGuardService implements CanActivate {
           defaultIfEmpty(false),
           map(result => {
           if (!result) {
-            this.navigate();
+            this.navigateNotAllowed();
           }
           return result;
         }));
@@ -34,8 +34,16 @@ export class AuthGuardService implements CanActivate {
     /**
      * Navigates to the safe page if not allowed.
      */
-    private navigate():boolean {
+    private navigateNotAllowed():boolean {
       this.router.navigate(['/not-allowed']);
+      return false;
+    }
+
+    /**
+     * Navigates to 404 page
+     */
+    private navigateNotfound(): boolean {
+      this.router.navigate(['404'])
       return false;
     }
 }

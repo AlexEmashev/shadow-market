@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SettingsComponent } from './settings/settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { CatalogItemDetailsComponent } from './catalog/catalog-item-details/catalog-item-details.component';
 import { MyItemsComponent } from './catalog/my-items/my-items.component';
 import { CatalogItemEditComponent } from './catalog/catalog-item-edit/catalog-item-edit.component';
 import { AboutComponent } from './about/about.component';
@@ -16,6 +17,7 @@ import { AuthGuardService } from './auth-guard.service';
 const routes: Routes = [
   { path: '', redirectTo: '/catalog', pathMatch: 'full'},
   { path: 'catalog', component: CatalogComponent },
+  { path: 'catalog/:id', component: CatalogItemDetailsComponent },
   { path: 'my-items', component: MyItemsComponent },
   { path: 'my-items/create', component: CatalogItemEditComponent},
   { path: 'my-items/:id', component: CatalogItemEditComponent, canActivate: [AuthGuardService] },
@@ -24,6 +26,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent},
   { path: 'about', component: AboutComponent },
   { path: 'not-allowed', component: RouteNotAllowedComponent },
+  { path: '404', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
 ]
 

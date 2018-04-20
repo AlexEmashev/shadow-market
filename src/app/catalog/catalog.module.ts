@@ -13,6 +13,7 @@ import { MyItemsComponent } from './my-items/my-items.component';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import { CatalogItemEditComponent } from './catalog-item-edit/catalog-item-edit.component';
 import { ImagesEditComponent } from './images-edit/images-edit.component';
+import { CatalogItemDetailsComponent } from './catalog-item-details/catalog-item-details.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { ImagesEditComponent } from './images-edit/images-edit.component';
     MyItemsComponent,
     DeleteConfirmationComponent,
     CatalogItemEditComponent,
-    ImagesEditComponent],
+    ImagesEditComponent,
+    CatalogItemDetailsComponent],
   bootstrap: [DeleteConfirmationComponent],
   providers: [
     CatalogService // Will be created a single instance of the service and will be injected whernever required.
