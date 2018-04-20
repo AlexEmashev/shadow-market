@@ -23,7 +23,7 @@
 
       <div class="catalog-item-description-container">
         <mat-form-field floatLabel="never">
-          <textarea matInput matAutosizeMinRows
+          <textarea matInput matTextareaAutosize
             placeholder="Description" formControlName="description">
           </textarea>
           <mat-error *ngIf="formItemEdit.get('description').hasError('required')">
@@ -37,7 +37,6 @@
       <div class="catalog-item-price-container">
         <mat-form-field floatLabel="never">
           <input matInput #priceInput
-            pattern="[0-9.]+"
             (blur)="onPriceChanged(priceInput.value)"
             (keydown)="onPriceKeyDown($event)"
             type="text" placeholder="Price"

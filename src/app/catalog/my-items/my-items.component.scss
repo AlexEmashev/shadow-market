@@ -1,21 +1,26 @@
-.new-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 20px;
-
-  button {
-    flex-grow: 1;
-    max-width: 150px;
-    min-width: 100px;
-
-    .material-icons {
-      margin-right: 5px;
-    }
-  }
-}
-
 .catalog-container {
   margin: 0 auto;
   max-width: 980px;
+}
+
+.new-item {
+  margin: 20px auto;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-width: 171px;
+  justify-content: center;
+
+  span {
+    color: #828282;
+    margin-top: 6px;
+    font-size: 16px
+  }
+  button {
+    height: 80px;
+    width: 80px;
+  }
+  i {
+    font-size: 38px;
+  }
 }

@@ -5,8 +5,11 @@ $secondary-active-color: #676b6e;
 
 .catalog-item {
   margin: 20px;
-  padding: 30px 20px;
-  height: 160px;
+  padding: 20px 20px;
+  // height: 160px;
+  @media all and (max-width: $media-width-small) {
+    //height: 380px;
+  }
 
   &-title {
     font-size: 24px;
@@ -90,6 +93,8 @@ $secondary-active-color: #676b6e;
   &-title {
     font-size: 24px;
     line-height: 30px;
+    height: 30px;
+    overflow: hidden;
   }
 
   &-price {
@@ -97,6 +102,12 @@ $secondary-active-color: #676b6e;
     flex-direction: column;
     justify-content: flex-start;
     min-width: 100px;
+    @media all and (max-width: $media-width-small) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-between;
+    }
 
     &-amount {
       display: block;
@@ -109,10 +120,20 @@ $secondary-active-color: #676b6e;
     &-details {
       display: block;
       margin: 0 auto 7px;
+      @media all and (max-width: $media-width-small) {
+        flex-grow: 1;
+        margin-left: 15px;
+      }
     }
     &-buy {
       display: block;
-      margin: 0 auto;
+      margin: 0 auto 7px;
+      @media all and (max-width: $media-width-small) {
+        flex-grow: 1;
+        margin-left: 15px;
+      }
     }
   }
 }
+
+// ToDo: check layout around 484px, when the title is relatively long.
