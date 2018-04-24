@@ -38,7 +38,7 @@ export class UserSettings {
   /**
    * Application theme.
    */
-  theme: AppThemes;
+  theme: string;
   /**
    * User role.
    */

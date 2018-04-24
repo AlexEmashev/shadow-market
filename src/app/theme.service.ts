@@ -3,6 +3,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { from } from 'rxjs/observable/from';
 import { Themes, Theme } from './themes';
 import { filter, defaultIfEmpty } from 'rxjs/operators';
+import {AppRoles, AppThemes, UserSettings } from './user-settings';
+import { UserSettingsService } from './user-settings.service';
 
 
 /**
@@ -10,22 +12,27 @@ import { filter, defaultIfEmpty } from 'rxjs/operators';
  */
 @Injectable()
 export class ThemeService {
-  private themeProvider = new BehaviorSubject<string>(Themes[0].class);
-  currentTheme = this.themeProvider.asObservable();
+  private themeProvider: BehaviorSubject<string>;
+  currentTheme;
 
-  constructor() { }
+  constructor(private userSettings: UserSettingsService) {
+    console.log(this.userSettings.theme);
+    this.themeProvider = new BehaviorSubject<string>(this.userSettings.theme);
+    this.currentTheme = this.themeProvider.asObservable();
+  }
 
   /**
    * Changes theme to selected.
    */
   changeTheme(theme: string) {
-    console.log('Themes:', Themes[0].class);
-    console.log("Theme:", theme);
     from(Themes).pipe(
       filter(elem => elem.name === theme),
       defaultIfEmpty(Themes[0])
-    ).subscribe(elem =>
-      this.themeProvider.next(elem.class)
+    ).subscribe(elem => {
+      this.themeProvider.next(elem.class);
+      // Save props.
+      this.userSettings.theme = elem.class;
+    }
     );
   }
 

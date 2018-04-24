@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AppRoles, AppThemes, UserSettings} from './user-settings';
+import { Themes } from './themes';
 
 @Injectable()
 export class UserSettingsService {
@@ -24,10 +25,10 @@ export class UserSettingsService {
     this.userSettings.name = value;
     this.saveSettings();
   }
-  get theme(): AppThemes {
+  get theme(): string {
     return this.userSettings.theme;
   }
-  set theme(value: AppThemes) {
+  set theme(value: string) {
     this.userSettings.theme = value;
     this.saveSettings();
   }
@@ -72,7 +73,7 @@ export class UserSettingsService {
     this.userSettings = new UserSettings();
     this.userSettings.id = 0;
     this.userSettings.name = "Guest";
-    this.userSettings.theme = AppThemes.default;
+    this.userSettings.theme = Themes[0].class;
     this.userSettings.role = AppRoles.guest;
     this.userSettings.session = "";
 
