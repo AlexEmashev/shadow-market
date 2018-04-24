@@ -13,6 +13,7 @@ import { ToolbarService } from './toolbar/toolbar.service';
 import { AppRoutingModule } from './app-routing.module';
 import { UserSettingsService } from './user-settings.service';
 import { AuthGuardService } from './auth-guard.service';
+import { ThemeService } from './theme.service';
 /**
  * App pages
  */
@@ -27,6 +28,7 @@ import { RouteNotAllowedModule } from './route-not-allowed/route-not-allowed.mod
  * Module of main routing container.
  */
 import { ContentModule } from './content/content.module';
+import { ThemeSwitchModule } from './theme-switch/theme-switch.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { ContentModule } from './content/content.module';
     BrowserModule,
     BrowserAnimationsModule,
     ToolbarModule,
+    ThemeSwitchModule,
     MainSidenavModule,
     ContentModule,
     SettingsModule,
@@ -50,7 +53,8 @@ import { ContentModule } from './content/content.module';
   providers: [
     ToolbarService,
     UserSettingsService,
-    AuthGuardService
+    AuthGuardService,
+    ThemeService
   ],
   bootstrap: [AppComponent]
 })

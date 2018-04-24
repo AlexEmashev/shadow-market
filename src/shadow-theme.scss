@@ -5,20 +5,24 @@
 
 
 // Hazy Day, theme with primarily shades of grey.
-// $hazy-day-primary: mat-palette($mat-blue-grey);
-// $hazy-day-accent: mat-palette($mat-pink, A200, A100, A400);
-// $hazy-day-warn: mat-palette($mat-deep-orange, A200, A100, A400);
-// $hazy-day-theme: mat-light-theme($hazy-day-primary, $hazy-day-accent, $hazy-day-warn);
-//
-// @include angular-material-theme($hazy-day-theme);
+.hazy-day-theme {
+  $hazy-day-primary: mat-palette($mat-blue-grey);
+  $hazy-day-accent: mat-palette($mat-pink, A200, A100, A400);
+  $hazy-day-warn: mat-palette($mat-deep-orange, A200, A100, A400);
+  $hazy-day-theme: mat-light-theme($hazy-day-primary, $hazy-day-accent, $hazy-day-warn);
 
-// Hazy Day, theme with primarily shades of grey.
-$black-watch-primary: mat-palette($mat-blue-grey);
-$black-watch-accent: mat-palette($mat-blue-grey, A200, A100, A400);
-$black-watch-warn: mat-palette($mat-deep-orange, A200, A100, A400);
-$black-watch-theme: mat-dark-theme($black-watch-primary, $black-watch-accent, $black-watch-warn);
+  @include angular-material-theme($hazy-day-theme);
+}
 
-@include angular-material-theme($black-watch-theme);
+// Black watch, theme dark theme.
+.black-watch-theme {
+  $black-watch-primary: mat-palette($mat-grey);
+  $black-watch-accent: mat-palette($mat-grey, A200, A100, A400);
+  $black-watch-warn: mat-palette($mat-deep-orange, A200, A100, A400);
+  $black-watch-theme: mat-dark-theme($black-watch-primary, $black-watch-accent, $black-watch-warn);
+
+  @include angular-material-theme($black-watch-theme);
+}
 
 
 

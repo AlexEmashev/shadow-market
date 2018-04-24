@@ -6,6 +6,7 @@ import { MatToolbarModule,
         MatIconModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ThemeSwitchModule } from '../theme-switch/theme-switch.module';
 
 import { HeaderComponent } from './header.component';
 
@@ -18,7 +19,8 @@ import { HeaderComponent } from './header.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ThemeSwitchModule
   ],
   // Export components, so they be available for other components to use
   exports: [
