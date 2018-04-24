@@ -1,5 +1,3 @@
-// import * as $ from 'jquery';
-// import * as swipeslider from 'alexemashev-swipeslider';
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CatalogItem } from '../catalog-item';
 import { CatalogService } from '../catalog.service';
