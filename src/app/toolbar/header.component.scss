@@ -1,3 +1,5 @@
+@import '../breakpoints';
+
 .main-header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
   position: fixed;
@@ -10,18 +12,40 @@
 
 .header-title {
   font-size: 26px;
-  font-weight: 500;
+  font-weight: 300;
   padding-left: 18px;
   vertical-align: middle;
+  text-decoration: none;
+  color: white; // ToDo: Replace
 }
 
-.header-service-controls {
-
+.menu-button {
+  display: none;
+  @media all and (max-width: $media-width-small) {
+    display: block;
+  }
 }
 
-.header-user-controls {
-  a {
-    text-decoration: none;
-    color: white;
+.menu {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  @media all and (max-width: $media-width-small) {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 150px;
+    background: white; // ToDo: change
+    box-shadow:  0 2px 5px rgba(0, 0, 0, 0.26); // ToDo, replace.
+  }
+
+  li {
+    button {
+      padding: 10px;
+      width: 100%;
+    }
   }
 }

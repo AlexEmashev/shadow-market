@@ -1,0 +1,13 @@
+@import '../breakpoints';
+button {
+  width: 100%;
+  padding: 10px;
+  height: auto;
+}
+
+.button-label {
+  display: none;
+  @media all and (max-width: $media-width-small) {
+    display: inline;
+  }
+}

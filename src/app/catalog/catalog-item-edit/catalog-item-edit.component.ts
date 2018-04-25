@@ -63,12 +63,9 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Initializes form with empty values.
    */
   initForm(item: CatalogItem): void {
-    console.log('Initform', item);
     // Make a copy of passed object.
     Object.assign(this.item, item);
     this.item.photos = item.photos.map(photo => { return {url: photo.url, state: photo.state}; });
-    console.log(this.item === item);
-    // this.item = item;
     this.formItemEdit = this.formBuilder.group({
       title: [this.item.title, [Validators.required, Validators.minLength(4)]],
       description: [this.item.description, [Validators.required, Validators.minLength(10)]],

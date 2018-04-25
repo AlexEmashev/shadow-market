@@ -1,17 +1,28 @@
 <mat-toolbar class="main-header" color="primary">
-    <button mat-icon-button (click)="toggeSidenav()">
+  <button mat-icon-button (click)="toggeSidenav()">
       <i class="material-icons md-32">menu</i>
     </button>
   <span class="header-fill">
-    <span class="header-title">ShadowLab</span>
+    <a href="/" class="header-title">Shadow Market</a>
   </span>
 
+  <button mat-icon-button class="menu-button"  (click)="toggleMenu()">
+    <i class="material-icons">apps</i>
+  </button>
+  <ul class="menu" *ngIf="showMenu">
+    <li class="themes">
+      <app-theme-switch></app-theme-switch>
+    </li>
+    <li class="user">
+      <button mat-button>
+        <i class="material-icons md-32">person</i>
+        <span class="button-label">{{userSettings.name}}</span>
+      </button>
+    </li>
+  </ul>
+  <!--
   <span class="header-service-controls">
-    <app-theme-switch></app-theme-switch>
   </span>
   <span class="header-user-controls">
-  <button mat-button>
-    <i class="material-icons md-32">person</i> {{userSettings.name}}
-  </button>
-  </span>
+  </span> -->
 </mat-toolbar>
