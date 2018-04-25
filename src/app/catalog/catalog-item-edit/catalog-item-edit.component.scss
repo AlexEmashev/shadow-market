@@ -21,15 +21,6 @@
     }
   }
 
-  &-images-container {
-    border: 1px solid #8080803d;
-    display: flex;
-    flex-direction: row;
-    height: 250px; // Mock height
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-
   &-image {
     height: 100%;
     margin: 3px;
@@ -37,26 +28,6 @@
 
     img {
       max-height: 100%;
-    }
-  }
-
-  &-image-add {
-    align-items: center;
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    min-width: 171px;
-    justify-content: center;
-    span {
-      color: #adadad;
-      margin-bottom: 9px;
-    }
-    button {
-      height: 80px;
-      width: 80px;
-    }
-    i {
-      font-size: 38px;
     }
   }
 

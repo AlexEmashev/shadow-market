@@ -1,5 +1,4 @@
 @import '../../breakpoints';
-$secondary-active-color: #676b6e;
 
 .item {
   margin: 0 auto 20px;
@@ -26,13 +25,8 @@ $secondary-active-color: #676b6e;
 }
 
 .item-icons {
-  color: #b8b8b8;
   i {
     font-size: 17px;
-  }
-
-  .like {
-    color: $secondary-active-color;
   }
 
   .like-count {

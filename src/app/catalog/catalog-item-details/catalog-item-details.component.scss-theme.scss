@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+@mixin catalog-item-details-component-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  app-catalog-item-details {
+    .item-icons {
+      color: map-get($primary, default);
+
+      .like {
+        color: map-get($primary, darker);
+      }
+    }
+  }
+}
