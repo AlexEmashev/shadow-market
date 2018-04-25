@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Themes } from './themes';
 import { ThemeService } from './theme.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,18 @@ export class AppComponent implements OnInit {
    */
   theme: string;
 
-  public constructor(private themeService: ThemeService) {
+  public constructor(private themeService: ThemeService,
+    private overlayContainer: OverlayContainer
+  ) {
 
   }
 
   ngOnInit() {
-    this.themeService.currentTheme.subscribe(theme => this.theme = theme);
+    // Replace style of overlay elements as well.
+    this.themeService.currentTheme.subscribe(theme => {
+      this.overlayContainer.getContainerElement().classList.remove(this.theme);
+      this.overlayContainer.getContainerElement().classList.add(theme);
+      this.theme = theme;
+    });
   }
 }

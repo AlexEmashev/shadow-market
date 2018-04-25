@@ -7,6 +7,7 @@ import {AppRoles, AppThemes, UserSettings } from './user-settings';
 import { UserSettingsService } from './user-settings.service';
 
 
+
 /**
  * Service controlling theme setting.
  */
@@ -15,8 +16,8 @@ export class ThemeService {
   private themeProvider: BehaviorSubject<string>;
   currentTheme;
 
-  constructor(private userSettings: UserSettingsService) {
-    console.log(this.userSettings.theme);
+  constructor(private userSettings: UserSettingsService,
+  ) {
     this.themeProvider = new BehaviorSubject<string>(this.userSettings.theme);
     this.currentTheme = this.themeProvider.asObservable();
   }

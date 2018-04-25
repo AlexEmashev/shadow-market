@@ -9,7 +9,7 @@
   <button mat-icon-button class="menu-button"  (click)="toggleMenu()">
     <i class="material-icons">apps</i>
   </button>
-  <ul class="menu" *ngIf="showMenu">
+  <ul class="menu" *ngIf="menuShown">
     <li class="themes">
       <app-theme-switch></app-theme-switch>
     </li>

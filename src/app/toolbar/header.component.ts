@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
     private userSettings: UserSettingsService,
   ) { }
   menuBreakpoint = 480; // ToDo: make actual contract of break point corresponding style
-  showMenu: boolean=true;
+  menuShown: boolean=true;
 
   ngOnInit() {
     this.setupMenuVisibility();
@@ -31,14 +31,22 @@ export class HeaderComponent implements OnInit {
    */
   setupMenuVisibility() {
     if (window.innerWidth > this.menuBreakpoint) {
-      this.showMenu = true;
+      this.menuShown = true;
     } else {
-      this.showMenu = false;
+      this.menuShown = false;
     }
   }
 
   toggleMenu() {
-    this.showMenu = !this.showMenu;
+    this.menuShown = !this.menuShown;
+  }
+
+  showMenus() {
+    this.menuShown = true;
+  }
+
+  hideMenu() {
+    this.menuShown = false;
   }
 
   /**
