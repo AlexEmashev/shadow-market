@@ -7,12 +7,14 @@
 @import './app/catalog/catalog-item-edit/catalog-item-edit.component.scss-theme';
 @import './app/catalog/catalog-item-details/catalog-item-details.component.scss-theme';
 @import './app/catalog/catalog-item/catalog-item.component.scss-theme';
+@import './app/toolbar/header.component.scss-theme';
 
 // Mixin for custom components.
 @mixin custom-components-theme($theme) {
   @include catalog-item-component-theme($theme);
   @include catalog-item-details-component-theme($theme);
   @include catalog-item-component-theme($theme);
+  @include header-component-theme($theme);
 }
 
 // Hazy Day, theme with primarily shades of grey.

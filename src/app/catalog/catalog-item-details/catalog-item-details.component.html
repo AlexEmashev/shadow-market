@@ -19,7 +19,7 @@
           <!-- Photos carousel  -->
           <div class="swipeslider" #itemPhotos id="photos">
             <ul class="sw-slides">
-              <li class="sw-slide" *ngFor="let photo of item.photos; let i=index;" (click)="onLoad()">
+              <li class="sw-slide" *ngFor="let photo of item.photos; let i=index;">
                 <img src="{{photo.url}}" alt="Photo {{i+1}}">
               </li>
             </ul>
