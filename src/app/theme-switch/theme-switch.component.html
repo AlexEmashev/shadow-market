@@ -1,13 +1,13 @@
-<button mat-icon-button [matMenuTriggerFor]="themeMenu">
+<button mat-button [matMenuTriggerFor]="themeMenu">
   <i class="material-icons md-32">color_lens</i>
   <span class="button-label">Themes</span>
 </button>
 
 <mat-menu #themeMenu="matMenu">
   <button mat-menu-item (click)="switchTheme('hazyDay')">
-    <span class="preview-hazy-day">&nbsp;</span> <span>Hazy Day</span>
+    <span class="hazy-day-swatch theme-preview">&nbsp;</span> <span>Hazy Day</span>
   </button>
   <button mat-menu-item (click)="switchTheme('blackWatch')">
-    <span class="preview-hazy-day">&nbsp;</span> <span>Black Watch</span>
+    <span class="black-watch-swatch theme-preview">&nbsp;</span> <span>Black Watch</span>
   </button>
 </mat-menu>

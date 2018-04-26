@@ -8,6 +8,9 @@
 @import './app/catalog/catalog-item-details/catalog-item-details.component.scss-theme';
 @import './app/catalog/catalog-item/catalog-item.component.scss-theme';
 @import './app/toolbar/header.component.scss-theme';
+@import './app/theme-switch/theme-switch.component.scss-theme';
+@import './app/theme-switch/theme-switch.component.colors-scss-theme';
+@import './app/menu/menu.component.scss-theme';
 
 // Mixin for custom components.
 @mixin custom-components-theme($theme) {
@@ -15,29 +18,98 @@
   @include catalog-item-details-component-theme($theme);
   @include catalog-item-component-theme($theme);
   @include header-component-theme($theme);
+  @include theme-switch-component-theme($theme);
+  @include menu-component-theme($theme);
 }
 
 // Hazy Day, theme with primarily shades of grey.
-.hazy-day-theme {
-  $hazy-day-primary: mat-palette($mat-blue-grey);
-  $hazy-day-accent: mat-palette($mat-grey, A200, A100, A40);
-  $hazy-day-warn: mat-palette($mat-deep-orange, A200, A100, A400);
-  $hazy-day-theme: mat-light-theme($hazy-day-primary, $hazy-day-accent, $hazy-day-warn);
+$hazy-day-blue: (
+50 : #e5eff2,
+100 : #bed8dd,
+200 : #93bec7,
+300 : #67a3b1,
+400 : #4790a0,
+500 : #267c8f,
+600 : #227487,
+700 : #1c697c,
+800 : #175f72,
+900 : #0d4c60,
+A100 : #95e3ff,
+A200 : #62d5ff,
+A400 : #2fc7ff,
+A700 : #15c1ff,
+contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+    )
+);
+$hazy-day-primary: mat-palette($mat-blue-grey);
+$hazy-day-accent: mat-palette($hazy-day-blue, 500, 100, 800);
+$hazy-day-warn: mat-palette($mat-deep-orange, A200, A100, A400);
+$hazy-day-theme: mat-light-theme($hazy-day-primary, $hazy-day-accent, $hazy-day-warn);
 
+.hazy-day-theme {
   @include angular-material-theme($hazy-day-theme);
   @include custom-components-theme($hazy-day-theme);
 }
 
+// Hazy Day, theme with primarily shades of grey.
+$black-watch-accent: (
+50 : #fae3e3,
+100 : #f4baba,
+200 : #ec8c8c,
+300 : #e45e5e,
+400 : #df3c3c,
+500 : #d91919,
+600 : #d51616,
+700 : #cf1212,
+800 : #ca0e0e,
+900 : #c00808,
+A100 : #ffebeb,
+A200 : #ffb8b8,
+A400 : #ff8585,
+A700 : #ff6b6b,
+contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+    )
+);
+$black-watch-primary: mat-palette($mat-grey);
+$black-watch-accent: mat-palette($black-watch-accent, 500, 100, 800);
+$black-watch-warn: mat-palette($mat-deep-orange, A200, A100, A400);
+$black-watch-theme: mat-dark-theme($black-watch-primary, $black-watch-accent, $black-watch-warn);
+
 // Black watch, theme dark theme.
 .black-watch-theme {
-  $black-watch-primary: mat-palette($mat-grey);
-  $black-watch-accent: mat-palette($mat-grey, A200, A100, A400);
-  $black-watch-warn: mat-palette($mat-deep-orange, A200, A100, A400);
-  $black-watch-theme: mat-dark-theme($black-watch-primary, $black-watch-accent, $black-watch-warn);
-
   @include angular-material-theme($black-watch-theme);
   @include custom-components-theme($black-watch-theme);
 }
+
+@include theme-switch-component-colors($hazy-day-theme, $black-watch-theme);
 
 
 

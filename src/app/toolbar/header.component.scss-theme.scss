@@ -1,14 +1,17 @@
 @import '~@angular/material/theming';
-
+@import '../breakpoints';
 @mixin header-component-theme($theme) {
   $primary: map-get($theme, primary);
+
   app-header {
     .header-title {
       color: map-get($primary, default-contrast);
     }
 
     .menu {
-      background: map-get($primary, default);
+      @media all and (max-width: $media-width-small) {
+        background: map-get($primary, default);
+      }
     }
   }
 }

@@ -1,5 +1,3 @@
-$selected-nav-bg-color: rgba(0, 0, 0, .08);
-
 .main-sidenav-container {
   flex: 1 1 auto;
   margin-top: 64px;
@@ -20,8 +18,4 @@ $selected-nav-bg-color: rgba(0, 0, 0, .08);
 
 .main-sidenav-item {
   width: 100%;
-}
-
-.active {
-  background-color: $selected-nav-bg-color;
 }

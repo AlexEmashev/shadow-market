@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@mixin menu-component-theme($theme) {
+  $accent: map-get($theme, primary);
+  app-menu {
+    .active {
+      background-color: map-get($accent, lighter);
+      color: map-get($accent, lighter-contrast);
+    }
+  }
+}
