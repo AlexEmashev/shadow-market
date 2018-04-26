@@ -4,11 +4,9 @@ button {
   padding: 10px;
   height: auto;
   min-width: auto;
-  @media all and (max-width: $media-width-small) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .button-label {
