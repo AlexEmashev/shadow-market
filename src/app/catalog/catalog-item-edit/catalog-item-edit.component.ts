@@ -162,14 +162,13 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   onPriceKeyDown(e: KeyboardEvent): boolean {
     const new_char:string = e.key;
     const prev_value = this.formItemEdit.get('price').value;
-
-    if (/\./.test(prev_value) && new_char === '.') {
-      // Check if dot pressed but there's already one
-      return false;
-    } else if (/\d/.test(new_char)) {
-      // Check if this is a digit, then allow it.
+    console.log(e.key);
+    if (new_char === '.') { console.log('this is dot');}
+    if (!/\./.test(prev_value) && new_char === '.') { // allow one dot only
       return true;
-    } else if ([46, 8, 9, 27, 13, 110, 190].indexOf(e.keyCode) !== -1 ||
+    } else if (/\d/.test(new_char)) { // Check if this is a digit, then allow it.
+      return true;
+    } else if ([46, 8, 9, 27, 13, 110].indexOf(e.keyCode) !== -1 ||
         // Allow: Ctrl+A
         (e.keyCode == 65 && e.ctrlKey === true) ||
         // Allow: Ctrl+C
@@ -180,6 +179,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         (e.keyCode == 88 && e.ctrlKey === true) ||
         // Allow: home, end, left, right
         (e.keyCode >= 35 && e.keyCode <= 39)) {
+          console.log(e.keyCode);
           // let it happen, don't do anything
           return true;
         } else {
