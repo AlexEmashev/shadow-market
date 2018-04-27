@@ -28,15 +28,14 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
     private location: Location,
     private userSettings: UserSettingsService,
     private catalogService: CatalogService
-  ) {
-  }
+  ) {  }
 
   ngOnInit() {
     // Get item using item id.
     const itemId = +this.route.snapshot.paramMap.get('id')
     this.catalogService.getItem(itemId)
       .subscribe((item) => {
-        this.item = item
+        this.item = item;
       });
   }
 

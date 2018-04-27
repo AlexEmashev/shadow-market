@@ -11,7 +11,7 @@
       <input type="file" (change)="attachImage($event.target.files)"
         style="display: none" accept="image/x-png,image/gif,image/jpeg"
         multiple #addImage />
-      <span>Add image</span>
+      <span>{{ 'imagesEdit.add' | translate }}</span>
       <button mat-fab color="primary" type="button"
         [disabled]=isDisabled
         (click)="addImage.click()">

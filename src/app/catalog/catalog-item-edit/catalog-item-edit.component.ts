@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { CatalogItem } from '../catalog-item';
 import { CatalogService } from '../catalog.service';
 import { Location } from '@angular/common';
@@ -20,6 +21,9 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Current catalog item.
    */
   item: CatalogItem;
+  placeholderItemTitle: string;
+  placeholderDescription: string;
+  placeholderPrice: string;
 
   /**
    * Form groups.
@@ -32,7 +36,8 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     private router: Router,
     private location: Location,
     private userSettings: UserSettingsService,
-    private catalogService: CatalogService ) {
+    private catalogService: CatalogService,
+    private translate: TranslateService) {
       this.item = {
         id: null,
         user_id: null,
@@ -42,7 +47,11 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         price: null,
         likes: 0,
         views: 0
-      }
+      };
+
+      translate.get('catalogItemEdit.itemTitle').subscribe((res: string) => this.placeholderItemTitle = res);
+      translate.get('catalogItemEdit.description').subscribe((res: string) => this.placeholderDescription = res);
+      translate.get('catalogItemEdit.price').subscribe((res: string) => this.placeholderPrice = res);
     }
 
     /**

@@ -1,14 +1,14 @@
 <mat-card class="catalog-item">
   <mat-card-content class="catalog-item-content">
-    <h1>About</h1>
+    <h1 [translate]="'about.title'">About</h1>
     <article>
-      <h2>Description</h2>
-      <p>This app is created to explore <a href="https://angular.io/">Angular 5</a> features. In the current state the app is in serverless mode.
+      <h2 [translate]="'about.description.title'">Description</h2>
+      <p [innerHTML]="'about.description.content' | translate">This app is created to explore <a href="https://angular.io/">Angular 5</a> features. In the current state the app is in serverless mode.
       </p>
 
-      <h2>Angular features exploited</h2>
-      <p>Following features were utilized by the app:</p>
-      <ul>
+      <h2 [translate]="'about.featuresExplored.title'">Angular features exploited in project</h2>
+      <p [translate]="'about.featuresExplored.description'">Following features were utilized by the app:</p>
+      <ul [innerHTML]="'about.featuresExplored.features' | translate">
         <li>TypeScript language and it's features</li>
         <li>Angular components and modules</li>
         <li>Angular services to pass data between unrelated components</li>
@@ -21,11 +21,11 @@
         <li>Angular themisation</li>
       </ul>
 
-      <h2>Installation</h2>
-      <p>
-        To install the app follow the steps below.
+      <h2 [translate]="'about.installation.title'">Installation</h2>
+      <p [translate]="'about.installation.description'">
+        To install the app follow the steps below:
       </p>
-      <ol>
+      <ol [innerHTML]="'about.installation.steps' | translate">
         <li>
           Install NodeJS using link <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
         </li>

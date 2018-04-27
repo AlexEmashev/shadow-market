@@ -6,7 +6,7 @@ import {
   MatMenuModule
  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { MenuComponent } from './menu.component';
 import { ContentModule } from '../content/content.module';
 import { AppRoutingModule } from '../app-routing.module';
@@ -14,6 +14,7 @@ import { AppRoutingModule } from '../app-routing.module';
 @NgModule({
   imports: [
     CommonModule,
+    TranslateModule,
     MatSidenavModule,
     MatButtonModule,
     MatMenuModule,

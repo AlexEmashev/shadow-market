@@ -7,7 +7,7 @@ import { MatToolbarModule,
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ThemeSwitchModule } from '../theme-switch/theme-switch.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from './header.component';
 
 /**
@@ -16,6 +16,7 @@ import { HeaderComponent } from './header.component';
 @NgModule({
   imports: [
     CommonModule,
+    TranslateModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,

@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   public constructor(private themeService: ThemeService,
     private overlayContainer: OverlayContainer,
     private translate: TranslateService) {
-      translate.setDefaultLang('en');
+      translate.setDefaultLang('ru');
   }
 
   ngOnInit() {
