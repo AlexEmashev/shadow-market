@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Themes } from './themes';
 import { ThemeService } from './theme.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +10,16 @@ import { OverlayContainer } from '@angular/cdk/overlay';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title: string = 'Shadow market';
+  title = 'Shadow market';
   /**
    * Current Theme
    */
   theme: string;
 
   public constructor(private themeService: ThemeService,
-    private overlayContainer: OverlayContainer
-  ) {
-
+    private overlayContainer: OverlayContainer,
+    private translate: TranslateService) {
+      translate.setDefaultLang('en');
   }
 
   ngOnInit() {

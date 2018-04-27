@@ -41,7 +41,7 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    $("#photos").swipeslider();
+    $('#photos').swipeslider();
   }
 
 }

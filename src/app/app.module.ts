@@ -3,8 +3,14 @@ import * as $ from 'jquery';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { HttpModule, Http } from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+
+// NGX-Translate modules
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Import application modules
 import { ToolbarModule } from './toolbar/toolbar.module';
@@ -30,6 +36,15 @@ import { RouteNotAllowedModule } from './route-not-allowed/route-not-allowed.mod
 import { ContentModule } from './content/content.module';
 import { ThemeSwitchModule } from './theme-switch/theme-switch.module';
 
+/**
+ * Function for creating TranslateLoader.
+ * Required for AOT compilation.
+ * @param http inject http service.
+ */
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '/assets/locales/', '.json');
+}
+
 @NgModule({
   declarations: [
     AppComponent
@@ -48,7 +63,15 @@ import { ThemeSwitchModule } from './theme-switch/theme-switch.module';
     AboutModule,
     AppRoutingModule,
     PageNotFoundModule,
-    RouteNotAllowedModule
+    RouteNotAllowedModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     ToolbarService,

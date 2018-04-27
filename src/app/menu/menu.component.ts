@@ -12,7 +12,7 @@ import { MatSidenav } from '@angular/material';
 })
 export class MenuComponent implements OnInit, AfterViewInit {
   /**
-   * Breakpoint for Sidenav displaying mode.
+   * Breakpoint fPor Sidenav displaying mode.
    */
   menuBreakpoing = 720;
   /**
@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   * Get access to sidenav component on view.
   */
   @ViewChild('mainSidenav')
-  mainSidenav:MatSidenav;
+  mainSidenav: MatSidenav;
 
   /**
    * Add event listenet on window resize.
@@ -39,7 +39,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     // Subscribe to the observable and connect it to a message.
     this.toolbar.currentMessage.subscribe(message => this.onToolbarStateChanged(message));
-    if (window.innerWidth > this.menuBreakpoing){
+    if (window.innerWidth > this.menuBreakpoing) {
       this.menuOpened = true;
     }
     this.switchSidenavMode();
@@ -63,7 +63,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
           this.menuOpened = true;
         }
         this.mainSidenav.toggle();
-      break;
+        break;
     }
   }
 
@@ -80,7 +80,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
    * Switches Sidenav mode depending on the screen width.
    */
   switchSidenavMode() {
-    let width = window.innerWidth;
+    const width = window.innerWidth;
 
     if (width > this.menuBreakpoing) {
       if (this.menuOpened) {
