@@ -28,7 +28,6 @@ export class LocaleSwitchComponent implements OnInit {
     this.translate.use(locale);
     this.userSettings.locale = locale;
     this.currentLocale = this.translate.currentLang;
-    console.log(this.translate.currentLang);
   }
 
 }
