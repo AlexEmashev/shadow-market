@@ -3,12 +3,12 @@
     <form [formGroup]="formItemEdit" (ngSubmit)="onSubmit()" novalidate>
       <div class="catalog-item-title">
         <mat-form-field floatLabel="never">
-          <input matInput placeholder="Item title" formControlName="title">
+          <input matInput placeholder="{{placeholderItemTitle}}" formControlName="title">
           <mat-error *ngIf="formItemEdit.get('title').hasError('required')">
-            Please provide title for an item
+            {{ 'catalogItemEdit.titleRequired' | translate }}
           </mat-error>
           <mat-error *ngIf="formItemEdit.get('title').hasError('minlength')">
-            Title should be longer than 3 characters
+            {{ 'catalogItemEdit.titleMinLength' | translate }}
           </mat-error>
         </mat-form-field>
 
@@ -18,19 +18,19 @@
         (onImageAdded)="imageAdded(base64)"
         (onImageDeleted)="imageDeleted(url)"></app-images-edit>
         <mat-error *ngIf="formItemEdit.get('photos').hasError('validateImages')">
-          Please provide at least one image
+          {{ 'catalogItemEdit.imageRequired' | translate }}
         </mat-error>
 
       <div class="catalog-item-description-container">
         <mat-form-field floatLabel="never">
           <textarea matInput matTextareaAutosize
-            placeholder="Description" formControlName="description">
+            placeholder="{{placeholderDescription}}" formControlName="description">
           </textarea>
           <mat-error *ngIf="formItemEdit.get('description').hasError('required')">
-            Please let the people know more about the item
+            {{ 'catalogItemEdit.descriptionRequired' | translate }}
           </mat-error>
           <mat-error *ngIf="formItemEdit.get('description').hasError('minlength')">
-            Please provide more elaborate description. It should be longer than 10 characters.
+          {{ 'catalogItemEdit.descriptionMinLength' | translate }}
           </mat-error>
         </mat-form-field>
       </div>
@@ -39,19 +39,21 @@
           <input matInput #priceInput
             (blur)="onPriceChanged(priceInput.value)"
             (keydown)="onPriceKeyDown($event)"
-            type="text" placeholder="Price"
+            type="text" placeholder="{{placeholderPrice}}"
             formControlName="price">
           <span matSuffix class="price-suffix">$</span>
           <mat-error *ngIf="formItemEdit.get('price').hasError('required')">
-            Please set price for your item.
+            {{ 'catalogItemEdit.priceRequired' | translate }}
           </mat-error>
           <mat-error *ngIf="formItemEdit.get('price').hasError('min')">
-            Price cannot be negative number
+            {{ 'catalogItemEdit.priceNegative' | translate }}
           </mat-error>
         </mat-form-field>
       </div>
       <div class="catalog-item-footer">
-        <button mat-raised-button color="accent" type="submit">Save</button>
+        <button mat-raised-button color="accent" type="submit">
+          {{ 'catalogItemEdit.save' | translate }}
+        </button>
       </div>
     </form>
   </mat-card-content>

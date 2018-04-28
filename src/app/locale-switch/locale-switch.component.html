@@ -1,0 +1,14 @@
+<button mat-button [matMenuTriggerFor]="localeMenu">
+    <i class="material-icons md-24">translate</i>
+    <span class="button-label">{{ 'localeSwitch.locale' | translate }}</span>
+  </button>
+  
+  <mat-menu #localeMenu="matMenu">
+    <button mat-menu-item (click)="switchLocale('en')">
+      <span class="checkbox-spacer"><i *ngIf="currentLocale === 'en'" class="material-icons">done</i></span><span>English (US)</span>
+    </button>
+    <button mat-menu-item (click)="switchLocale('ru')">
+      <span class="checkbox-spacer"><i *ngIf="currentLocale === 'ru'"class="material-icons">done</i></span><span>Русский (Ru)</span>
+    </button>
+  </mat-menu>
+  

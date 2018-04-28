@@ -11,28 +11,35 @@ import { from } from 'rxjs/observable/from';
  */
 @Injectable()
 export class CatalogService {
+  /**
+   * Local catalog items storage.
+   */
+  catalog: CatalogItem[];
 
-  constructor() { }
+  constructor() {
+    this.catalog = [];
+    CATALOG.map(item => this.catalog.push(item));
+   }
 
   /**
    * Returns array of catalog items.
    */
   getItems(): Observable<CatalogItem[]> {
-    return of(CATALOG);
+    return of(this.catalog);
   }
 
   /**
    * Returns items belonging current user.
    */
   getItemsByUserID(userId: number): Observable<CatalogItem> {
-    return from(CATALOG).pipe(filter(catalogItem => catalogItem.user_id === userId));
+    return from(this.catalog).pipe(filter(catalogItem => catalogItem.user_id === userId));
   }
 
   /**
    * Returns item by id, only if item is  owner is current user.
    */
   getItemByUserID(itemID: number, userId: number): Observable<CatalogItem> {
-    return from(CATALOG).pipe(
+    return from(this.catalog).pipe(
       filter(item => (item.user_id === userId) && (item.id === itemID)));
   }
 
@@ -40,7 +47,7 @@ export class CatalogService {
    * Returns catalog item by id.
    */
   getItem(id: number): Observable<CatalogItem> {
-    return from(CATALOG).pipe(filter(item => item.id === id));
+    return from(this.catalog).pipe(filter(item => item.id === id));
   }
 
   /**
@@ -49,6 +56,14 @@ export class CatalogService {
   deleteItem(catalogItem: CatalogItem, userId: number): Observable<CatalogItem> {
     // ToDo: Actually remove an item from BD.
     return of(catalogItem);
+  }
+
+  /**
+   * Pushes catalog item to the collection.
+   * @param catalogItem New catalog item.
+   */
+  putItem(catalogItem: CatalogItem) {
+    this.catalog.push(catalogItem);
   }
 
 }

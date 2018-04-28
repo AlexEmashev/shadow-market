@@ -14,10 +14,12 @@ import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confi
 import { CatalogItemEditComponent } from './catalog-item-edit/catalog-item-edit.component';
 import { ImagesEditComponent } from './images-edit/images-edit.component';
 import { CatalogItemDetailsComponent } from './catalog-item-details/catalog-item-details.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
+    TranslateModule,
     FormsModule,
     MatCardModule,
     MatButtonModule,

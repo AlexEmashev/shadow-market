@@ -8,10 +8,11 @@
   <button mat-fab color="primary" type="button" (click)="addNewItem()">
     <i class="material-icons">add_circle_outline</i>
   </button>
-  <span>New item</span>
+  <span>{{ 'myItems.newItem' | translate }}</span>
 </div>
 
 <div class="catalog-container">
+  <div class="items-count" [translate]="'myItems.count' | translate:{count: itemsCount}">You have no items</div>
   <app-catalog-item *ngFor="let catalogItem of catalog"
     [editMode]="true"
     [catalogItem]="catalogItem"

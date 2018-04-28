@@ -47,4 +47,8 @@ export class UserSettings {
    * Session hash.
    */
   session: string;
+  /**
+   * Current user locale.
+   */
+  locale: string;
 }

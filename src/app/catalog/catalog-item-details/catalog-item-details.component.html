@@ -32,10 +32,11 @@
 
       <div class="controls">
           <span class="price-amount">{{item.price}} $</span>
-          <button class="buy-button" mat-raised-button color="accent">Buy</button>
+          <button class="buy-button" mat-raised-button color="accent"
+          >{{ 'catalogItemDetails.buy' | translate }}</button>
       </div>
   </mat-card-content>
   <div *ngIf="!item" class="loading">
-    Loading...
+    {{ 'catalogItemDetails.loading' | translate }}
   </div>
 </mat-card>

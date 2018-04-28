@@ -1,10 +1,18 @@
+@import '../../shared-props';
+
 .catalog-container {
   margin: 0 auto;
   max-width: 980px;
+  .items-count {
+    text-align: right;
+    margin-right: $card-margin-right;
+    position: relative;
+    bottom: -($card-margin-top / 2);
+  }
 }
 
 .new-item {
-  margin: 20px auto;
+  margin: $card-margins;
   align-items: center;
   display: flex;
   flex-direction: column;

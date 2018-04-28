@@ -6,12 +6,14 @@ import {
   MatMenuModule
  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    TranslateModule
   ],
   exports: [
     ThemeSwitchComponent

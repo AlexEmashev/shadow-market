@@ -29,9 +29,11 @@
       <span class="catalog-item-price-amount">{{catalogItem.price}} $</span>
       <a class="catalog-item-price-details" *ngIf="editMode == undefined"
         href="catalog/{{catalogItem.id}}"
-        mat-raised-button>Details</a>
+        mat-raised-button
+        >{{ 'catalogItemPreview.details' | translate }}</a>
       <button class="catalog-item-price-buy" *ngIf="editMode == undefined"
-        mat-raised-button color="accent">Buy</button>
+        mat-raised-button color="accent"
+        >{{ 'catalogItemPreview.buy' | translate }}</button>
     </div>
     <button mat-icon-button
       class="catalog-item-edit-menu"
@@ -45,10 +47,10 @@
 <mat-menu #itemMenu="matMenu">
   <button mat-menu-item (click)="editItem()">
     <mat-icon>mode_edit</mat-icon>
-    <span>Edit</span>
+    <span>{{ 'catalogItemPreview.edit' | translate }}</span>
   </button>
   <button mat-menu-item (click)="openConfirmDeleteDialog()">
     <mat-icon>delete</mat-icon>
-    <span>Delete</span>
+    <span>{{ 'catalogItemPreview.delete' | translate }}</span>
   </button>
 </mat-menu>

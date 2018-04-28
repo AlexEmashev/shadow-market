@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { CatalogItem } from '../catalog-item';
 import { CatalogService } from '../catalog.service';
 import { Location } from '@angular/common';
@@ -20,6 +21,9 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Current catalog item.
    */
   item: CatalogItem;
+  placeholderItemTitle: string;
+  placeholderDescription: string;
+  placeholderPrice: string;
 
   /**
    * Form groups.
@@ -32,7 +36,8 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     private router: Router,
     private location: Location,
     private userSettings: UserSettingsService,
-    private catalogService: CatalogService ) {
+    private catalogService: CatalogService,
+    private translate: TranslateService) {
       this.item = {
         id: null,
         user_id: null,
@@ -42,7 +47,11 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         price: null,
         likes: 0,
         views: 0
-      }
+      };
+      // ToDo: on language change change the descriptions
+      translate.get('catalogItemEdit.itemTitle').subscribe((res: string) => this.placeholderItemTitle = res);
+      translate.get('catalogItemEdit.description').subscribe((res: string) => this.placeholderDescription = res);
+      translate.get('catalogItemEdit.price').subscribe((res: string) => this.placeholderPrice = res);
     }
 
     /**
@@ -111,14 +120,14 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
 
     const saveItem: CatalogItem = {
       id: this.item.id,
-      user_id: this.item.user_id,
+      user_id: this.userSettings.id,
       title: formData.title,
       description: formData.description,
       photos: formData.photos,
       price: formData.price,
       likes: this.item.likes,
       views: this.item.views
-    }
+    };
 
     return saveItem;
   }
@@ -127,7 +136,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Handler for adding image.
    */
   imageAdded(base64: string): void {
-    // ToDo: imlement logic.
+    // ToDo: implement logic.
     // ToDo: Think through what to do, when item is in creating mode.
   }
 
@@ -145,11 +154,10 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   onPriceChanged(value: string) {
     const prev_value = this.formItemEdit.get('price').value;
 
-    if (value === "") {
-      this.formItemEdit.get('price').setValue("");
-    }
-    else if (/^\d*\.?\d*$/.test(value)) {
-      const new_value = (+value).toFixed(2)
+    if (value === '') {
+      this.formItemEdit.get('price').setValue('');
+    } else if (/^\d*\.?\d*$/.test(value)) {
+      const new_value = (+value).toFixed(2);
       this.formItemEdit.get('price').setValue(new_value);
     } else {
       this.formItemEdit.get('price').setValue(prev_value);
@@ -160,10 +168,8 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Check user's price input on the fly.
    */
   onPriceKeyDown(e: KeyboardEvent): boolean {
-    const new_char:string = e.key;
+    const new_char: string = e.key;
     const prev_value = this.formItemEdit.get('price').value;
-    console.log(e.key);
-    if (new_char === '.') { console.log('this is dot');}
     if (!/\./.test(prev_value) && new_char === '.') { // allow one dot only
       return true;
     } else if (/\d/.test(new_char)) { // Check if this is a digit, then allow it.
@@ -179,7 +185,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         (e.keyCode == 88 && e.ctrlKey === true) ||
         // Allow: home, end, left, right
         (e.keyCode >= 35 && e.keyCode <= 39)) {
-          console.log(e.keyCode);
           // let it happen, don't do anything
           return true;
         } else {
@@ -192,7 +197,8 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    */
   onSubmit() {
     if (this.formItemEdit.valid) {
-      this.prepareSaveItem();
+      const newItem: CatalogItem = this.prepareSaveItem();
+      this.catalogService.putItem(newItem);
       this.location.back();
     } else {
       console.log('Form is invalid! Kokoko!');

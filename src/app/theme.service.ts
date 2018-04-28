@@ -5,6 +5,7 @@ import { Themes, Theme } from './themes';
 import { filter, defaultIfEmpty } from 'rxjs/operators';
 import {AppRoles, AppThemes, UserSettings } from './user-settings';
 import { UserSettingsService } from './user-settings.service';
+import { Observable } from 'rxjs/Observable';
 
 
 
@@ -14,7 +15,7 @@ import { UserSettingsService } from './user-settings.service';
 @Injectable()
 export class ThemeService {
   private themeProvider: BehaviorSubject<string>;
-  currentTheme;
+  currentTheme: Observable<string>;
 
   constructor(private userSettings: UserSettingsService,
   ) {

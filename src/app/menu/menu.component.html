@@ -2,22 +2,29 @@
   <mat-sidenav #mainSidenav class="main-sidenav">
     <a mat-button routerLink="/catalog" routerLinkActive="active"
       (click)="onMenuItemClick()"
-      class="main-sidenav-item">Catalog</a>
+      class="main-sidenav-item">
+      {{ 'sidenav.catalog' | translate }}</a>
     <a mat-button routerLink="/my-items" routerLinkActive="active"
       (click)="onMenuItemClick()"
-      class="main-sidenav-item">My Items</a>
+      class="main-sidenav-item"
+      [translate]="'sidenav.myItems'">
+      {{ 'sidenav.myItems' | translate }}</a>
     <a mat-button routerLink="/dashboard" routerLinkActive="active"
       (click)="onMenuItemClick()"
-      class="main-sidenav-item">Dashboard</a>
+      class="main-sidenav-item">
+      {{ 'sidenav.dashboard' | translate }}</a>
     <a mat-button routerLink="/resources" routerLinkActive="active"
       (click)="onMenuItemClick()"
-      class="main-sidenav-item">Resources</a>
+      class="main-sidenav-item">
+      {{ 'sidenav.resources' | translate }}</a>
     <a mat-button routerLink="/settings" routerLinkActive="active"
       (click)="onMenuItemClick()"
-      class="main-sidenav-item">Settings</a>
+      class="main-sidenav-item">
+      {{ 'sidenav.settings' | translate }}</a>
     <a mat-button routerLink="/about" routerLinkActive="active"
       (click)="onMenuItemClick()"
-      class="main-sidenav-item">About</a>
+      class="main-sidenav-item">
+      {{ 'sidenav.about' | translate }}</a>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-content></app-content>

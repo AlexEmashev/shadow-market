@@ -9,8 +9,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 // NGX-Translate modules
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateCompiler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 
 // Import application modules
 import { ToolbarModule } from './toolbar/toolbar.module';
@@ -35,6 +36,7 @@ import { RouteNotAllowedModule } from './route-not-allowed/route-not-allowed.mod
  */
 import { ContentModule } from './content/content.module';
 import { ThemeSwitchModule } from './theme-switch/theme-switch.module';
+import { LocaleSwitchModule } from './locale-switch/locale-switch.module';
 
 /**
  * Function for creating TranslateLoader.
@@ -65,11 +67,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageNotFoundModule,
     RouteNotAllowedModule,
     HttpClientModule,
+    LocaleSwitchModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
+      },
+      compiler: {
+        provide: TranslateCompiler,
+        useClass: TranslateMessageFormatCompiler
       }
     })
   ],
@@ -77,7 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ToolbarService,
     UserSettingsService,
     AuthGuardService,
-    ThemeService
+    ThemeService,
   ],
   bootstrap: [AppComponent]
 })
