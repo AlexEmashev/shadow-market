@@ -3,6 +3,8 @@ import { Themes } from './themes';
 import { ThemeService } from './theme.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { TranslateService } from '@ngx-translate/core';
+import { UserSettingsService } from './user-settings.service';
+
 
 @Component({
   selector: 'app-root',
@@ -18,8 +20,9 @@ export class AppComponent implements OnInit {
 
   public constructor(private themeService: ThemeService,
     private overlayContainer: OverlayContainer,
-    private translate: TranslateService) {
-      translate.setDefaultLang('ru');
+    private translate: TranslateService,
+    private userSettings: UserSettingsService) {
+      translate.setDefaultLang(userSettings.locale);
   }
 
   ngOnInit() {

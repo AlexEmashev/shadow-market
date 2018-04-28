@@ -1,4 +1,11 @@
 @import '~@angular/material/theming';
 
 @mixin theme-switch-component-theme($theme) {
+  $primary: map-get($theme, foreground);
+
+  app-theme-switch {
+    .checkbox {
+      color: map-get($primary, text);
+    }
+  }
 }

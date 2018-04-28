@@ -5,9 +5,15 @@
 
 <mat-menu #themeMenu="matMenu">
   <button mat-menu-item (click)="switchTheme('hazyDay')">
-    <span class="hazy-day-swatch theme-preview">&nbsp;</span> <span>{{ 'themeSwitch.hazyDay' | translate }}</span>
+    <span class="hazy-day-swatch theme-preview">
+      <i *ngIf="currentTheme === 'hazy-day-theme'" class="material-icons checkbox">done</i>
+    </span>
+    <span>{{ 'themeSwitch.hazyDay' | translate }}</span>
   </button>
   <button mat-menu-item (click)="switchTheme('blackWatch')">
-    <span class="black-watch-swatch theme-preview">&nbsp;</span> <span>{{ 'themeSwitch.blackWatch' | translate }}</span>
+    <span class="black-watch-swatch theme-preview">
+      <i *ngIf="currentTheme === 'black-watch-theme'" class="material-icons checkbox">done</i>
+    </span>
+    <span>{{ 'themeSwitch.blackWatch' | translate }}</span>
   </button>
 </mat-menu>

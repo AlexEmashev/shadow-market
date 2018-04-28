@@ -9,10 +9,14 @@ import { Themes, Theme } from '../themes';
   styleUrls: ['./theme-switch.component.scss']
 })
 export class ThemeSwitchComponent implements OnInit {
+  /**
+   * Current theme set up.
+   */
+  currentTheme: string;
 
   constructor(private themeService: ThemeService) { }
-
   ngOnInit() {
+    this.themeService.currentTheme.subscribe(theme => this.currentTheme = theme);
   }
 
   switchTheme(theme: string) {

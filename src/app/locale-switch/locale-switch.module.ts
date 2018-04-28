@@ -13,7 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     MatButtonModule,
     MatMenuModule,
-    TranslateModule
+    TranslateModule,
   ],
   exports: [
     LocaleSwitchComponent

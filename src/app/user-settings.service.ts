@@ -12,45 +12,81 @@ export class UserSettingsService {
   }
 
   get id(): number {
-    return this.userSettings.id;
+    if (this.userSettings.id) {
+      return this.userSettings.id;
+    } else {
+      return this.loadDefaults().id;
+    }
   }
   set id(value: number) {
     this.userSettings.id = value;
     this.saveSettings();
   }
+
   get name(): string {
-    return this.userSettings.name;
+    if (this.userSettings.name) {
+      return this.userSettings.name;
+    } else {
+      return this.loadDefaults().name;
+    }
   }
   set name(value: string) {
     this.userSettings.name = value;
     this.saveSettings();
   }
+
   get theme(): string {
-    return this.userSettings.theme;
+    if (this.userSettings.theme) {
+      return this.userSettings.theme;
+    } else {
+      return this.loadDefaults().theme;
+    }
   }
   set theme(value: string) {
     this.userSettings.theme = value;
     this.saveSettings();
   }
+
   get role(): AppRoles {
-    return this.userSettings.role;
+    if (this.userSettings.role) {
+      return this.userSettings.role;
+    } else {
+      return this.loadDefaults().role;
+    }
   }
   set role(value: AppRoles) {
     this.userSettings.role = value;
     this.saveSettings();
   }
+
   get session(): string {
-    return this.userSettings.session;
+    if (this.userSettings.session) {
+      return this.userSettings.session;
+    } else {
+      return this.loadDefaults().session;
+    }
   }
   set session(value: string) {
     this.userSettings.session = value;
     this.saveSettings();
   }
 
+  get locale(): string {
+    if (this.userSettings.locale) {
+      return this.userSettings.locale;
+    } else {
+      return this.loadDefaults().locale;
+    }
+  }
+  set locale(value: string) {
+    this.userSettings.locale = value;
+    this.saveSettings();
+  }
+
   /**
    * Saves user settings to storage.
    */
-  private saveSettings() {
+  private saveSettings(): void {
     localStorage.setItem('settings', JSON.stringify(this.userSettings));
   }
 
@@ -59,7 +95,7 @@ export class UserSettingsService {
    */
   private loadSettings() {
     if (localStorage.getItem('settings') === null) {
-      this.loadDefaults();
+      this.userSettings = this.loadDefaults();
       this.saveSettings();
     } else {
       this.userSettings = JSON.parse(localStorage.getItem('settings'));
@@ -67,15 +103,21 @@ export class UserSettingsService {
   }
 
   /**
-   * Loads default values if user isn't logged in.
+   * Loads default values in case of a new user.
+   * @returns Returns new instance of UserSettings with safe defults.
+   * This usefull when developer added a new setting
+   * and the user doesn't have this setting while they have the other.
+   * So this missed setting will be set in default.
    */
-  private loadDefaults() {
-    this.userSettings = new UserSettings();
-    this.userSettings.id = 0;
-    this.userSettings.name = "Guest";
-    this.userSettings.theme = Themes[0].class;
-    this.userSettings.role = AppRoles.guest;
-    this.userSettings.session = "";
+  private loadDefaults(): UserSettings {
+    const userSettings = new UserSettings();
+    userSettings.id = 0;
+    userSettings.name = 'Guest';
+    userSettings.theme = Themes[0].class;
+    userSettings.role = AppRoles.guest;
+    userSettings.session = '';
+    userSettings.locale = 'en';
 
+    return userSettings;
   }
 }
