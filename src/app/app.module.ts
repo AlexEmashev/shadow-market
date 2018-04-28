@@ -9,8 +9,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 // NGX-Translate modules
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateCompiler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 
 // Import application modules
 import { ToolbarModule } from './toolbar/toolbar.module';
@@ -72,6 +73,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
+      },
+      compiler: {
+        provide: TranslateCompiler,
+        useClass: TranslateMessageFormatCompiler
       }
     })
   ],
@@ -79,7 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ToolbarService,
     UserSettingsService,
     AuthGuardService,
-    ThemeService
+    ThemeService,
   ],
   bootstrap: [AppComponent]
 })

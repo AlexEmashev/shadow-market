@@ -32,7 +32,7 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // Get item using item id.
-    const itemId = +this.route.snapshot.paramMap.get('id')
+    const itemId = +this.route.snapshot.paramMap.get('id');
     this.catalogService.getItem(itemId)
       .subscribe((item) => {
         this.item = item;

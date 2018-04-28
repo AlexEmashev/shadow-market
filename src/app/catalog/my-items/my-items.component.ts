@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class MyItemsComponent implements OnInit {
   catalog: CatalogItem[];
-
+  itemsCount: number;
   constructor(private catalogService: CatalogService,
               private userSettings: UserSettingsService,
               private router: Router) {
@@ -27,15 +27,19 @@ export class MyItemsComponent implements OnInit {
    * Returns items of current user.
    */
   getCatalogItems(): void {
+    console.log('Get catalog fired');
     this.catalogService.getItemsByUserID(this.userSettings.id)
-      .subscribe(item => this.catalog.push(item));
+      .subscribe(item => {
+        this.catalog.push(item);
+        this.itemsCount = this.catalog.length;
+      });
   }
 
   /**
    * Redirects to the form of new item creation.
    */
   addNewItem(): void {
-    //"my-items/create"
+    // зфер "my-items/create"
     this.router.navigate([this.router.url, 'create']);
   }
 
@@ -45,9 +49,10 @@ export class MyItemsComponent implements OnInit {
   deleteItem(item: CatalogItem) {
     this.catalogService.deleteItem(item, this.userSettings.id)
     .subscribe( item => {
-      let delete_id: number = this.catalog.indexOf(item);
+      const delete_id: number = this.catalog.indexOf(item);
       if (delete_id > -1) {
         this.catalog.splice(delete_id, 1);
+        this.itemsCount = this.catalog.length;
       }
     });
   }
