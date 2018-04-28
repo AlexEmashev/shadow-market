@@ -25,7 +25,11 @@
 	"catalogItemPreview.delete": "Delete",
 	"catalogItemPreview.details": "Details",
 	"catalogItemPreview.edit": "Edit",
+	"deleteItemDialog.no": "No",
+	"deleteItemDialog.question": "Delete item?",
+	"deleteItemDialog.yes": "Yes",
 	"imagesEdit.add": "Add image",
+	"localeSwitch.locale": "Locale",
 	"myItems.newItem": "New Item",
 	"notAllowed.back": "Return",
 	"notAllowed.title": "Sorry, it seems you don't have enough rights",
@@ -37,5 +41,8 @@
 	"sidenav.dashboard": "Dashboard",
 	"sidenav.myItems": "My Items",
 	"sidenav.resources": "Resources",
-	"sidenav.settings": "Settings"
+	"sidenav.settings": "Settings",
+	"themeSwitch.blackWatch": "Dark",
+	"themeSwitch.hazyDay": "Light",
+	"themeSwitch.title": "Theme"
 }

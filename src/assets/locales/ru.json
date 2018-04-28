@@ -25,7 +25,11 @@
 	"catalogItemPreview.delete": "Удалить",
 	"catalogItemPreview.details": "Детали",
 	"catalogItemPreview.edit": "Редактировать",
+	"deleteItemDialog.no": "Нет",
+	"deleteItemDialog.question": "Удалить лот?",
+	"deleteItemDialog.yes": "Да",
 	"imagesEdit.add": "Добавить фото",
+	"localeSwitch.locale": "Язык",
 	"myItems.newItem": "Добавить лот",
 	"notAllowed.back": "Вернуться",
 	"notAllowed.title": "Извините, вероятно у Вас недостаточно прав",
@@ -37,5 +41,8 @@
 	"sidenav.dashboard": "Панель управления",
 	"sidenav.myItems": "Мои лоты",
 	"sidenav.resources": "Ресурсы",
-	"sidenav.settings": "Настройки"
+	"sidenav.settings": "Настройки",
+	"themeSwitch.blackWatch": "Темная",
+	"themeSwitch.hazyDay": "Светлая",
+	"themeSwitch.title": "Тема"
 }

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThemeSwitchComponent } from './theme-switch.component';
 import {
   MatButtonModule,
   MatMenuModule
  } from '@angular/material';
+import { LocaleSwitchComponent } from './locale-switch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -16,10 +16,10 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ],
   exports: [
-    ThemeSwitchComponent
+    LocaleSwitchComponent
   ],
   declarations: [
-    ThemeSwitchComponent
+    LocaleSwitchComponent
   ]
 })
-export class ThemeSwitchModule { }
+export class LocaleSwitchModule { }

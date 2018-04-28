@@ -35,6 +35,7 @@ import { RouteNotAllowedModule } from './route-not-allowed/route-not-allowed.mod
  */
 import { ContentModule } from './content/content.module';
 import { ThemeSwitchModule } from './theme-switch/theme-switch.module';
+import { LocaleSwitchModule } from './locale-switch/locale-switch.module';
 
 /**
  * Function for creating TranslateLoader.
@@ -65,6 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageNotFoundModule,
     RouteNotAllowedModule,
     HttpClientModule,
+    LocaleSwitchModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

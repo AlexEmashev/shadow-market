@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ThemeSwitchModule } from '../theme-switch/theme-switch.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from './header.component';
+import { LocaleSwitchModule } from '../locale-switch/locale-switch.module';
+
 
 /**
 * Main app Toolbar.
@@ -21,7 +23,8 @@ import { HeaderComponent } from './header.component';
     MatButtonModule,
     MatIconModule,
     BrowserAnimationsModule,
-    ThemeSwitchModule
+    ThemeSwitchModule,
+    LocaleSwitchModule
   ],
   // Export components, so they be available for other components to use
   exports: [
