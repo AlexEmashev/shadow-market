@@ -37,6 +37,7 @@ import { RouteNotAllowedModule } from './route-not-allowed/route-not-allowed.mod
 import { ContentModule } from './content/content.module';
 import { ThemeSwitchModule } from './theme-switch/theme-switch.module';
 import { LocaleSwitchModule } from './locale-switch/locale-switch.module';
+import { UserLoginModule } from './user-login/user-login.module';
 
 /**
  * Function for creating TranslateLoader.
@@ -57,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ToolbarModule,
     ThemeSwitchModule,
     MainSidenavModule,
+    UserLoginModule,
     ContentModule,
     SettingsModule,
     CatalogModule,

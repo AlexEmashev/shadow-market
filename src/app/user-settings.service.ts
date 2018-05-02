@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import {AppRoles, AppThemes, UserSettings} from './user-settings';
+import { USERS } from './users-mock';
 import { Themes } from './themes';
+import { Observable } from 'rxjs/Observable';
+import { map, defaultIfEmpty } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
+import { from } from 'rxjs/observable/from';
 
 @Injectable()
 export class UserSettingsService {
@@ -103,13 +109,39 @@ export class UserSettingsService {
   }
 
   /**
+   * Logins user to app using login password.
+   * @param login login string
+   * @param password password string
+   */
+  public login(login: string, password :string) :Observable<UserSettings> {
+    return from(USERS).pipe(
+      filter(user => user.name === login),
+      defaultIfEmpty(null)
+    )
+  }
+
+  /**
+   * Loads user as current
+   * @param user user object (can be obtained via login() function)
+   */
+  public authrizeUser(user: UserSettings) {
+    this.userSettings.id = user.id;
+    this.userSettings.locale = user.locale;
+    this.userSettings.name = user.name;
+    this.userSettings.role = user.role;
+    this.userSettings.session = user.session;
+    this.userSettings.theme = user.theme;
+
+  }
+
+  /**
    * Loads default values in case of a new user.
    * @returns Returns new instance of UserSettings with safe defults.
    * This usefull when developer added a new setting
    * and the user doesn't have this setting while they have the other.
    * So this missed setting will be set in default.
    */
-  private loadDefaults(): UserSettings {
+  public loadDefaults(): UserSettings {
     const userSettings = new UserSettings();
     userSettings.id = 0;
     userSettings.name = 'Guest';

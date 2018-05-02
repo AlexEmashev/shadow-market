@@ -1,0 +1,14 @@
+<h2 mat-dialog-Title>Login</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="login_str" placeholder="Login name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="password_str" type="password" placeholder="Password">
+  </mat-form-field>
+  <div *ngIf="showUserNotFound" class="user-not-found">User with these credentials not found</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="login(login_str, password_str)">Login</button>
+</mat-dialog-actions>

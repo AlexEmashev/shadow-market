@@ -12,6 +12,7 @@
 @import './app/theme-switch/theme-switch.component.scss-theme';
 @import './app/theme-switch/theme-switch.component.colors-scss-theme';
 @import './app/menu/menu.component.scss-theme';
+@import './app/user-login/user-login.component.scss-theme';
 
 // Mixin for custom components.
 @mixin custom-components-theme($theme) {
@@ -22,6 +23,7 @@
   @include theme-switch-component-theme($theme);
   @include menu-component-theme($theme);
   @include my-items-component-theme($theme);
+  @include login-component-theme($theme);
 }
 
 // Hazy Day, theme with primarily shades of grey.

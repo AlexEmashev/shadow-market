@@ -17,7 +17,7 @@
       <app-locale-switch></app-locale-switch>
     </li>
     <li class="user">
-      <button mat-button>
+      <button mat-button (click)="openLoginDialog()">
         <i class="material-icons md-24">person</i>
         <span class="button-label">{{userSettings.name}}</span>
       </button>

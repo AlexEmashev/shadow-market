@@ -2,6 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ToolbarService } from './toolbar.service';
 import { UserSettingsService } from '../user-settings.service';
 import { ThemeSwitchComponent } from '../theme-switch/theme-switch.component';
+import { UserLoginComponent } from '../user-login/user-login.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +11,10 @@ import { ThemeSwitchComponent } from '../theme-switch/theme-switch.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  
   constructor(private toolbar: ToolbarService,
     private userSettings: UserSettingsService,
+    private loginDialog: MatDialog
   ) { }
   menuBreakpoint = 480; // ToDo: make actual contract of break point corresponding style
   menuShown: boolean=true;
@@ -54,5 +58,15 @@ export class HeaderComponent implements OnInit {
   */
   toggeSidenav() {
     this.toolbar.changeMessage('toggleSidenav');
+  }
+
+  /**
+   * Opens user login dialog
+   */
+  openLoginDialog() {
+    this.loginDialog.open(UserLoginComponent, {
+      width: '250px',
+      height: 'auto'
+    });
   }
 }

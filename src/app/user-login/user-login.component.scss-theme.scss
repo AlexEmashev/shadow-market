@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+@import '../breakpoints';
+@mixin login-component-theme($theme) {
+  $warn: map-get($theme, warn);
+
+  app-user-login {
+    .user-not-found {
+      color: map-get($warn, default);
+    }
+  }
+}
