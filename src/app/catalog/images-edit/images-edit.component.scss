@@ -50,7 +50,12 @@ div .image-deleted {
   flex-direction: column;
   justify-content: center;
   animation: reveal .3s ease-in-out 0s 1 forwards;
-
+  .image-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   img {
     max-height: 100%;
     max-width: 100%;

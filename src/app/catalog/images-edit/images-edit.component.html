@@ -5,7 +5,7 @@
         (click)="onRemoveItemClick(i)" type="button">
         <i class="material-icons remove-item">highlight_off</i>
       </button>
-      <img src="{{image.url}}" alt="">
+      <div class="image-wrapper"><img src="{{image.url}}" alt=""></div>
     </div>
     <div class="image-add">
       <input type="file" (change)="attachImage($event.target.files)"
