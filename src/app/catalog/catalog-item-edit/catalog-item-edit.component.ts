@@ -41,6 +41,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
       this.item = {
         id: null,
         user_id: null,
+        user_name: '',
         title: null,
         description: null,
         photos: [],
@@ -48,7 +49,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         likes: 0,
         views: 0
       };
-      // ToDo: on language change change the descriptions
       translate.get('catalogItemEdit.itemTitle').subscribe((res: string) => this.placeholderItemTitle = res);
       translate.get('catalogItemEdit.description').subscribe((res: string) => this.placeholderDescription = res);
       translate.get('catalogItemEdit.price').subscribe((res: string) => this.placeholderPrice = res);
@@ -121,6 +121,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     const saveItem: CatalogItem = {
       id: this.item.id,
       user_id: this.userSettings.id,
+      user_name: this.userSettings.name,
       title: formData.title,
       description: formData.description,
       photos: formData.photos,

@@ -7,6 +7,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
  export const CATALOG: CatalogItem[] = [
    { id: 0,
      user_id: 2,
+     user_name: 'aemashev',
      title: 'Brand new item',
      description: 'There is not much special over here, just a simple description of a mock item.',
      photos: [
@@ -18,6 +19,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
    },
    { id: 1,
      user_id: 1,
+     user_name: 'john_smith',
      title: 'My Lovely Item #1',
      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, '
       + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
@@ -35,6 +37,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
    },
    { id: 2,
      user_id: 1,
+     user_name: 'john_smith',
      title: 'My Lovely Item #2',
      description: 'There is not much special over here, just a simple description of a mock item.',
      photos: [
@@ -46,6 +49,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
    },
    { id: 3,
      user_id: 2,
+     user_name: 'aemashev',
      title: 'Not My Lovely Item #3',
      description: 'There is not much special over here, just a simple description of a mock item.',
      photos: [
@@ -55,5 +59,17 @@ import { ImageElement, ImageState } from './images-edit/image_element';
      likes: 5,
      views: 150
    },
+   { id: 3,
+     user_id: 3,
+     user_name: 'jane_doe',
+     title: 'Something from Jane',
+     description: 'There is not much special over here, just a simple description of a mock item.',
+     photos: [
+      {url: '/assets/items/mock.svg', state: ImageState.not_changed}
+     ],
+     price: 33.99,
+     likes: 1,
+     views: 10
+   }
 
  ];

@@ -2,6 +2,7 @@
 
 @mixin catalog-item-details-component-theme($theme) {
   $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
 
   app-catalog-item-details {
     .item-icons {
@@ -10,6 +11,14 @@
       .like {
         color: map-get($primary, darker);
       }
+    }
+
+    .item-by {
+      color: map-get($foreground, secondary-text);
+    }
+
+    .user-name {
+      color: map-get($foreground, text);
     }
   }
 }

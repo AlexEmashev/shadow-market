@@ -24,6 +24,14 @@
       color: map-get($primary, default);
     }
 
+    .item-by {
+      color: map-get($foreground, secondary-text);
+    }
+
+    .user-name {
+      color: map-get($foreground, text);
+    }
+
     .catalog-item-description-spacer {
       $gradient-color: map-get($background, card);
       background: linear-gradient(to right, rgba(255,255,255,0) 0%,

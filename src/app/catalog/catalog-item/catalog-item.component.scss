@@ -50,6 +50,7 @@ $secondary-active-color: #676b6e;
       i {
         font-size: 17px;
       }
+      margin-right: 10px;
     }
     &-likes-count {
       left: -5px;
@@ -69,6 +70,14 @@ $secondary-active-color: #676b6e;
       padding-left: 25px;
       width: 100px;
       // background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 100%);
+    }
+    .item-by {
+      @media all and (max-width: $media-width-small) {
+        display: block;
+      }
+    }
+    .user-name {
+      font-weight: 500;
     }
   }
 

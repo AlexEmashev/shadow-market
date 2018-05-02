@@ -35,6 +35,14 @@
     margin-right: 7px;
     position: relative;
   }
+
+  .item-by {
+    margin-left: 10px;
+    @media all and (max-width: $media-width-small) {
+      margin-left: 0;
+      display: block;
+    }
+  }
 }
 
 .controls {

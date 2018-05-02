@@ -8,6 +8,8 @@ export interface CatalogItem {
   id: number;
   /** Id of item owner */
   user_id: number;
+  /** User name (actual name should be supplied from DB) */
+  user_name: string;
   /** Name of item */
   title: string;
   /** Item description */
