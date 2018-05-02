@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { MatToolbarModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        MatMenuModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ThemeSwitchModule } from '../theme-switch/theme-switch.module';
@@ -23,6 +23,7 @@ import { HeaderComponent } from './header.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
     BrowserAnimationsModule,
     ThemeSwitchModule,
     LocaleSwitchModule,

@@ -17,10 +17,19 @@
       <app-locale-switch></app-locale-switch>
     </li>
     <li class="user">
-      <button mat-button (click)="openLoginDialog()">
+      <button mat-button [matMenuTriggerFor]="userMenu">
         <i class="material-icons md-24">person</i>
         <span class="button-label">{{userSettings.name}}</span>
       </button>
     </li>
   </ul>
 </mat-toolbar>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item (click)="openLoginDialog()" *ngIf="userSettings.id <= 0">
+    <span>Log in</span>
+  </button>
+  <button mat-menu-item (click)="logOut()" *ngIf="userSettings.id > 0">
+    <span>Log out</span>
+  </button>
+</mat-menu>

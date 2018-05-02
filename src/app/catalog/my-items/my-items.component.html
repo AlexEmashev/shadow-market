@@ -4,7 +4,8 @@
     Add new</button>
 </div> -->
 
-<div class="new-item">
+<div class="new-item"
+*ngIf="userSettings.role !== 2">
   <button mat-fab color="primary" type="button" (click)="addNewItem()">
     <i class="material-icons">add_circle_outline</i>
   </button>

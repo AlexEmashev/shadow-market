@@ -7,6 +7,7 @@
     <a mat-button routerLink="/my-items" routerLinkActive="active"
       (click)="onMenuItemClick()"
       class="main-sidenav-item"
+      *ngIf="userSettings.role !== 2"
       [translate]="'sidenav.myItems'">
       {{ 'sidenav.myItems' | translate }}</a>
     <a mat-button routerLink="/dashboard" routerLinkActive="active"

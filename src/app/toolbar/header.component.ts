@@ -69,4 +69,8 @@ export class HeaderComponent implements OnInit {
       height: 'auto'
     });
   }
+
+  logOut() {
+    this.userSettings.logOut();
+  }
 }

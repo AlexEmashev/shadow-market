@@ -131,7 +131,21 @@ export class UserSettingsService {
     this.userSettings.role = user.role;
     this.userSettings.session = user.session;
     this.userSettings.theme = user.theme;
+    this.saveSettings();
+  }
 
+  /**
+   * Lgs out the user.
+   */
+  public logOut() {
+    const defaults = this.loadDefaults();
+    this.userSettings.id = defaults.id;
+    this.userSettings.locale = defaults.locale;
+    this.userSettings.name = defaults.name;
+    this.userSettings.role = defaults.role;
+    this.userSettings.session = defaults.session;
+    this.userSettings.theme = defaults.theme;
+    this.saveSettings();
   }
 
   /**
@@ -141,7 +155,7 @@ export class UserSettingsService {
    * and the user doesn't have this setting while they have the other.
    * So this missed setting will be set in default.
    */
-  public loadDefaults(): UserSettings {
+  private loadDefaults(): UserSettings {
     const userSettings = new UserSettings();
     userSettings.id = 0;
     userSettings.name = 'Guest';
