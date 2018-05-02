@@ -4,6 +4,7 @@ export const USERS:  UserSettings[] = [
     {
         id: 1,
         name: 'john_smith',
+        contact: 'john_smith@example.com',
         role: AppRoles.user,
         theme: 'black-watch-theme',
         session: '',
@@ -11,6 +12,7 @@ export const USERS:  UserSettings[] = [
     }, {
         id: 2,
         name: 'aemashev',
+        contact: 'aemashev@example.com',
         role: AppRoles.user,
         theme: 'black-watch-theme',
         session: '',
@@ -18,6 +20,7 @@ export const USERS:  UserSettings[] = [
     }, {
         id: 3,
         name: 'jane_doe',
+        contact: 'jane_doe@example.com',
         role: AppRoles.user,
         theme: 'black-watch-theme',
         session: '',

@@ -36,6 +36,10 @@ export class UserSettings {
    */
   name: string;
   /**
+   * Contact info
+   */
+  contact: string;
+  /**
    * Application theme.
    */
   theme: string;

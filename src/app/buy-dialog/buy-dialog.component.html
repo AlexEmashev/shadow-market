@@ -1,0 +1,14 @@
+<h2 mat-dialog-Title>Buy "{{itemTitle}}"</h2>
+<mat-dialog-content>
+  To buy the item <span class="item-name">"{{itemTitle}}"</span>, please contact to seller <span class="seller-name">{{sellerName}}</span>.
+  Tell them that you've found the item on <a href="/" tabindex="-1">Shadow Market</a>.
+  <div class="price">Price: <span class="price-value">{{price}}$</span></div>
+  <div class="contact">Contact: 
+    <span class="contact-value">
+      <a href="mailto:{{sellerContact}}?subject={{itemTitle}}" tabindex="-1">{{sellerContact}}</a>
+    </span>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="accent" mat-dialog-close tabindex="1">Close</button>
+</mat-dialog-actions>

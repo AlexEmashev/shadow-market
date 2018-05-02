@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { DeleteConfirmationComponent } from '../../delete-confirmation/delete-confirmation.component';
 import { CatalogService } from '../catalog.service';
 import { UserSettingsService } from '../../user-settings.service';
+import { BuyDialogComponent } from '../../buy-dialog/buy-dialog.component';
 
 @Component({
   selector: 'app-catalog-item',
@@ -18,6 +19,7 @@ export class CatalogItemComponent implements OnInit {
 
   constructor(private catalogService: CatalogService,
     private userSettings: UserSettingsService,
+    private buyDialog: MatDialog,
     public confirmDeleteDialog: MatDialog) {
     }
 
@@ -49,6 +51,14 @@ export class CatalogItemComponent implements OnInit {
    */
   editItem(): void {
     this.onEditClick.emit(this.catalogItem);
+  }
+
+  buyItem(): void {
+    this.buyDialog.open(BuyDialogComponent, {
+      data: this.catalogItem,
+      maxWidth: '640px',
+      maxHeight: '300px'
+    });
   }
 
 }

@@ -15,6 +15,7 @@ import { CatalogItemEditComponent } from './catalog-item-edit/catalog-item-edit.
 import { ImagesEditComponent } from './images-edit/images-edit.component';
 import { CatalogItemDetailsComponent } from './catalog-item-details/catalog-item-details.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { BuyDialogModule } from '../buy-dialog/buy-dialog.module';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    BuyDialogModule
   ],
   declarations: [
     CatalogComponent,

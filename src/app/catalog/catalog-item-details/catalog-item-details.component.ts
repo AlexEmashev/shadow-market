@@ -1,10 +1,13 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CatalogItem } from '../catalog-item';
 import { CatalogService } from '../catalog.service';
+import { MatDialog } from '@angular/material';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { UserSettingsService } from '../../user-settings.service';
+import { BuyDialogComponent } from '../../buy-dialog/buy-dialog.component';
+
 
 @Component({
   selector: 'app-catalog-item-details',
@@ -27,7 +30,8 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
     private router: Router,
     private location: Location,
     private userSettings: UserSettingsService,
-    private catalogService: CatalogService
+    private catalogService: CatalogService,
+    private buyDialog: MatDialog
   ) {  }
 
   ngOnInit() {
@@ -41,6 +45,14 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     $('#photos').swipeslider();
+  }
+
+  buyItem(item) {
+    this.buyDialog.open(BuyDialogComponent, {
+      data: item,
+      maxWidth: '640px',
+      maxHeight: '300px'
+    });
   }
 
 }

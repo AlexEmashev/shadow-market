@@ -34,6 +34,7 @@
       <div class="controls">
           <span class="price-amount">{{item.price}} $</span>
           <button class="buy-button" mat-raised-button color="accent"
+          (click)="buyItem(item)"
           >{{ 'catalogItemDetails.buy' | translate }}</button>
       </div>
   </mat-card-content>

@@ -166,4 +166,16 @@ export class UserSettingsService {
 
     return userSettings;
   }
+
+  /**
+   * Returns user info by ID. Remarks: don't use it in the real app.
+   * @param id user's id
+   */
+  public getUser(id: number): Observable<UserSettings> {
+    return from(USERS)
+    .pipe(
+      filter(user => user.id === id),
+      defaultIfEmpty(null)
+    );
+  }
 }
