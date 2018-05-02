@@ -17,7 +17,7 @@ import { AuthGuardService } from './auth-guard.service';
 const routes: Routes = [
   { path: '', redirectTo: '/catalog', pathMatch: 'full'},
   { path: 'catalog', component: CatalogComponent },
-  { path: 'catalog/:id', component: CatalogItemDetailsComponent },
+  { path: 'catalog/:id', component: CatalogItemDetailsComponent, canActivate: [AuthGuardService] },
   { path: 'my-items', component: MyItemsComponent },
   { path: 'my-items/create', component: CatalogItemEditComponent},
   { path: 'my-items/:id', component: CatalogItemEditComponent, canActivate: [AuthGuardService] },
