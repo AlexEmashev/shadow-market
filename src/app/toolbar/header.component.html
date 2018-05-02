@@ -27,9 +27,9 @@
 
 <mat-menu #userMenu="matMenu">
   <button mat-menu-item (click)="openLoginDialog()" *ngIf="userSettings.id <= 0">
-    <span>Log in</span>
+    <span>{{ 'loginMenu.login' | translate }}</span>
   </button>
   <button mat-menu-item (click)="logOut()" *ngIf="userSettings.id > 0">
-    <span>Log out</span>
+    <span>{{ 'loginMenu.logout' | translate }}</span>
   </button>
 </mat-menu>

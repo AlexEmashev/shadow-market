@@ -24,6 +24,7 @@
 	"catalogItemPreview.buy": "Купить",
 	"catalogItemPreview.delete": "Удалить",
 	"catalogItemPreview.details": "Детали",
+	"catalogItemPreview.itemBy": "Продавец:",
 	"catalogItemPreview.edit": "Редактировать",
 	"deleteItemDialog.no": "Нет",
 	"deleteItemDialog.question": "Удалить лот?",
@@ -45,5 +46,18 @@
 	"sidenav.settings": "Настройки",
 	"themeSwitch.blackWatch": "Темная",
 	"themeSwitch.hazyDay": "Светлая",
-	"themeSwitch.title": "Тема"
+	"themeSwitch.title": "Тема",
+	"loginMenu.login": "Войти",
+	"loginMenu.logout": "Выйти",
+	"loginForm.userNotFound": "Пользователь с такими данными не найден",
+	"loginForm.title": "Форма входа",
+	"loginForm.login_input": "Имя пользователя",
+	"loginForm.password_input": "Пароль",
+	"loginForm.cancel": "Отмена",
+	"loginForm.login": "Войти",
+	"buyDialog.price": "Цена: ",
+	"buyDialog.contact": "Контакт: ",
+	"buyDialog.close": "Закрыть",
+	"buyDialog.title": "Купить \"{itemTitle}\"",
+	"buyDialog.description": "Чтобы приобрести лот <span class=\"item-name\">\"{itemTitle}\"</span>, пожалуйста, обратитесь к продавцу <span class=\"seller-name\">{sellerName}</span>.\nСкажите, что нашли лот на <a href=\"/\" tabindex=\"-1\">Shadow Market</a>."
 }

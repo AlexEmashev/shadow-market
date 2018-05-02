@@ -24,6 +24,7 @@
 	"catalogItemPreview.buy": "Buy",
 	"catalogItemPreview.delete": "Delete",
 	"catalogItemPreview.details": "Details",
+	"catalogItemPreview.itemBy": "Item by:",
 	"catalogItemPreview.edit": "Edit",
 	"deleteItemDialog.no": "No",
 	"deleteItemDialog.question": "Delete item?",
@@ -45,5 +46,18 @@
 	"sidenav.settings": "Settings",
 	"themeSwitch.blackWatch": "Dark",
 	"themeSwitch.hazyDay": "Light",
-	"themeSwitch.title": "Theme"
+	"themeSwitch.title": "Theme",
+	"loginMenu.login": "Log in",
+	"loginMenu.logout": "Log out",
+	"loginForm.userNotFound": "User with these credentials not found",
+	"loginForm.title": "Log in",
+	"loginForm.login_input": "Login name",
+	"loginForm.password_input": "Password",
+	"loginForm.cancel": "Cancel",
+	"loginForm.login": "Log in",
+	"buyDialog.title": "Buy \"{itemTitle}\"",
+	"buyDialog.price": "Price: ",
+	"buyDialog.contact": "Contact: ",
+	"buyDialog.close": "Close",
+	"buyDialog.description": "To buy the item <span class=\"item-name\">\"{itemTitle}\"</span>, please contact to seller <span class=\"seller-name\">{sellerName}</span>.\nTell them that you've found the item on <a href=\"/\" tabindex=\"-1\">Shadow Market</a>."
 }

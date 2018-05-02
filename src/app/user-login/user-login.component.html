@@ -1,14 +1,14 @@
-<h2 mat-dialog-Title>Login</h2>
+<h2 mat-dialog-Title>{{ 'loginForm.title' | translate }}</h2>
 <mat-dialog-content>
   <mat-form-field>
-    <input matInput [(ngModel)]="login_str" placeholder="Login name">
+    <input matInput [(ngModel)]="login_str" placeholder="{{placeholderLogin}}">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="password_str" type="password" placeholder="Password">
+    <input matInput [(ngModel)]="password_str" type="password" placeholder="{{placeholderPassword}}">
   </mat-form-field>
-  <div *ngIf="showUserNotFound" class="user-not-found">User with these credentials not found</div>
+  <div *ngIf="showUserNotFound" class="user-not-found">{{ 'loginForm.userNotFound' | translate }}</div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="login(login_str, password_str)">Login</button>
+  <button mat-button mat-dialog-close>{{ 'loginForm.cancel' | translate }}</button>
+  <button mat-button (click)="login(login_str, password_str)" color="accent">{{ 'loginForm.login' | translate }}</button>
 </mat-dialog-actions>
