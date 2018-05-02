@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class MyItemsComponent implements OnInit {
   catalog: CatalogItem[];
-  itemsCount: number;
+  itemsCount: number = 0; // Set default to 0, since if user doesn't have lots catalog service won't fire
   constructor(private catalogService: CatalogService,
               private userSettings: UserSettingsService,
               private router: Router) {
@@ -27,7 +27,6 @@ export class MyItemsComponent implements OnInit {
    * Returns items of current user.
    */
   getCatalogItems(): void {
-    console.log('Get catalog fired');
     this.catalogService.getItemsByUserID(this.userSettings.id)
       .subscribe(item => {
         this.catalog.push(item);
