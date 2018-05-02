@@ -26,9 +26,10 @@ export class AuthGuardService implements CanActivate {
      */
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
       const item_id: number = +route.params.id;
+      console.log("Can activate?");
+      console.log(route);
       
       if (route.routeConfig.path === 'catalog/:id') { // Get item by ID, if not exists go to 404
-        console.log("We are here");
         return this.catalogService.getItem(item_id)
           .pipe(map(item => true),
           defaultIfEmpty(false),

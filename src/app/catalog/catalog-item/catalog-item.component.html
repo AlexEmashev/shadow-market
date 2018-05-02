@@ -6,8 +6,8 @@
     </div>
     <div class="catalog-item-description">
       <h2 class="catalog-item-title">
-        <a href="my-items/{{catalogItem.id}}" *ngIf="editMode">{{catalogItem.title}}</a>
-        <a href="catalog/{{catalogItem.id}}" *ngIf="!editMode">{{catalogItem.title}}</a>
+        <a href="#my-items/{{catalogItem.id}}" *ngIf="editMode">{{catalogItem.title}}</a>
+        <a href="#catalog/{{catalogItem.id}}" *ngIf="!editMode">{{catalogItem.title}}</a>
       </h2>
       <div class="catalog-item-description-details">
         <span class="catalog-item-description-icon">
@@ -29,7 +29,7 @@
     <div class="catalog-item-price">
       <span class="catalog-item-price-amount">{{catalogItem.price}} $</span>
       <a class="catalog-item-price-details" *ngIf="editMode == undefined"
-        href="catalog/{{catalogItem.id}}"
+        href="#catalog/{{catalogItem.id}}"
         mat-raised-button
         >{{ 'catalogItemPreview.details' | translate }}</a>
       <button class="catalog-item-price-buy" *ngIf="editMode == undefined"

@@ -15,7 +15,7 @@ import { AuthGuardService } from './auth-guard.service';
  * List of available routes in the app.
  */
 const routes: Routes = [
-  { path: '', redirectTo: '/catalog', pathMatch: 'full'},
+  { path: '', redirectTo: 'catalog', pathMatch: 'full'},
   { path: 'catalog', component: CatalogComponent },
   { path: 'catalog/:id', component: CatalogItemDetailsComponent, canActivate: [AuthGuardService] },
   { path: 'my-items', component: MyItemsComponent },
@@ -35,7 +35,7 @@ const routes: Routes = [
  */
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   exports: [ RouterModule ]
 })
