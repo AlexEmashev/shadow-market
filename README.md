@@ -1,27 +1,43 @@
-# ShadowLab
+# About
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+## Description
 
-## Development server
+This app is created to explore [Angular 5](https://angular.io)Angular 5 features. In the current state the app is in serverless mode.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+See [the demo page](http://alexemashev.github.io/shadow-market/).
 
-## Code scaffolding
+## Angular 5 features utilized in project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Following features have been utilized by the app:
 
-## Build
+- TypeScript language and it's features
+- Angular components and modules
+- Angular services to pass data between unrelated components
+- Material design for Angular
+- Application routing
+- RxJS and Observable pattern
+- Angular forms: reactive forms
+- Custom form controls
+- SCSS markup-language
+- Angular themisation
+- Mobile friendly markup
+- I18n and l10n
+- Pluralization
+- Transcluding components
+- Hash and Slash location strategies
+- Compilation JIT and AOT
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Installation
 
-## Running unit tests
+To install the app follow the steps below:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Install NodeJS using link https://nodejs.org/en/download/
+2. From the command line install Angular 5: `npm install -g @angular/cli`
+3. From the command line navigate to project directory and launch: `ng serve`
+4. By default the application located at `http://localhost:4200`.
 
-## Running end-to-end tests
+## License
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The application developed under The MIT License.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+**Author:** Alexander Emashev.
