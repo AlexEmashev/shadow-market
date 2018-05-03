@@ -26,9 +26,7 @@ export class AuthGuardService implements CanActivate {
      */
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
       const item_id: number = +route.params.id;
-      console.log("Can activate?");
-      console.log(route);
-      
+
       if (route.routeConfig.path === 'catalog/:id') { // Get item by ID, if not exists go to 404
         return this.catalogService.getItem(item_id)
           .pipe(map(item => true),
@@ -59,7 +57,7 @@ export class AuthGuardService implements CanActivate {
     /**
      * Navigates to the safe page if not allowed.
      */
-    private navigateNotAllowed():boolean {
+    private navigateNotAllowed(): boolean {
       this.router.navigate(['/not-allowed']);
       return false;
     }
@@ -68,7 +66,7 @@ export class AuthGuardService implements CanActivate {
      * Navigates to 404 page
      */
     private navigateNotfound(): boolean {
-      this.router.navigate(['404'])
+      this.router.navigate(['404']);
       return false;
     }
 }

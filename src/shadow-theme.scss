@@ -115,14 +115,6 @@ $black-watch-theme: mat-dark-theme($black-watch-primary, $black-watch-accent, $b
 
 @include theme-switch-component-colors($hazy-day-theme, $black-watch-theme);
 
-
-
-
-// Custom theme file for the project.
-body {
-    //background-color: white;
-}
-
 a {
   color: #0366d6;
   text-decoration: none;
