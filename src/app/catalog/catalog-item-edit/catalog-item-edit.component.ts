@@ -74,7 +74,10 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   initForm(item: CatalogItem): void {
     // Make a copy of passed object.
     Object.assign(this.item, item);
-    this.item.photos = item.photos.map(photo => { return {url: photo.url, state: photo.state}; });
+    this.item.photos = item.photos.map(photo => {
+      const newPhoto = {url: photo.url, state: photo.state};
+      return newPhoto; });
+
     this.formItemEdit = this.formBuilder.group({
       title: [this.item.title, [Validators.required, Validators.minLength(4)]],
       description: [this.item.description, [Validators.required, Validators.minLength(10)]],
@@ -161,13 +164,13 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
       return true;
     } else if ([46, 8, 9, 27, 13, 110].indexOf(e.keyCode) !== -1 ||
         // Allow: Ctrl+A
-        (e.keyCode == 65 && e.ctrlKey === true) ||
+        (e.keyCode === 65 && e.ctrlKey === true) ||
         // Allow: Ctrl+C
-        (e.keyCode == 67 && e.ctrlKey === true) ||
+        (e.keyCode === 67 && e.ctrlKey === true) ||
         // Allow: Ctrl+V
-        (e.keyCode == 86 && e.ctrlKey === true) ||
+        (e.keyCode === 86 && e.ctrlKey === true) ||
         // Allow: Ctrl+X
-        (e.keyCode == 88 && e.ctrlKey === true) ||
+        (e.keyCode === 88 && e.ctrlKey === true) ||
         // Allow: home, end, left, right
         (e.keyCode >= 35 && e.keyCode <= 39)) {
           // let it happen, don't do anything
@@ -180,12 +183,26 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   /**
    * Submits the item changes.
    */
-  onSubmit() {
+  onSubmit(): void {
     if (this.formItemEdit.valid) {
       const newItem: CatalogItem = this.prepareSaveItem();
-      console.log(newItem);
-      this.catalogService.putItem(newItem);
-      this.location.back();
+      if (newItem.id >= 0) {
+        this.catalogService.updateItem(newItem).subscribe(
+          (result: boolean) => {
+            if (result) {
+              this.location.back();
+            } else {
+              console.log('Item hasn\'t been updated. Something gone wrong.');
+            }
+          }
+        );
+      } else {
+        this.catalogService.putItem(newItem).subscribe(
+          (id: number) => {
+          this.location.back();
+          }
+        );
+      }
     } else {
       console.log('Form is invalid! Kokoko!');
     }

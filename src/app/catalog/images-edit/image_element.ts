@@ -2,8 +2,8 @@
  * Implements internal image set.
  */
 export interface ImageElement {
-  url: string,
-  state: ImageState
+  url: string;
+  state: ImageState;
 }
 
 /**

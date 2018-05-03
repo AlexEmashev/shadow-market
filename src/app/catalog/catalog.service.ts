@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CatalogItem } from './catalog-item';
 import { CATALOG } from './mock-catalog-items';
 import { Observable } from 'rxjs/Observable';
-import { filter } from 'rxjs/operators';
+import { filter, max, map, defaultIfEmpty } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { from } from 'rxjs/observable/from';
 
@@ -61,9 +61,35 @@ export class CatalogService {
   /**
    * Pushes catalog item to the collection.
    * @param catalogItem New catalog item.
+   * @returns id of a new item
    */
-  putItem(catalogItem: CatalogItem) {
-    this.catalog.push(catalogItem);
+  putItem(catalogItem: CatalogItem): Observable<number> {
+    return from(this.catalog).pipe(
+      max((x: CatalogItem, y: CatalogItem) => x.id - y.id),
+      map((item: CatalogItem) => {
+        catalogItem.id = item.id + 1;
+        return catalogItem;
+      }),
+      map((item: CatalogItem) => {
+        this.catalog.push(item);
+        return item.id;
+      })
+    );
+  }
+
+
+  updateItem(catalogItem: CatalogItem): Observable<boolean> {
+    return from(this.catalog).pipe(
+      filter((item: CatalogItem) => item.id === catalogItem.id),
+      map((item: CatalogItem) => {
+        item.description = catalogItem.description;
+        item.photos = catalogItem.photos;
+        item.price = catalogItem.price;
+        item.title = catalogItem.title;
+        return true;
+      }),
+      defaultIfEmpty(false)
+    );
   }
 
 }
