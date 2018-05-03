@@ -7,7 +7,7 @@ import { CatalogItemDetailsComponent } from './catalog/catalog-item-details/cata
 import { MyItemsComponent } from './catalog/my-items/my-items.component';
 import { CatalogItemEditComponent } from './catalog/catalog-item-edit/catalog-item-edit.component';
 import { AboutComponent } from './about/about.component';
-import { ResourcesComponent } from './resources/resources.component';
+import { HowToComponent } from './howto/howto.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouteNotAllowedComponent } from './route-not-allowed/route-not-allowed.component';
 import { AuthGuardService } from './auth-guard.service';
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'my-items/create', component: CatalogItemEditComponent},
   { path: 'my-items/:id', component: CatalogItemEditComponent, canActivate: [AuthGuardService] },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'resources', component: ResourcesComponent },
+  { path: 'howto', component: HowToComponent },
   { path: 'settings', component: SettingsComponent},
   { path: 'about', component: AboutComponent },
   { path: 'not-allowed', component: RouteNotAllowedComponent },

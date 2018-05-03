@@ -27,7 +27,7 @@ import { ThemeService } from './theme.service';
 import { CatalogModule } from './catalog/catalog.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SettingsModule } from './settings/settings.module';
-import { ResourcesModule } from './resources/resources.module';
+import { HowToModule } from './howto/howto.module';
 import { AboutModule } from './about/about.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { RouteNotAllowedModule } from './route-not-allowed/route-not-allowed.module';
@@ -63,7 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SettingsModule,
     CatalogModule,
     DashboardModule,
-    ResourcesModule,
+    HowToModule,
     AboutModule,
     AppRoutingModule,
     PageNotFoundModule,

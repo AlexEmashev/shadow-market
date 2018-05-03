@@ -45,7 +45,7 @@
 	"sidenav.catalog": "Catalog",
 	"sidenav.dashboard": "Dashboard",
 	"sidenav.myItems": "My Items",
-	"sidenav.resources": "Resources",
+	"sidenav.howto": "How To",
 	"sidenav.settings": "Settings",
 	"themeSwitch.blackWatch": "Dark",
 	"themeSwitch.hazyDay": "Light",
@@ -62,5 +62,14 @@
 	"buyDialog.price": "Price: ",
 	"buyDialog.contact": "Contact: ",
 	"buyDialog.close": "Close",
-	"buyDialog.description": "To buy the item <span class=\"item-name\">\"{itemTitle}\"</span>, please contact to seller <span class=\"seller-name\">{sellerName}</span>.\nTell them that you've found the item on <a href=\"/\" tabindex=\"-1\">Shadow Market</a>."
-}
+	"buyDialog.description": "To buy the item <span class=\"item-name\">\"{itemTitle}\"</span>, please contact to seller <span class=\"seller-name\">{sellerName}</span>.\nTell them that you've found the item on <a href=\"/\" tabindex=\"-1\">Shadow Market</a>.",
+	"howto.title": "How To",
+	"howto.description.title": "Description",
+	"howto.description.content": "This article describes how to use Shadow Market app.",
+	"howto.buy.title": "How to buy item",
+	"howto.buy.description": "You don't buy an item directly from the app, rather have contact to seller so you can discuss final price and shipment options.",
+	"howto.buy.steps": "<li>Go to <a href=\"/catalog\">catalog</a></li> <li>Chose item you like</li> <li>If you want to accuire an item right away, you can click \"Buy\" button</li> <li>In other case you can click \"Details\" to see item detailed description</li> <li>Clicking \"Buy\" button brings the seller contact dialog</li> <li>Contact the seller to negotiate a deal</li>",
+	"howto.sell.title": "How to sell item",
+	"howto.sell.description": "To sell the item from Shadow Market follow the steps below:",
+	"howto.sell.steps": "<li>First you need to login to the app. <em>For demo purposes, use existing user names mentioned on items without a password</em></li> <li>Go to <a href=\"/my-items\">My Items</a> section</li> <li>Click \"New Item\" button</li> <li>Set title, description, price and don't forget about photos</li> <li>Click \"Save\" now you can see your item in the catalog so do other visitors</li> <li>You can always update your item from <a href=\"/my-items\">My Items</a> chosing you item</li> <li>Don't forget to delete item as soon as you sell it. In <a href=\"/my-items\">My Items</a> menu chose item to remove and use floating menu to the right</li>"
+	}

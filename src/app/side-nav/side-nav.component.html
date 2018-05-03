@@ -10,18 +10,10 @@
       *ngIf="userSettings.role !== 2"
       [translate]="'sidenav.myItems'">
       {{ 'sidenav.myItems' | translate }}</a>
-    <a mat-button routerLink="/dashboard" routerLinkActive="active"
+    <a mat-button routerLink="/howto" routerLinkActive="active"
       (click)="onMenuItemClick()"
       class="main-sidenav-item">
-      {{ 'sidenav.dashboard' | translate }}</a>
-    <a mat-button routerLink="/resources" routerLinkActive="active"
-      (click)="onMenuItemClick()"
-      class="main-sidenav-item">
-      {{ 'sidenav.resources' | translate }}</a>
-    <a mat-button routerLink="/settings" routerLinkActive="active"
-      (click)="onMenuItemClick()"
-      class="main-sidenav-item">
-      {{ 'sidenav.settings' | translate }}</a>
+      {{ 'sidenav.howto' | translate }}</a>
     <a mat-button routerLink="/about" routerLinkActive="active"
       (click)="onMenuItemClick()"
       class="main-sidenav-item">
