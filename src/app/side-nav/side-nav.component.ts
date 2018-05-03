@@ -6,11 +6,11 @@ import { MatSidenav } from '@angular/material';
 
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  selector: 'app-side-nav',
+  templateUrl: './side-nav.component.html',
+  styleUrls: ['./side-nav.component.scss']
 })
-export class MenuComponent implements OnInit, AfterViewInit {
+export class SidenavComponent implements OnInit, AfterViewInit {
   /**
    * Breakpoint fPor Sidenav displaying mode.
    */
@@ -34,7 +34,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   }
 
 
-  constructor(private toolbar: ToolbarService, 
+  constructor(private toolbar: ToolbarService,
     public userSettings: UserSettingsService) { }
 
   ngOnInit() {

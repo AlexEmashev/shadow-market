@@ -7,7 +7,7 @@ import {
  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
-import { MenuComponent } from './menu.component';
+import { SidenavComponent } from './side-nav.component';
 import { ContentModule } from '../content/content.module';
 import { AppRoutingModule } from '../app-routing.module';
 
@@ -23,13 +23,13 @@ import { AppRoutingModule } from '../app-routing.module';
     AppRoutingModule
   ],
   exports: [
-    MenuComponent
+    SidenavComponent
   ],
   providers: [
 
   ],
   declarations: [
-    MenuComponent
+    SidenavComponent
   ]
 })
-export class MainSidenavModule { }
+export class SidenavModule { }

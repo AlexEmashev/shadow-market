@@ -15,7 +15,7 @@ import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-comp
 
 // Import application modules
 import { ToolbarModule } from './toolbar/toolbar.module';
-import { MainSidenavModule } from './menu/menu.module';
+import { SidenavModule } from './side-nav/side-nav.module';
 import { ToolbarService } from './toolbar/toolbar.service';
 import { AppRoutingModule } from './app-routing.module';
 import { UserSettingsService } from './user-settings.service';
@@ -57,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     ToolbarModule,
     ThemeSwitchModule,
-    MainSidenavModule,
+    SidenavModule,
     UserLoginModule,
     ContentModule,
     SettingsModule,

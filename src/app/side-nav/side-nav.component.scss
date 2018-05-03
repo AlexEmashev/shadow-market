@@ -1,0 +1,21 @@
+.main-sidenav-container {
+  flex: 1 1 auto;
+  margin-top: 64px;
+  @media (max-width: 599px) {
+    margin-top: 56px;
+  }
+}
+
+.main-sidenav {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+  position: fixed;
+  top: 65px;
+  @media (max-width: 599px) {
+    top: 56px;
+  }
+  width: 250px;
+}
+
+.main-sidenav-item {
+  width: 100%;
+}

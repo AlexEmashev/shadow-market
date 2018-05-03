@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-@mixin menu-component-theme($theme) {
+@mixin side-nav-component-theme($theme) {
   $accent: map-get($theme, primary);
   app-menu {
     .active {
