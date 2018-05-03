@@ -13,6 +13,7 @@ import { UserSettingsService } from './user-settings.service';
 })
 export class AppComponent implements OnInit {
   title = 'Shadow market';
+  appLoaded = false;
   /**
    * Current Theme
    */
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit {
       this.overlayContainer.getContainerElement().classList.remove(this.theme);
       this.overlayContainer.getContainerElement().classList.add(theme);
       this.theme = theme;
+      this.appLoaded = true;
     });
   }
 }

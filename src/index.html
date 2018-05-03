@@ -10,6 +10,47 @@
 </head>
 <!-- Applying the mat-typography class to whole descendant components. -->
 <body class="mat-typography">
-  <app-root></app-root>
+    <app-root>
+    <style>
+      .loading-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #e6e6e6;
+        
+      }
+      .loading-text {
+        color: #6d6d6d;
+        font: 400 44px Roboto, "Helvetica Neue", sans-serif;
+      }
+      @keyframes dots {
+        50% {
+          opacity: .1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .d {
+        animation: dots 1.5s ease-out infinite;
+      }
+      .d-2 {
+        animation-delay: .5s;
+      }
+      .d-3 {
+        animation-delay: 1s;
+      }
+    </style>
+    <div class="loading-container">
+      <div class="loading-text">
+        Loading<span class="d">.</span><span class="d d-2">.</span><span class="d d-3">.</span>
+      </div>
+    </div>
+    </app-root>
 </body>
 </html>
