@@ -186,9 +186,10 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   onSubmit(): void {
     if (this.formItemEdit.valid) {
       const newItem: CatalogItem = this.prepareSaveItem();
-      if (newItem.id >= 0) {
+      if (newItem.id !== null) {
         this.catalogService.updateItem(newItem).subscribe(
           (result: boolean) => {
+            console.log(result);
             if (result) {
               this.location.back();
             } else {

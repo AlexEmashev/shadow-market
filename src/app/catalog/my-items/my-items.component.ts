@@ -27,6 +27,7 @@ export class MyItemsComponent implements OnInit {
    * Returns items of current user.
    */
   getCatalogItems(): void {
+    this.catalog = [];
     this.catalogService.getItemsByUserID(this.userSettings.id)
       .subscribe(item => {
         this.catalog.push(item);
@@ -47,11 +48,9 @@ export class MyItemsComponent implements OnInit {
    */
   deleteItem(item: CatalogItem) {
     this.catalogService.deleteItem(item, this.userSettings.id)
-    .subscribe( item => {
-      const delete_id: number = this.catalog.indexOf(item);
-      if (delete_id > -1) {
-        this.catalog.splice(delete_id, 1);
-        this.itemsCount = this.catalog.length;
+    .subscribe( result => {
+      if (result) {
+        this.getCatalogItems();
       }
     });
   }

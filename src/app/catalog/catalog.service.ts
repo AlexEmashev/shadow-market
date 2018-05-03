@@ -53,9 +53,20 @@ export class CatalogService {
   /**
    * Detele selected item (either by Id or itemm itself).
    */
-  deleteItem(catalogItem: CatalogItem, userId: number): Observable<CatalogItem> {
+  deleteItem(catalogItem: CatalogItem, userId: number): Observable<boolean> {
     // ToDo: Actually remove an item from BD.
-    return of(catalogItem);
+    const removeIndex = this.catalog.findIndex((element: CatalogItem, index, array) => {
+      if (element.id === catalogItem.id && element.user_id === userId) {
+        return true;
+      }
+    });
+    console.log(removeIndex);
+    if (removeIndex >= 0) {
+      this.catalog.splice(removeIndex, 1);
+      return of(true);
+    } else {
+      return of(false);
+    }
   }
 
   /**
