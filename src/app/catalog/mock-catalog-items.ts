@@ -59,7 +59,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
      likes: 5,
      views: 150
    },
-   { id: 3,
+   { id: 4,
      user_id: 3,
      user_name: 'jane_doe',
      title: 'Something from Jane',

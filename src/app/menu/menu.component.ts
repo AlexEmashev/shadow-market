@@ -35,7 +35,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
 
   constructor(private toolbar: ToolbarService, 
-    private userSettings: UserSettingsService) { }
+    public userSettings: UserSettingsService) { }
 
   ngOnInit() {
     // Subscribe to the observable and connect it to a message.

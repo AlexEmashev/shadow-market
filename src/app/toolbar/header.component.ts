@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material';
 export class HeaderComponent implements OnInit {
   
   constructor(private toolbar: ToolbarService,
-    private userSettings: UserSettingsService,
+    public userSettings: UserSettingsService,
     private loginDialog: MatDialog
   ) { }
   menuBreakpoint = 480; // ToDo: make actual contract of break point corresponding style

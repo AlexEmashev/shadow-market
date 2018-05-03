@@ -134,22 +134,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Handler for adding image.
-   */
-  imageAdded(base64: string): void {
-    // ToDo: implement logic.
-    // ToDo: Think through what to do, when item is in creating mode.
-  }
-
-  /**
-   * Handler for deleting image.
-   */
-  imageDeleted(url: string): void {
-    // ToDo: imlement logic.
-    // ToDo: Think through what to do, when item is in creating mode.
-  }
-
-  /**
    * Allow to user to enter only digits.
    */
   onPriceChanged(value: string) {
@@ -199,6 +183,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   onSubmit() {
     if (this.formItemEdit.valid) {
       const newItem: CatalogItem = this.prepareSaveItem();
+      console.log(newItem);
       this.catalogService.putItem(newItem);
       this.location.back();
     } else {

@@ -14,7 +14,7 @@ export class MyItemsComponent implements OnInit {
   catalog: CatalogItem[];
   itemsCount: number = 0; // Set default to 0, since if user doesn't have lots catalog service won't fire
   constructor(private catalogService: CatalogService,
-              private userSettings: UserSettingsService,
+              public userSettings: UserSettingsService,
               private router: Router) {
     this.catalog = [];
   }

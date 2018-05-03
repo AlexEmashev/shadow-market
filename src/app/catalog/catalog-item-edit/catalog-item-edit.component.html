@@ -14,9 +14,7 @@
 
       </div>
 
-      <app-images-edit formControlName="photos"
-        (onImageAdded)="imageAdded(base64)"
-        (onImageDeleted)="imageDeleted(url)"></app-images-edit>
+      <app-images-edit formControlName="photos"></app-images-edit>
         <mat-error *ngIf="formItemEdit.get('photos').hasError('validateImages')">
           {{ 'catalogItemEdit.imageRequired' | translate }}
         </mat-error>

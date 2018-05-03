@@ -49,7 +49,7 @@ export function validateImages(c: FormControl) {
 export class ImagesEditComponent implements ControlValueAccessor, OnInit {
   private _onChange: any;
   private _onTouched: any;
-  private isDisabled: boolean;
+  public isDisabled: boolean;
 
   /**
    * Represents current set of images
@@ -96,7 +96,7 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
   /**
    * Attaches image to the item.
    */
-  private attachImage(files: any) {
+  public attachImage(files: any) {
     for (let i = 0; i < files.length; i++) {
       let reader = new FileReader();
       reader.readAsDataURL(files[i]);
