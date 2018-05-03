@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserSettingsService } from '../user-settings.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -9,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./user-login.component.scss']
 })
 export class UserLoginComponent implements OnInit {
-  login_str: string
+  login_str: string;
   password_str: string;
   showUserNotFound: boolean;
   placeholderLogin: string;
@@ -19,6 +21,9 @@ export class UserLoginComponent implements OnInit {
     public dialogRef: MatDialogRef<UserLoginComponent>,
     private userSettings: UserSettingsService,
     private translate: TranslateService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
       this.showUserNotFound = false;
@@ -29,7 +34,7 @@ export class UserLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(login, password) {
+  login(login, password): void {
     console.log(login, password);
     this.userSettings.login(login, password)
       .subscribe(item => {
@@ -37,10 +42,11 @@ export class UserLoginComponent implements OnInit {
           this.userSettings.authrizeUser(item);
           this.showUserNotFound = false;
           this.dialogRef.close();
+          window.location.assign(''); // We need to reload window to apply changes.
         } else {
           this.showUserNotFound = true;
         }
-      })
+      });
   }
 
 

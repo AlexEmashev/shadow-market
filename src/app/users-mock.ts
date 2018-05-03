@@ -6,7 +6,7 @@ export const USERS:  UserSettings[] = [
         name: 'john_smith',
         contact: 'john_smith@example.com',
         role: AppRoles.user,
-        theme: 'black-watch-theme',
+        theme: 'hazy-day-theme',
         session: '',
         locale: 'en'
     }, {

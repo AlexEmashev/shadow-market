@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'not-allowed', component: RouteNotAllowedComponent },
   { path: '404', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
-]
+];
 
 /**
  * Main routing module in the app.

@@ -11,13 +11,13 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  
+
   constructor(private toolbar: ToolbarService,
     public userSettings: UserSettingsService,
     private loginDialog: MatDialog
   ) { }
   menuBreakpoint = 480; // ToDo: make actual contract of break point corresponding style
-  menuShown: boolean=true;
+  menuShown = true;
 
   ngOnInit() {
     this.setupMenuVisibility();
@@ -72,5 +72,6 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.userSettings.logOut();
+    window.location.assign(''); // We need to reload window to apply changes.
   }
 }

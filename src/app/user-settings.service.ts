@@ -113,11 +113,11 @@ export class UserSettingsService {
    * @param login login string
    * @param password password string
    */
-  public login(login: string, password :string) :Observable<UserSettings> {
+  public login(login: string, password: string): Observable<UserSettings> {
     return from(USERS).pipe(
       filter(user => user.name === login),
       defaultIfEmpty(null)
-    )
+    );
   }
 
   /**
@@ -158,7 +158,7 @@ export class UserSettingsService {
   private loadDefaults(): UserSettings {
     const userSettings = new UserSettings();
     userSettings.id = 0;
-    userSettings.name = 'Guest';
+    userSettings.name = 'Log in';
     userSettings.theme = Themes[0].class;
     userSettings.role = AppRoles.guest;
     userSettings.session = '';
