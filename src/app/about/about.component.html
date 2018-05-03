@@ -36,6 +36,13 @@
         <li>By default the application located at <a href="http://localhost:4200">http://localhost:4200</a></li>
       </ol>
 
+      <h2 [translate]="'about.contacts.title'">Contacts</h2>
+      <p [innerHTML]="'about.contacts.content' | translate">
+        The application developed under <a href="https://opensource.org/licenses/MIT">The MIT License</a>. 
+        Please visit <a href="https://github.com/AlexEmashev/shadow-market">GitHub</a> page of the project for more details.
+      </p>
+      <span [innerHTML]="'about.contacts.author' | translate">Author: <a href="https://github.com/AlexEmashev">Alexander Emashev</a></span>
+
     </article>
   </mat-card-content>
 </mat-card>
