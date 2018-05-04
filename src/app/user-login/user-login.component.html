@@ -1,10 +1,16 @@
 <h2 mat-dialog-Title>{{ 'loginForm.title' | translate }}</h2>
 <mat-dialog-content>
   <mat-form-field>
-    <input matInput [(ngModel)]="login_str" placeholder="{{placeholderLogin}}">
+    <input 
+      matInput [(ngModel)]="login_str" 
+      placeholder="{{placeholderLogin}}" 
+      (keydown)="onKeyPress($event.keyCode)">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="password_str" type="password" placeholder="{{placeholderPassword}}">
+    <input 
+      matInput [(ngModel)]="password_str" 
+      type="password" placeholder="{{placeholderPassword}}" 
+      (keydown)="onKeyPress($event.keyCode)">
   </mat-form-field>
   <div *ngIf="showUserNotFound" class="user-not-found">{{ 'loginForm.userNotFound' | translate }}</div>
 </mat-dialog-content>

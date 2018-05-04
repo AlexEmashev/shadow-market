@@ -34,6 +34,21 @@ export class UserLoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Key press handler, for login-password fields, to check Enter hit.
+   * @param keyCode scan keycode for Enter press
+   */
+  onKeyPress(keyCode: number) {
+    if (keyCode === 13) {
+      this.login(this.login_str, this.password_str);
+    }
+  }
+
+  /**
+   * Logs in to app using credentials.
+   * @param login users's login
+   * @param password user's password
+   */
   login(login, password): void {
     console.log(login, password);
     this.userSettings.login(login, password)
