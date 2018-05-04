@@ -45,7 +45,7 @@ import { UserLoginModule } from './user-login/user-login.module';
  * @param http inject http service.
  */
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, '/assets/locales/', '.json');
+  return new TranslateHttpLoader(http, 'assets/locales/', '.json');
 }
 
 @NgModule({

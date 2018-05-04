@@ -11,7 +11,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
      title: 'Angular App Shadow Market',
      description: 'This very app you are looking at. You pay for exactly what you see. Fully functional Angular 5 web-app at your service.',
      photos: [
-       {url: '/assets/items/mock.svg', state: ImageState.not_changed}
+       {url: 'assets/items/mock.svg', state: ImageState.not_changed}
      ],
      price: 500.99,
      likes: 753,
