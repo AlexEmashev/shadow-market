@@ -13,7 +13,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
      photos: [
        {url: '/assets/items/mock.svg', state: ImageState.not_changed}
      ],
-     price: 1500.99,
+     price: 500.99,
      likes: 753,
      views: 1024
    },
@@ -28,8 +28,8 @@ import { ImageElement, ImageState } from './images-edit/image_element';
       + ' esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,'
       + ' sunt in culpa qui officia deserunt mollit anim id est laborum.',
      photos: [
-       {url: '/assets/items/blender.jpg', state: ImageState.not_changed},
-       {url: '/assets/items/blender2.jpg', state: ImageState.not_changed}
+       {url: 'assets/items/blender.jpg', state: ImageState.not_changed},
+       {url: 'assets/items/blender2.jpg', state: ImageState.not_changed}
      ],
      price: 45.01,
      likes: 3,
@@ -41,7 +41,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
      title: 'Vintage Oscilloscope',
      description: 'Pretty old and shabby oscilloscope. Still fully functional. Collector\'s treasure.',
      photos: [
-      {url: '/assets/items/oscilloscope.jpg', state: ImageState.not_changed}
+      {url: 'assets/items/oscilloscope.jpg', state: ImageState.not_changed}
      ],
      price: 9.99,
      likes: 1,
@@ -53,7 +53,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
      title: 'Lantern',
      description: 'This is still work in progress but you can preorder a final solution as soon as it\'s ready.',
      photos: [
-      {url: '/assets/items/lantern.jpg', state: ImageState.not_changed}
+      {url: 'assets/items/lantern.jpg', state: ImageState.not_changed}
      ],
      price: 19.99,
      likes: 5,
@@ -65,9 +65,9 @@ import { ImageElement, ImageState } from './images-edit/image_element';
      title: 'Antient book',
      description: 'Found this book on my attic. I\'m pretty sure it\'s rare and expensive hence the price',
      photos: [
-      {url: '/assets/items/book.jpg', state: ImageState.not_changed}
+      {url: 'assets/items/book.jpg', state: ImageState.not_changed}
      ],
-     price: 9999.99,
+     price: 999.99,
      likes: 1,
      views: 10
    }
