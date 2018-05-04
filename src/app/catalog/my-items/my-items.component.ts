@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class MyItemsComponent implements OnInit {
   catalog: CatalogItem[];
-  itemsCount: number = 0; // Set default to 0, since if user doesn't have lots catalog service won't fire
+  itemsCount = 0; // Set default to 0, since if user doesn't have lots catalog service won't fire
   constructor(private catalogService: CatalogService,
               public userSettings: UserSettingsService,
               private router: Router) {

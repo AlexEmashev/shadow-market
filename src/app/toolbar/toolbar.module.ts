@@ -11,7 +11,7 @@ import { UserLoginModule } from '../user-login/user-login.module';
 import { LocaleSwitchModule } from '../locale-switch/locale-switch.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from './header.component';
-
+import { AppRoutingModule } from '../app-routing.module';
 
 /**
 * Main app Toolbar.
@@ -27,7 +27,8 @@ import { HeaderComponent } from './header.component';
     BrowserAnimationsModule,
     ThemeSwitchModule,
     LocaleSwitchModule,
-    UserLoginModule
+    UserLoginModule,
+    AppRoutingModule
   ],
   // Export components, so they be available for other components to use
   exports: [

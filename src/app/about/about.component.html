@@ -1,47 +1,24 @@
 <mat-card class="about-card">
   <mat-card-content class="content">
-    <h1 [translate]="'about.title'">About</h1>
+    <h1 [translate]="'about.title'"></h1>
     <article>
-      <h2 [translate]="'about.description.title'">Description</h2>
-      <p [innerHTML]="'about.description.content' | translate">This app is created to explore <a href="https://angular.io/">Angular 5</a> features. In the current state the app is in serverless mode.
-      </p>
+      <h2 [translate]="'about.description.title'"></h2>
+      <p [innerHTML]="'about.description.content' | translate"></p>
 
-      <h2 [translate]="'about.featuresExplored.title'">Angular features exploited in project</h2>
-      <p [translate]="'about.featuresExplored.description'">Following features were utilized by the app:</p>
+      <h2 [translate]="'about.featuresExplored.title'"></h2>
+      <p [translate]="'about.featuresExplored.description'"></p>
       <ul [innerHTML]="'about.featuresExplored.features' | translate">
-        <li>TypeScript language and it's features</li>
-        <li>Angular components and modules</li>
-        <li>Angular services to pass data between unrelated components</li>
-        <li>Material design for Angular</li>
-        <li>Application routing</li>
-        <li>RxJS and Observable pattern</li>
-        <li>Angular forms: reactive forms</li>
-        <li>Custom form controls</li>
-        <li>SCSS markup-language</li>
-        <li>Angular themisation</li>
       </ul>
 
       <h2 [translate]="'about.installation.title'">Installation</h2>
       <p [translate]="'about.installation.description'">
-        To install the app follow the steps below:
       </p>
       <ol [innerHTML]="'about.installation.steps' | translate">
-        <li>
-          Install NodeJS using link <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
-        </li>
-        <li>
-          From the command line install Angular 5: <code>npm install -g @angular/cli</code>
-        </li>
-        <li>From the command line navigate to project directory and launch: <code>ng serve</code> </li>
-        <li>By default the application located at <a href="http://localhost:4200">http://localhost:4200</a></li>
       </ol>
 
       <h2 [translate]="'about.contacts.title'">Contacts</h2>
-      <p [innerHTML]="'about.contacts.content' | translate">
-        The application developed under <a href="https://opensource.org/licenses/MIT">The MIT License</a>. 
-        Please visit <a href="https://github.com/AlexEmashev/shadow-market">GitHub</a> page of the project for more details.
-      </p>
-      <span [innerHTML]="'about.contacts.author' | translate">Author: <a href="https://github.com/AlexEmashev">Alexander Emashev</a></span>
+      <p [innerHTML]="'about.contacts.content' | translate"></p>
+      <span [innerHTML]="'about.contacts.author' | translate"></span>
 
     </article>
   </mat-card-content>

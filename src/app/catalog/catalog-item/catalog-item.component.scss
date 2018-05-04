@@ -23,6 +23,7 @@ $secondary-active-color: #676b6e;
     flex-wrap: nowrap;
     @media all and (max-width: $media-width-small) {
       flex-wrap: wrap;
+      justify-content: center;
     }
   }
 

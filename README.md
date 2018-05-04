@@ -4,7 +4,7 @@
 
 This app is created to explore [Angular 5](https://angular.io) features. In the current state the app is in serverless mode.
 
-See [the demo page](http://alexemashev.github.io/shadow-market/).
+See [the demo page](https://alexemashev.github.io/shadow-market/).
 
 ## Angular 5 features utilized in project
 
@@ -34,10 +34,10 @@ To install the app follow the steps below:
 1. Install NodeJS using link https://nodejs.org/en/download/
 2. From the command line install Angular 5: `npm install -g @angular/cli`
 3. From the command line navigate to project directory and launch: `ng serve`
-4. By default the application located at `http://localhost:4200`.
+4. By default the application located at [http://localhost:4200](http://localhost:4200).
 
 ## License
 
-The application developed under The MIT License.
+The application developed under [The MIT License](https://opensource.org/licenses/MIT).
 
-**Author:** Alexander Emashev.
+**Author:** [Alexander Emashev](https://github.com/AlexEmashev).

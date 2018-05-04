@@ -16,6 +16,7 @@ import { ImagesEditComponent } from './images-edit/images-edit.component';
 import { CatalogItemDetailsComponent } from './catalog-item-details/catalog-item-details.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { BuyDialogModule } from '../buy-dialog/buy-dialog.module';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { BuyDialogModule } from '../buy-dialog/buy-dialog.module';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    BuyDialogModule
+    BuyDialogModule,
+    AppRoutingModule
   ],
   declarations: [
     CatalogComponent,
