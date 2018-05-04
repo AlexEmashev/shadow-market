@@ -8,40 +8,40 @@ import { ImageElement, ImageState } from './images-edit/image_element';
    { id: 0,
      user_id: 2,
      user_name: 'aemashev',
-     title: 'Brand new item',
-     description: 'There is not much special over here, just a simple description of a mock item.',
+     title: 'Angular App Shadow Market',
+     description: 'This very app you are looking at. You pay for exactly what you see. Fully functional Angular 5 web-app at your service.',
      photos: [
        {url: '/assets/items/mock.svg', state: ImageState.not_changed}
      ],
-     price: 4.99,
-     likes: 3,
-     views: 10
+     price: 1500.99,
+     likes: 753,
+     views: 1024
    },
    { id: 1,
      user_id: 1,
      user_name: 'john_smith',
-     title: 'My Lovely Item #1',
-     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, '
+     title: 'Vintage Blender',
+     description: 'This is a really long description of the item. Lorem ipsum dolor sit amet, consectetur adipisicing elit, '
       + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
       + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip'
       + ' ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit'
       + ' esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,'
       + ' sunt in culpa qui officia deserunt mollit anim id est laborum.',
      photos: [
-       {url: '/assets/items/mock.svg', state: ImageState.not_changed},
-       {url: '/assets/items/6blender.jpg', state: ImageState.not_changed}
+       {url: '/assets/items/blender.jpg', state: ImageState.not_changed},
+       {url: '/assets/items/blender2.jpg', state: ImageState.not_changed}
      ],
-     price: 4.99,
+     price: 45.01,
      likes: 3,
      views: 10
    },
    { id: 2,
      user_id: 1,
      user_name: 'john_smith',
-     title: 'My Lovely Item #2',
-     description: 'There is not much special over here, just a simple description of a mock item.',
+     title: 'Vintage Oscilloscope',
+     description: 'Pretty old and shabby oscilloscope. Still fully functional. Collector\'s treasure.',
      photos: [
-      {url: '/assets/items/mock.svg', state: ImageState.not_changed}
+      {url: '/assets/items/oscilloscope.jpg', state: ImageState.not_changed}
      ],
      price: 9.99,
      likes: 1,
@@ -50,10 +50,10 @@ import { ImageElement, ImageState } from './images-edit/image_element';
    { id: 3,
      user_id: 2,
      user_name: 'aemashev',
-     title: 'Not My Lovely Item #3',
-     description: 'There is not much special over here, just a simple description of a mock item.',
+     title: 'Lantern',
+     description: 'This is still work in progress but you can preorder a final solution as soon as it\'s ready.',
      photos: [
-      {url: '/assets/items/mock.svg', state: ImageState.not_changed}
+      {url: '/assets/items/lantern.jpg', state: ImageState.not_changed}
      ],
      price: 19.99,
      likes: 5,
@@ -62,12 +62,12 @@ import { ImageElement, ImageState } from './images-edit/image_element';
    { id: 4,
      user_id: 3,
      user_name: 'jane_doe',
-     title: 'Something from Jane',
-     description: 'There is not much special over here, just a simple description of a mock item.',
+     title: 'Antient book',
+     description: 'Found this book on my attic. I\'m pretty sure it\'s rare and expensive hence the price',
      photos: [
-      {url: '/assets/items/mock.svg', state: ImageState.not_changed}
+      {url: '/assets/items/book.jpg', state: ImageState.not_changed}
      ],
-     price: 33.99,
+     price: 9999.99,
      likes: 1,
      views: 10
    }

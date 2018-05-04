@@ -60,7 +60,6 @@ export class CatalogService {
         return true;
       }
     });
-    console.log(removeIndex);
     if (removeIndex >= 0) {
       this.catalog.splice(removeIndex, 1);
       return of(true);
