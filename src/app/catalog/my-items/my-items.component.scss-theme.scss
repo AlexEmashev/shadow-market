@@ -1,8 +1,0 @@
-@import '~@angular/material/theming';
-
-@mixin my-items-component-theme($theme) {
-  $primary: map-get($theme, primary);
-  app-my-items {
-    color: map-get($primary, default );
-  }
-}
