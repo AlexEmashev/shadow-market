@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="catalog-item-price">
-      <span class="catalog-item-price-amount">{{catalogItem.price}} $</span>
+      <span class="catalog-item-price-amount">{{ catalogItem.price | currency: 'USD':'1.2-2' }}</span>
       <a class="catalog-item-price-details" *ngIf="editMode == undefined"
         href="#catalog/{{catalogItem.id}}"
         mat-raised-button

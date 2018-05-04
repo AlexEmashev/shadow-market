@@ -55,7 +55,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
      photos: [
       {url: 'assets/items/lantern.jpg', state: ImageState.not_changed}
      ],
-     price: 19.99,
+     price: 20,
      likes: 5,
      views: 150
    },
