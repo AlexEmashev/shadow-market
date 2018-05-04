@@ -2,7 +2,7 @@
 
 ## Description
 
-This app is created to explore [Angular 5](https://angular.io)Angular 5 features. In the current state the app is in serverless mode.
+This app is created to explore [Angular 5](https://angular.io) features. In the current state the app is in serverless mode.
 
 See [the demo page](http://alexemashev.github.io/shadow-market/).
 
