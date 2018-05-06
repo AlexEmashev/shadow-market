@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { filter, max, map, defaultIfEmpty } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { from } from 'rxjs/observable/from';
+import { ImageState } from './images-edit/image_element';
 
 /**
  * Service to work with catalog items.
@@ -93,7 +94,8 @@ export class CatalogService {
       filter((item: CatalogItem) => item.id === catalogItem.id),
       map((item: CatalogItem) => {
         item.description = catalogItem.description;
-        item.photos = catalogItem.photos;
+        const filteredItems = catalogItem.photos.filter((photo) =>  photo.state !== ImageState.deleted );
+        item.photos = filteredItems;
         item.price = catalogItem.price;
         item.title = catalogItem.title;
         return true;
