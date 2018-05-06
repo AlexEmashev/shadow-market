@@ -88,7 +88,11 @@ export class CatalogService {
     );
   }
 
-
+  /**
+   * Updates catalog item.
+   * @param catalogItem catalog item to update.
+   * @returns returns true if everything is fine.
+   */
   updateItem(catalogItem: CatalogItem): Observable<boolean> {
     return from(this.catalog).pipe(
       filter((item: CatalogItem) => item.id === catalogItem.id),

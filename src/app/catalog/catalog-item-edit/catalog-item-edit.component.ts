@@ -94,7 +94,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Correct localize elements when translation changed.
    */
   localizeComponents(): void {
-    console.log('Localize shoot');
     this.translate.get('catalogItemEdit.itemTitle').subscribe((res: string) => this.placeholderItemTitle = res);
     this.translate.get('catalogItemEdit.description').subscribe((res: string) => this.placeholderDescription = res);
     this.translate.get('catalogItemEdit.price').subscribe((res: string) => this.placeholderPrice = res);
@@ -210,7 +209,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
       if (newItem.id !== null) {
         this.catalogService.updateItem(newItem).subscribe(
           (result: boolean) => {
-            console.log(result);
             if (result) {
               this.location.back();
             } else {
