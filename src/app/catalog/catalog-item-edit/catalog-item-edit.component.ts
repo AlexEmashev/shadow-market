@@ -38,6 +38,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     private userSettings: UserSettingsService,
     private catalogService: CatalogService,
     private translate: TranslateService) {
+      translate.onLangChange.subscribe(() => { this.localizeComponents(); });
       this.item = {
         id: null,
         user_id: null,
@@ -49,9 +50,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         likes: 0,
         views: 0
       };
-      translate.get('catalogItemEdit.itemTitle').subscribe((res: string) => this.placeholderItemTitle = res);
-      translate.get('catalogItemEdit.description').subscribe((res: string) => this.placeholderDescription = res);
-      translate.get('catalogItemEdit.price').subscribe((res: string) => this.placeholderPrice = res);
+      this.localizeComponents();
     }
 
     /**
@@ -84,6 +83,16 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
       photos: [this.item.photos, [validateImages]],
       price: [this.item.price, [Validators.required, Validators.min(0)]]
     });
+  }
+
+  /**
+   * Correct localize elements when translation changed.
+   */
+  localizeComponents(): void {
+    console.log('Localize shoot');
+    this.translate.get('catalogItemEdit.itemTitle').subscribe((res: string) => this.placeholderItemTitle = res);
+    this.translate.get('catalogItemEdit.description').subscribe((res: string) => this.placeholderDescription = res);
+    this.translate.get('catalogItemEdit.price').subscribe((res: string) => this.placeholderPrice = res);
   }
 
   /**
