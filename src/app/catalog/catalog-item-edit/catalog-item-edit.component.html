@@ -49,6 +49,13 @@
         </mat-form-field>
       </div>
       <div class="catalog-item-footer">
+        <button mat-raised-button color="primary" 
+          type="button" 
+          class="cancel"
+          (click)="cancelClick()"
+          >
+              {{ 'catalogItemEdit.cancel' | translate }}
+            </button>
         <button mat-raised-button color="accent" type="submit">
           {{ 'catalogItemEdit.save' | translate }}
         </button>

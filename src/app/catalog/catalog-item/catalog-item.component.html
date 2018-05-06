@@ -28,10 +28,10 @@
     </div>
     <div class="catalog-item-price">
       <span class="catalog-item-price-amount">{{ catalogItem.price | currency: 'USD':'1.2-2' }}</span>
-      <a class="catalog-item-price-details" *ngIf="editMode == undefined"
+      <button class="catalog-item-price-details" *ngIf="editMode == undefined"
         routerLink="{{catalogItem.id}}"
-        mat-raised-button
-        >{{ 'catalogItemPreview.details' | translate }}</a>
+        mat-raised-button color="primary"
+        >{{ 'catalogItemPreview.details' | translate }}</button>
       <button class="catalog-item-price-buy" *ngIf="editMode == undefined"
         mat-raised-button color="accent"
         (click)="buyItem()"

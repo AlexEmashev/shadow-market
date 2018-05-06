@@ -2,10 +2,14 @@
 
 @mixin side-nav-component-theme($theme) {
   $accent: map-get($theme, primary);
-  app-menu {
-    .active {
-      background-color: map-get($accent, lighter);
-      color: map-get($accent, lighter-contrast);
+  $foreground: map-get($theme, foreground);
+  app-side-nav {
+    .main-sidenav-item {
+      color: map-get($foreground, text);
+      &.active {
+        background-color: map-get($accent, lighter);
+        color: map-get($accent, lighter-contrast);
+      }
     }
   }
 }

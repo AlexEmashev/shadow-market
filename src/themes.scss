@@ -28,20 +28,20 @@
 
 // Hazy Day, theme with primarily shades of grey.
 $hazy-day-blue: (
-50 : #e5eff2,
-100 : #bed8dd,
-200 : #93bec7,
-300 : #67a3b1,
-400 : #4790a0,
-500 : #267c8f,
-600 : #227487,
-700 : #1c697c,
-800 : #175f72,
-900 : #0d4c60,
-A100 : #95e3ff,
-A200 : #62d5ff,
-A400 : #2fc7ff,
-A700 : #15c1ff,
+  50 : #f8eef1,
+  100 : #edd5dd,
+  200 : #e1b9c6,
+  300 : #d59caf,
+  400 : #cc879d,
+  500 : #c3728c,
+  600 : #bd6a84,
+  700 : #b55f79,
+  800 : #ae556f,
+  900 : #a1425c,
+  A100 : #fff6f8,
+  A200 : #ffc3d2,
+  A400 : #ff90ad,
+  A700 : #ff769a,
 contrast: (
     50 : #000000,
     100 : #000000,
@@ -67,6 +67,9 @@ $hazy-day-theme: mat-light-theme($hazy-day-primary, $hazy-day-accent, $hazy-day-
 .hazy-day-theme {
   @include angular-material-theme($hazy-day-theme);
   @include custom-components-theme($hazy-day-theme);
+  a {
+    color: #256fce;
+  }
 }
 
 // Hazy Day, theme with primarily shades of grey.
@@ -111,14 +114,18 @@ $black-watch-theme: mat-dark-theme($black-watch-primary, $black-watch-accent, $b
 .black-watch-theme {
   @include angular-material-theme($black-watch-theme);
   @include custom-components-theme($black-watch-theme);
+  a {
+    color: #ea3734 ;
+  }
 }
 
 @include theme-switch-component-colors($hazy-day-theme, $black-watch-theme);
 
+
 a {
-  color: #0366d6;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
 }
+

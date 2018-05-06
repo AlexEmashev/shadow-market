@@ -181,6 +181,13 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Returns to My items.
+   */
+  cancelClick(): void {
+    this.location.back();
+  }
+
+  /**
    * Submits the item changes.
    */
   onSubmit(): void {

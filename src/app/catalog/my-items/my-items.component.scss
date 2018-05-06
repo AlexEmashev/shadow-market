@@ -1,14 +1,13 @@
 @import '../../shared-props';
 
-.catalog-container {
+.catalog-container, .items-count-container {
   margin: 0 auto;
   max-width: 980px;
 }
 
 .items-count {
-  text-align: right;
-  margin-right: $card-margin-right;
-  position: relative;
+  margin: $card-margins;
+  text-align: left;
 }
 
 .new-item {

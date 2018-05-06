@@ -1,19 +1,23 @@
 <div class="new-item"
 *ngIf="userSettings.role !== 2">
-  <button mat-fab color="primary" type="button" (click)="addNewItem()">
+  <button mat-fab color="primary" type="button" (click)="addNewItem()" color="accent">
     <i class="material-icons">add_circle_outline</i>
   </button>
   <span>{{ 'myItems.newItem' | translate }}</span>
 </div>
 
-<div class="items-count" [translate]="'myItems.count' | translate:{count: itemsCount}">You have no items</div>
+<div class="items-count-container">
+  <div class="items-count" 
+    [translate]="'myItems.count' | translate:{count: itemsCount}">
+  </div>
+</div>
 
 <div class="catalog-container">
   <app-catalog-item *ngFor="let catalogItem of catalog"
     [editMode]="true"
     [catalogItem]="catalogItem"
-    (onDeleteClick)="deleteItem($event)"
-    (onEditClick)="editItem($event)"
+    (deleteClick)="deleteItem($event)"
+    (editClick)="editItem($event)"
     class="catalog-item">
   </app-catalog-item>
 </div>

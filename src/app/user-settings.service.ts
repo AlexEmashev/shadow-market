@@ -158,7 +158,7 @@ export class UserSettingsService {
   private loadDefaults(): UserSettings {
     const userSettings = new UserSettings();
     userSettings.id = 0;
-    userSettings.name = 'Log in';
+    userSettings.name = 'Sign in';
     userSettings.theme = Themes[0].class;
     userSettings.role = AppRoles.guest;
     userSettings.session = '';

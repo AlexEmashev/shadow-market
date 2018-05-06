@@ -14,8 +14,8 @@ import { BuyDialogComponent } from '../../buy-dialog/buy-dialog.component';
 export class CatalogItemComponent implements OnInit {
   @Input() catalogItem: CatalogItem;
   @Input() editMode: boolean;
-  @Output() onDeleteClick: EventEmitter<CatalogItem> = new EventEmitter();
-  @Output() onEditClick: EventEmitter<CatalogItem> = new EventEmitter();
+  @Output() deleteClick: EventEmitter<CatalogItem> = new EventEmitter();
+  @Output() editClick: EventEmitter<CatalogItem> = new EventEmitter();
 
   constructor(private catalogService: CatalogService,
     private userSettings: UserSettingsService,
@@ -43,14 +43,14 @@ export class CatalogItemComponent implements OnInit {
    * Emits item deleting on parent
    */
   deleteItem(): void {
-    this.onDeleteClick.emit(this.catalogItem);
+    this.deleteClick.emit(this.catalogItem);
   }
 
   /**
    * Emits item editing on parent
    */
   editItem(): void {
-    this.onEditClick.emit(this.catalogItem);
+    this.editClick.emit(this.catalogItem);
   }
 
   buyItem(): void {
