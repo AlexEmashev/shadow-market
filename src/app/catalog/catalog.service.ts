@@ -19,7 +19,36 @@ export class CatalogService {
 
   constructor() {
     this.catalog = [];
-    CATALOG.map(item => this.catalog.push(item));
+    this.loadDB();
+   }
+
+   /**
+    * Loads DB from LocalStorage if possible, if no, loads mock data.
+    * @returns true if data loaded from LocalStoarage.
+    */
+   private loadDB(): boolean {
+    if (localStorage.getItem('db') === null) {
+      CATALOG.map(item => this.catalog.push(item));
+      this.saveDBLocaly();
+      return false;
+    } else {
+      this.catalog = JSON.parse(localStorage.getItem('db'));
+      return true;
+    }
+   }
+
+   /**
+    * Saves DB in LocalStorage.
+    */
+   private saveDBLocaly(): void {
+     localStorage.setItem('db', JSON.stringify(this.catalog));
+   }
+
+   /**
+    * Clears LocalStorage.
+    */
+   public clearDB(): void {
+     localStorage.removeItem('db');
    }
 
   /**
@@ -55,7 +84,6 @@ export class CatalogService {
    * Detele selected item (either by Id or itemm itself).
    */
   deleteItem(catalogItem: CatalogItem, userId: number): Observable<boolean> {
-    // ToDo: Actually remove an item from BD.
     const removeIndex = this.catalog.findIndex((element: CatalogItem, index, array) => {
       if (element.id === catalogItem.id && element.user_id === userId) {
         return true;
@@ -63,6 +91,7 @@ export class CatalogService {
     });
     if (removeIndex >= 0) {
       this.catalog.splice(removeIndex, 1);
+      this.saveDBLocaly();
       return of(true);
     } else {
       return of(false);
@@ -83,6 +112,7 @@ export class CatalogService {
       }),
       map((item: CatalogItem) => {
         this.catalog.push(item);
+        this.saveDBLocaly();
         return item.id;
       })
     );
@@ -102,6 +132,7 @@ export class CatalogService {
         item.photos = filteredItems;
         item.price = catalogItem.price;
         item.title = catalogItem.title;
+        this.saveDBLocaly();
         return true;
       }),
       defaultIfEmpty(false)
