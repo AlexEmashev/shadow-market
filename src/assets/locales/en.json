@@ -27,6 +27,7 @@
 	"catalogItemEdit.titleMinLength": "Title should be longer than 3 characters",
 	"catalogItemEdit.titleRequired": "Please provide title for an item",
 	"catalogItemPreview.buy": "Buy",
+	"catalogItemPreview.back": "Back",
 	"catalogItemPreview.delete": "Delete",
 	"catalogItemPreview.details": "Details",
 	"catalogItemPreview.itemBy": "Item by:",

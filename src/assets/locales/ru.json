@@ -27,6 +27,7 @@
 	"catalogItemEdit.titleMinLength": "Заголовок должен быть длиннее 3х символов",
 	"catalogItemEdit.titleRequired": "Пожалуйста, укажите заголовок",
 	"catalogItemPreview.buy": "Купить",
+	"catalogItemPreview.back": "Назад",
 	"catalogItemPreview.delete": "Удалить",
 	"catalogItemPreview.details": "Детали",
 	"catalogItemPreview.itemBy": "Продавец:",

@@ -2,10 +2,15 @@
 @import '../breakpoints';
 @mixin header-component-theme($theme) {
   $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
 
   app-header {
     .header-title {
       color: map-get($primary, default-contrast);
+      text-shadow: 1px 1px 2px #00000047;
+      .title-highlight {
+        color: map-get($accent, 400);
+      }
     }
 
     .menu {

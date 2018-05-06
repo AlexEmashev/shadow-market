@@ -1,68 +1,70 @@
-<mat-card class="catalog-item">
-  <mat-card-content class="catalog-item-content">
-    <form [formGroup]="formItemEdit" (ngSubmit)="onSubmit()" novalidate>
-      <div class="catalog-item-title">
-        <mat-form-field floatLabel="never">
-          <input matInput placeholder="{{placeholderItemTitle}}" formControlName="title">
-          <mat-error *ngIf="formItemEdit.get('title').hasError('required')">
-            {{ 'catalogItemEdit.titleRequired' | translate }}
-          </mat-error>
-          <mat-error *ngIf="formItemEdit.get('title').hasError('minlength')">
-            {{ 'catalogItemEdit.titleMinLength' | translate }}
-          </mat-error>
-        </mat-form-field>
+<div class="catalog-item-container">
+  <mat-card class="catalog-item">
+    <mat-card-content class="catalog-item-content">
+      <form [formGroup]="formItemEdit" (ngSubmit)="onSubmit()" novalidate>
+        <div class="catalog-item-title">
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="{{placeholderItemTitle}}" formControlName="title">
+            <mat-error *ngIf="formItemEdit.get('title').hasError('required')">
+              {{ 'catalogItemEdit.titleRequired' | translate }}
+            </mat-error>
+            <mat-error *ngIf="formItemEdit.get('title').hasError('minlength')">
+              {{ 'catalogItemEdit.titleMinLength' | translate }}
+            </mat-error>
+          </mat-form-field>
 
-      </div>
+        </div>
 
-      <app-images-edit formControlName="photos"></app-images-edit>
-        <mat-error *ngIf="formItemEdit.get('photos').hasError('validateImages')">
-          {{ 'catalogItemEdit.imageRequired' | translate }}
-        </mat-error>
+        <app-images-edit formControlName="photos"></app-images-edit>
+          <mat-error *ngIf="formItemEdit.get('photos').hasError('validateImages')">
+            {{ 'catalogItemEdit.imageRequired' | translate }}
+          </mat-error>
 
-      <div class="catalog-item-description-container">
-        <mat-form-field floatLabel="never">
-          <textarea matInput matTextareaAutosize
-            placeholder="{{placeholderDescription}}" formControlName="description">
-          </textarea>
-          <mat-error *ngIf="formItemEdit.get('description').hasError('required')">
-            {{ 'catalogItemEdit.descriptionRequired' | translate }}
-          </mat-error>
-          <mat-error *ngIf="formItemEdit.get('description').hasError('minlength')">
-          {{ 'catalogItemEdit.descriptionMinLength' | translate }}
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="catalog-item-price-container">
-        <mat-form-field floatLabel="never">
-          <input matInput #priceInput
-            (blur)="onPriceChanged(priceInput.value)"
-            (keydown)="onPriceKeyDown($event)"
-            type="text" placeholder="{{placeholderPrice}}"
-            formControlName="price">
-          <span matSuffix class="price-suffix">$</span>
-          <mat-error *ngIf="formItemEdit.get('price').hasError('required')">
-            {{ 'catalogItemEdit.priceRequired' | translate }}
-          </mat-error>
-          <mat-error *ngIf="formItemEdit.get('price').hasError('min')">
-            {{ 'catalogItemEdit.priceNegative' | translate }}
-          </mat-error>
-          <mat-error *ngIf="formItemEdit.get('price').hasError('ValidatePrice')">
-            {{ 'catalogItemEdit.priceMax' | translate }}
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="catalog-item-footer">
-        <button mat-raised-button color="primary" 
-          type="button" 
-          class="cancel"
-          (click)="cancelClick()"
-          >
-              {{ 'catalogItemEdit.cancel' | translate }}
-            </button>
-        <button mat-raised-button color="accent" type="submit">
-          {{ 'catalogItemEdit.save' | translate }}
-        </button>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+        <div class="catalog-item-description-container">
+          <mat-form-field floatLabel="never">
+            <textarea matInput matTextareaAutosize
+              placeholder="{{placeholderDescription}}" formControlName="description">
+            </textarea>
+            <mat-error *ngIf="formItemEdit.get('description').hasError('required')">
+              {{ 'catalogItemEdit.descriptionRequired' | translate }}
+            </mat-error>
+            <mat-error *ngIf="formItemEdit.get('description').hasError('minlength')">
+            {{ 'catalogItemEdit.descriptionMinLength' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="catalog-item-price-container">
+          <mat-form-field floatLabel="never">
+            <input matInput #priceInput
+              (blur)="onPriceChanged(priceInput.value)"
+              (keydown)="onPriceKeyDown($event)"
+              type="text" placeholder="{{placeholderPrice}}"
+              formControlName="price">
+            <span matSuffix class="price-suffix">$</span>
+            <mat-error *ngIf="formItemEdit.get('price').hasError('required')">
+              {{ 'catalogItemEdit.priceRequired' | translate }}
+            </mat-error>
+            <mat-error *ngIf="formItemEdit.get('price').hasError('min')">
+              {{ 'catalogItemEdit.priceNegative' | translate }}
+            </mat-error>
+            <mat-error *ngIf="formItemEdit.get('price').hasError('ValidatePrice')">
+              {{ 'catalogItemEdit.priceMax' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="catalog-item-footer">
+          <button mat-raised-button color="primary" 
+            type="button" 
+            class="cancel"
+            (click)="cancelClick()"
+            >
+                {{ 'catalogItemEdit.cancel' | translate }}
+          </button>
+          <button mat-raised-button color="accent" type="submit">
+            {{ 'catalogItemEdit.save' | translate }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,6 +1,11 @@
 @import '../../breakpoints';
 @import '../../shared-props';
 
+.catalog-item-container {
+  margin: 0 auto;
+  max-width: $card-max-width;
+}
+
 .catalog-item {
   margin: $card-margins;
   max-width: 1024px;

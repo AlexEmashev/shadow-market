@@ -43,16 +43,23 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
       });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     $('#photos').swipeslider();
   }
 
-  buyItem(item) {
+  buyItem(item): void {
     this.buyDialog.open(BuyDialogComponent, {
       data: item,
       maxWidth: '640px',
       maxHeight: '300px'
     });
+  }
+
+  /**
+   * Returns to Catalog.
+   */
+  cancelClick(): void {
+    this.location.back();
   }
 
 }

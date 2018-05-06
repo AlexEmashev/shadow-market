@@ -1,9 +1,13 @@
 @import '../../breakpoints';
 @import '../../shared-props';
 
+.catalog-item-container {
+  margin: 0 auto;
+  max-width: $card-max-width;
+}
+
 .item {
   margin: $card-margins;
-  max-width: 1024px;
   padding: 7px 20px 20px;
 }
 
@@ -51,6 +55,7 @@
   margin-left: 15px;
   @media all and (max-width: $media-width-small) {
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
     margin: 15px 0 0;
@@ -64,7 +69,8 @@
     margin: 0 0 15px 0;
     text-align: center;
     @media all and (max-width: $media-width-small) {
-      margin: 0;
+      //margin: 0;
+      flex-grow: 1;
     }
   }
 
@@ -72,7 +78,15 @@
     display: block;
     margin: 0 auto 7px;
     @media all and (max-width: $media-width-small) {
-      margin: 0 0 0 15px;
+      flex-grow: 1;
+      min-width: 100%;
+    }
+  }
+
+  .back-button {
+    @media all and (max-width: $media-width-small) {
+      flex-grow: 1;
+      min-width: 100%;
     }
   }
 }
