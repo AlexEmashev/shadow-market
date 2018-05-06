@@ -5,11 +5,16 @@ import { CatalogService } from '../catalog.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { validateImages } from '../images-edit/images-edit.component';
 import { ImageElement, ImageState } from '../images-edit/image_element';
 import { UserSettingsService } from '../../user-settings.service';
+
+export function ValidatePrice(c: FormControl) {
+  return Number.parseFloat(c.value) < 1000 ? null : {ValidatePrice: {valid: false}};
+}
 
 @Component({
   selector: 'app-catalog-item-edit',
@@ -81,7 +86,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
       title: [this.item.title, [Validators.required, Validators.minLength(4)]],
       description: [this.item.description, [Validators.required, Validators.minLength(10)]],
       photos: [this.item.photos, [validateImages]],
-      price: [this.item.price, [Validators.required, Validators.min(0)]]
+      price: [this.item.price, [Validators.required, Validators.min(0), ValidatePrice]]
     });
   }
 
@@ -221,7 +226,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         );
       }
     } else {
-      console.log('Form is invalid! Kokoko!');
+      console.log('Form is invalid!');
     }
   }
 

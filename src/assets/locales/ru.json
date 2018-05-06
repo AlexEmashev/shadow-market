@@ -21,6 +21,7 @@
 	"catalogItemEdit.price": "Цена",
 	"catalogItemEdit.priceNegative": "Цена не может быть отрицательной",
 	"catalogItemEdit.priceRequired": "Пожалуйста, укажите цену лота",
+	"catalogItemEdit.priceMax": "Пожалуйста, не продавайте слишком дорогие лоты с этой площадки",
 	"catalogItemEdit.save": "Сохранить",
 	"catalogItemEdit.cancel": "Отмена",
 	"catalogItemEdit.titleMinLength": "Заголовок должен быть длиннее 3х символов",

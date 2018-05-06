@@ -21,6 +21,7 @@
 	"catalogItemEdit.price": "Price",
 	"catalogItemEdit.priceNegative": "Price cannot be negative number",
 	"catalogItemEdit.priceRequired": "Please set price for your item",
+	"catalogItemEdit.priceMax": "Please don't sell here too expensive items",
 	"catalogItemEdit.save": "Save",
 	"catalogItemEdit.cancel": "Cancel",
 	"catalogItemEdit.titleMinLength": "Title should be longer than 3 characters",

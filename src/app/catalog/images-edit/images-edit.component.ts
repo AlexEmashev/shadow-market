@@ -19,7 +19,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export function validateImages(c: FormControl) {
   // Control should have at lease one image. This image shouldn't be deleted.
   const presentedElements: ImageElement[] = c.value.filter((item: ImageElement) => {
-    return item.state === ImageState.added || item.state === ImageState.not_changed
+    return item.state === ImageState.added || item.state === ImageState.not_changed;
   });
   return presentedElements.length > 0 ? null :
     {validateImages: {valid: false}};
@@ -29,8 +29,8 @@ export function validateImages(c: FormControl) {
  * Form control for manipulating images.
  * Usage in reactive forms:
   <app-images-edit formControlName="photos"
-   (onImageAdded)="imageAdded(base64)"
-   (onImageDeleted)="imageDeleted(url)">
+   (imageAdded)="imageAdded(base64)"
+   (imageDeleted)="imageDeleted(url)">
   </app-images-edit>
    <mat-error *ngIf="formItemEdit.get('photos').hasError('validateImages')">
      Please provide at least one image
@@ -60,12 +60,12 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
    * Fires when image added.
    * Payload: image coded in Base64
    */
-  @Output() onImageAdded: EventEmitter<string> = new EventEmitter();
+  @Output() imageAdded: EventEmitter<string> = new EventEmitter();
   /**
    * Fires when image deleted.
    * Payload: image url on server.
    */
-  @Output() onImageDeleted: EventEmitter<string> = new EventEmitter();
+  @Output() imageDeleted: EventEmitter<string> = new EventEmitter();
 
   constructor() { }
 
@@ -98,12 +98,12 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
    */
   public attachImage(files: any) {
     for (let i = 0; i < files.length; i++) {
-      let reader = new FileReader();
+      const reader = new FileReader();
       reader.readAsDataURL(files[i]);
       reader.onload = () => {
         this.value.unshift({ url: reader.result, state: ImageState.added });
         // Send event outside, item has been added
-        this.onImageAdded.emit(reader.result);
+        this.imageAdded.emit(reader.result);
         // Trigger element changed.
         if (typeof(this._onChange) === 'function') {
           this._onChange(this.value);
@@ -113,7 +113,7 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
           this._onTouched(this.value);
         }
       };
-      reader.onerror = () => { console.log("Base64 image:", reader.result); };
+      reader.onerror = () => { console.log('Base64 image:', reader.result); };
     }
   }
 
@@ -121,10 +121,10 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
    * Removes image from internal presentation collection.
    */
   private onRemoveItemClick(index: number) {
-    //ToDo: If image just has been added we can delete it from collection.
+    // ToDo: If image just has been added we can delete it from collection.
     this.value[index].state = ImageState.deleted;
     // Send event outside, item has been deleted
-    this.onImageDeleted.emit(this.value[index].url);
+    this.imageDeleted.emit(this.value[index].url);
 
     if (typeof(this._onChange) === 'function') {
       this._onChange(this.value);
