@@ -17,6 +17,7 @@ import { CatalogItemDetailsComponent } from './catalog-item-details/catalog-item
 import { TranslateModule } from '@ngx-translate/core';
 import { BuyDialogModule } from '../buy-dialog/buy-dialog.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { UserLoginModule } from '../user-login/user-login.module';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { AppRoutingModule } from '../app-routing.module';
     ReactiveFormsModule,
     MatInputModule,
     BuyDialogModule,
-    AppRoutingModule
+    AppRoutingModule,
+    UserLoginModule
   ],
   declarations: [
     CatalogComponent,

@@ -6,6 +6,8 @@ import { CatalogService } from '../catalog.service';
 import { UserSettingsService } from '../../user-settings.service';
 import { BuyDialogComponent } from '../../buy-dialog/buy-dialog.component';
 import { AppRoles } from '../../user-settings';
+import { UserLoginComponent } from '../../user-login/user-login.component';
+
 
 @Component({
   selector: 'app-catalog-item',
@@ -24,6 +26,7 @@ export class CatalogItemComponent implements OnInit, AfterViewInit {
     private cdRef: ChangeDetectorRef,
     private userSettings: UserSettingsService,
     private buyDialog: MatDialog,
+    private loginDialog: MatDialog,
     public confirmDeleteDialog: MatDialog) {
       this.userName = this.userSettings.name;
     }
@@ -54,7 +57,14 @@ export class CatalogItemComponent implements OnInit, AfterViewInit {
    * Like an item.
    */
   like(): void {
-    this.catalogService.like(this.catalogItem.id);
+    if (this.userSettings.role === AppRoles.guest) {
+      this.loginDialog.open(UserLoginComponent, {
+        width: '250px',
+        height: 'auto'
+      });
+    } else {
+      this.catalogService.like(this.catalogItem.id);
+    }
   }
 
   /**

@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { UserSettingsService } from '../../user-settings.service';
 import { BuyDialogComponent } from '../../buy-dialog/buy-dialog.component';
+import { AppRoles } from '../../user-settings';
+import { UserLoginComponent } from '../../user-login/user-login.component';
 
 
 @Component({
@@ -32,6 +34,7 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
     private location: Location,
     private userSettings: UserSettingsService,
     private catalogService: CatalogService,
+    private loginDialog: MatDialog,
     private buyDialog: MatDialog
   ) {  }
 
@@ -58,7 +61,14 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
   }
 
   like(): void {
-    this.catalogService.like(this.item.id);
+    if (this.userSettings.role === AppRoles.guest) {
+      this.loginDialog.open(UserLoginComponent, {
+        width: '250px',
+        height: 'auto'
+      });
+    } else {
+      this.catalogService.like(this.item.id);
+    }
   }
 
   /**
