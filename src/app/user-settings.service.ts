@@ -120,7 +120,7 @@ export class UserSettingsService {
     );
   }
 
-  public register(login: string, password: string): Observable<boolean>|Observable<UserSettings> {
+  public register(login: string, password: string): Observable<number> {
     let lastId = 0;
 
     USERS.forEach((item, index, ary) => {
@@ -129,7 +129,7 @@ export class UserSettingsService {
 
     return from(USERS).pipe(
       filter(user => user.name === login),
-      map(user => false),
+      map(user => -1),
       defaultIfEmpty(
         {
           id: lastId + 1,

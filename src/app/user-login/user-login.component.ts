@@ -50,7 +50,6 @@ export class UserLoginComponent implements OnInit {
    * @param password user's password
    */
   login(login, password): void {
-    console.log(login, password);
     this.userSettings.login(login, password)
       .subscribe(item => {
         if (item) {
