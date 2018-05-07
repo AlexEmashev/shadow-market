@@ -55,6 +55,7 @@
 	"themeSwitch.title": "Theme",
 	"loginMenu.login": "Sign in",
 	"loginMenu.logout": "Log out",
+	"loginMenu.register": "Register",
 	"loginForm.userNotFound": "User with these credentials not found",
 	"loginForm.title": "Sign in form",
 	"loginForm.login_input": "Login name",

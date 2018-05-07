@@ -55,6 +55,7 @@
 	"themeSwitch.title": "Тема",
 	"loginMenu.login": "Войти",
 	"loginMenu.logout": "Выйти",
+	"loginMenu.register": "Зарегистрироваться",
 	"loginForm.userNotFound": "Пользователь с такими данными не найден",
 	"loginForm.title": "Форма входа",
 	"loginForm.login_input": "Имя пользователя",
