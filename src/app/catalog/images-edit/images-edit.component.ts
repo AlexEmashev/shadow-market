@@ -94,6 +94,10 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
+
+  touchControl() {
+    this.onTouched();
+  }
 // End ControlValueAccessor interface implementation
 
   /**
