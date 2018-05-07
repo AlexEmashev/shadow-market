@@ -120,6 +120,28 @@ export class UserSettingsService {
     );
   }
 
+  public register(login: string, password: string): Observable<boolean>|Observable<UserSettings> {
+    let lastId = 0;
+
+    USERS.forEach((item, index, ary) => {
+      lastId = item.id > lastId ? item.id : lastId;
+    });
+
+    return from(USERS).pipe(
+      filter(user => user.name === login),
+      map(user => false),
+      defaultIfEmpty(
+        {
+          id: lastId + 1,
+          name: login,
+          locale: this.userSettings.locale,
+          role: AppRoles.user,
+          session: '',
+          theme: this.userSettings.theme
+      })
+    );
+  }
+
   /**
    * Loads user as current
    * @param user user object (can be obtained via login() function)
