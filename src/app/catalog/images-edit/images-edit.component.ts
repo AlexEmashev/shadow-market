@@ -8,7 +8,8 @@ import {
   ElementRef,
   forwardRef
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ImageElement, ImageState } from './image_element';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -16,13 +17,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
  * Validates ImagesEditComponent.
  * At least one image is required.
  */
-export function validateImages(c: FormControl) {
+export function ValidateImages(c: FormControl) {
   // Control should have at lease one image. This image shouldn't be deleted.
   const presentedElements: ImageElement[] = c.value.filter((item: ImageElement) => {
     return item.state === ImageState.added || item.state === ImageState.not_changed;
   });
   return presentedElements.length > 0 ? null :
-    {validateImages: {valid: false}};
+    {ValidateImages: {valid: false}};
 }
 
 /**
@@ -44,12 +45,11 @@ export function validateImages(c: FormControl) {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => ImagesEditComponent),
     multi: true
-  }]
+  }
+]
 })
 export class ImagesEditComponent implements ControlValueAccessor, OnInit {
-  private _onChange: any;
-  private _onTouched: any;
-  public isDisabled: boolean;
+  @Input() disabled = false;
 
   /**
    * Represents current set of images
@@ -67,10 +67,13 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
    */
   @Output() imageDeleted: EventEmitter<string> = new EventEmitter();
 
+  private onChange = (value: ImageElement[]) => {};
+  private onTouched = () => {} ;
+
   constructor() { }
 
   ngOnInit() {
-    this.isDisabled = false;
+    this.disabled = false;
   }
 
 
@@ -80,16 +83,16 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
     this.value = images;
   }
 
-  registerOnChange(fn: any): void {
-    this._onChange = fn;
+  registerOnChange(fn: (value: ImageElement[]) => void): void {
+    this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
-    this._onTouched = fn;
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+    this.disabled = isDisabled;
   }
 // End ControlValueAccessor interface implementation
 
@@ -105,13 +108,7 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
         // Send event outside, item has been added
         this.imageAdded.emit(reader.result);
         // Trigger element changed.
-        if (typeof(this._onChange) === 'function') {
-          this._onChange(this.value);
-        }
-
-        if (typeof(this._onTouched) === 'function') {
-          this._onTouched(this.value);
-        }
+        this.onChange(this.value);
       };
       reader.onerror = () => { console.log('Base64 image:', reader.result); };
     }
@@ -121,17 +118,9 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
    * Removes image from internal presentation collection.
    */
   private onRemoveItemClick(index: number) {
-    // ToDo: If image just has been added we can delete it from collection.
     this.value[index].state = ImageState.deleted;
-    // Send event outside, item has been deleted
     this.imageDeleted.emit(this.value[index].url);
-
-    if (typeof(this._onChange) === 'function') {
-      this._onChange(this.value);
-    }
-
-    if (typeof(this._onTouched) === 'function') {
-      this._onTouched(this.value);
-    }
+    this.onChange(this.value);
+    this.onTouched();
   }
 }

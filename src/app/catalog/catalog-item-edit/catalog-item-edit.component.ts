@@ -8,9 +8,10 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import { validateImages } from '../images-edit/images-edit.component';
+import { ValidateImages } from '../images-edit/images-edit.component';
 import { ImageElement, ImageState } from '../images-edit/image_element';
 import { UserSettingsService } from '../../user-settings.service';
+import {ErrorStateMatcher} from '@angular/material/core';
 
 export function ValidatePrice(c: FormControl) {
   return Number.parseFloat(c.value) < 1000 ? null : {ValidatePrice: {valid: false}};
@@ -29,6 +30,8 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   placeholderItemTitle: string;
   placeholderDescription: string;
   placeholderPrice: string;
+  // Workaround for images edit form control.
+  submitClicked = false;
 
   /**
    * Form groups.
@@ -85,9 +88,11 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     this.formItemEdit = this.formBuilder.group({
       title: [this.item.title, [Validators.required, Validators.minLength(4)]],
       description: [this.item.description, [Validators.required, Validators.minLength(10)]],
-      photos: [this.item.photos, [validateImages]],
+      photos: [this.item.photos, [ValidateImages]],
       price: [this.item.price, [Validators.required, Validators.min(0), ValidatePrice]]
     });
+
+    console.dir(this.formItemEdit);
   }
 
   /**
@@ -204,6 +209,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
    * Submits the item changes.
    */
   onSubmit(): void {
+    this.submitClicked = true;
     if (this.formItemEdit.valid) {
       const newItem: CatalogItem = this.prepareSaveItem();
       if (newItem.id !== null) {

@@ -12,11 +12,11 @@
               {{ 'catalogItemEdit.titleMinLength' | translate }}
             </mat-error>
           </mat-form-field>
-
+          
         </div>
 
         <app-images-edit formControlName="photos"></app-images-edit>
-          <mat-error *ngIf="formItemEdit.get('photos').hasError('validateImages')">
+          <mat-error *ngIf="formItemEdit.get('photos').hasError('ValidateImages') && (submitClicked || formItemEdit.controls.photos.touched)">
             {{ 'catalogItemEdit.imageRequired' | translate }}
           </mat-error>
 
