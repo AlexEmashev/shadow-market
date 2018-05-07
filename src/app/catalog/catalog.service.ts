@@ -38,6 +38,20 @@ export class CatalogService {
    }
 
    /**
+    * Increase views of item by id.
+    * @param id: item id.
+    */
+   public bumpView(id: number): void {
+     this.catalog.map((item: CatalogItem, index: number, ary: CatalogItem[]) => {
+      if (item.id === id) {
+        item.views += 1;
+      }
+     });
+
+    this.saveDBLocaly();
+   }
+
+   /**
     * Saves DB in LocalStorage.
     */
    private saveDBLocaly(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, ChangeDetectorRef  } from '@angular/core';
 import { CatalogItem } from '../catalog-item';
 import { MatDialog } from '@angular/material';
 import { DeleteConfirmationComponent } from '../../delete-confirmation/delete-confirmation.component';
@@ -11,13 +11,14 @@ import { BuyDialogComponent } from '../../buy-dialog/buy-dialog.component';
   templateUrl: './catalog-item.component.html',
   styleUrls: ['./catalog-item.component.scss']
 })
-export class CatalogItemComponent implements OnInit {
+export class CatalogItemComponent implements OnInit, AfterViewInit {
   @Input() catalogItem: CatalogItem;
   @Input() editMode: boolean;
   @Output() deleteClick: EventEmitter<CatalogItem> = new EventEmitter();
   @Output() editClick: EventEmitter<CatalogItem> = new EventEmitter();
 
   constructor(private catalogService: CatalogService,
+    private cdRef: ChangeDetectorRef,
     private userSettings: UserSettingsService,
     private buyDialog: MatDialog,
     public confirmDeleteDialog: MatDialog) {
@@ -25,6 +26,11 @@ export class CatalogItemComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    this.catalogService.bumpView(this.catalogItem.id);
+    this.cdRef.detectChanges();
   }
 
   /**
