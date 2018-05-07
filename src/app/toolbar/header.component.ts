@@ -3,6 +3,7 @@ import { ToolbarService } from './toolbar.service';
 import { UserSettingsService } from '../user-settings.service';
 import { ThemeSwitchComponent } from '../theme-switch/theme-switch.component';
 import { UserLoginComponent } from '../user-login/user-login.component';
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(private toolbar: ToolbarService,
     public userSettings: UserSettingsService,
-    private loginDialog: MatDialog
+    private loginDialog: MatDialog,
+    private registerDialog: MatDialog
   ) { }
   menuBreakpoint = 480; // ToDo: make actual contract of break point corresponding style
   menuShown = true;
@@ -66,6 +68,16 @@ export class HeaderComponent implements OnInit {
   openLoginDialog() {
     this.loginDialog.open(UserLoginComponent, {
       width: '250px',
+      height: 'auto'
+    });
+  }
+
+  /**
+   * Opens user register dialog
+   */
+  openRegisterDialog() {
+    this.registerDialog.open(RegisterDialogComponent, {
+      width: '260px',
       height: 'auto'
     });
   }

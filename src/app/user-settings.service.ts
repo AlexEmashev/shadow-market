@@ -120,26 +120,44 @@ export class UserSettingsService {
     );
   }
 
-  public register(login: string, password: string): Observable<number> {
-    let lastId = 0;
+  /**
+   * Registers new user.
+   * @param login new user name
+   * @param contact user contact
+   * @param password user password
+   * @returns new user ID or -1 if user already exists.
+   */
+  public register(login: string, contact: string, password: string): Observable<number> {
+    let lastId = 0; // Used to calculate new user ID.
+    let userExists = false; // Check if user already exists
 
+    // Find last user id
     USERS.forEach((item, index, ary) => {
       lastId = item.id > lastId ? item.id : lastId;
     });
 
-    return from(USERS).pipe(
-      filter(user => user.name === login),
-      map(user => -1),
-      defaultIfEmpty(
-        {
-          id: lastId + 1,
-          name: login,
-          locale: this.userSettings.locale,
-          role: AppRoles.user,
-          session: '',
-          theme: this.userSettings.theme
-      })
-    );
+    const newUserId = lastId + 1;
+    // Check if user exists
+    USERS.forEach((item, index, ary) => {
+      if (item.name === login) {
+        userExists = true;
+      }
+    });
+
+    if (!userExists) {
+      USERS.push({
+        id: newUserId,
+        name: login,
+        locale: this.userSettings.locale,
+        role: AppRoles.user,
+        session: '',
+        theme: this.userSettings.theme,
+        contact: contact
+      });
+      return of(newUserId);
+    } else {
+      return of(-1);
+    }
   }
 
   /**
