@@ -19,9 +19,7 @@ export class CatalogService {
    */
   catalog: CatalogItem[];
 
-  constructor(
-    private userSettings: UserSettingsService
-  ) {
+  constructor(private userSettings: UserSettingsService) {
     this.catalog = [];
     this.loadDB();
    }
@@ -60,6 +58,7 @@ export class CatalogService {
     * @param id  item id.
     */
    public like(id: number): void {
+     // ToDo: return observable, so in case of error we could decrease like count on view.
     if ( this.userSettings.role === AppRoles.guest ) { return ; }
 
     this.catalog.map((item: CatalogItem, index: number, ary: CatalogItem[]) => {

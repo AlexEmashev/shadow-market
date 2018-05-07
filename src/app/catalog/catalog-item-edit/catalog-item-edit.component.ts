@@ -65,7 +65,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
      * Initializes form.
      */
     ngOnInit(): void {
-      // ToDo: actually get user id, not set it to null.
       // If ID is among the parameters, load image. In other case, form in creating mode.
       if (this.route.snapshot.paramMap.get('id') !== null) {
         this.getItem(+this.route.snapshot.paramMap.get('id'))
@@ -82,7 +81,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     // Make a copy of passed object.
     Object.assign(this.item, item);
     this.item.photos = item.photos.map(photo => {
-      const newPhoto = {url: photo.url, state: photo.state};
+      const newPhoto: ImageElement = {url: photo.url, state: photo.state};
       return newPhoto; });
 
     this.formItemEdit = this.formBuilder.group({
@@ -218,7 +217,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
             if (result) {
               this.location.back();
             } else {
-              console.log('Item hasn\'t been updated. Something gone wrong.');
+              console.log('Item hasn\'t been updated. Something went wrong.');
             }
           }
         );

@@ -77,7 +77,7 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
   }
 
 
-// Start ControlValueAccessor interface implementation
+///////// Start ControlValueAccessor interface implementation
 
   writeValue(images: ImageElement[]): void {
     this.value = images;
@@ -98,7 +98,7 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
   touchControl() {
     this.onTouched();
   }
-// End ControlValueAccessor interface implementation
+//////////////// End ControlValueAccessor interface implementation
 
   /**
    * Attaches image to the item.

@@ -1,5 +1,5 @@
 /**
- * Implements internal image set.
+ * Internal images set interface.
  */
 export interface ImageElement {
   url: string;
