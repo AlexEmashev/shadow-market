@@ -14,7 +14,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
        {url: 'assets/items/mock.svg', state: ImageState.not_changed}
      ],
      price: 500.99,
-     likes: 753,
+     likes: ['aemashev', 'john_smith'],
      views: 1024
    },
    { id: 1,
@@ -32,7 +32,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
        {url: 'assets/items/blender2.jpg', state: ImageState.not_changed}
      ],
      price: 45.01,
-     likes: 3,
+     likes: ['aemashev', 'jane_doe'],
      views: 10
    },
    { id: 2,
@@ -44,7 +44,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
       {url: 'assets/items/oscilloscope.jpg', state: ImageState.not_changed}
      ],
      price: 9.99,
-     likes: 1,
+     likes: ['jane_doe'],
      views: 1
    },
    { id: 3,
@@ -56,7 +56,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
       {url: 'assets/items/lantern.jpg', state: ImageState.not_changed}
      ],
      price: 20,
-     likes: 5,
+     likes: [],
      views: 150
    },
    { id: 4,
@@ -68,7 +68,7 @@ import { ImageElement, ImageState } from './images-edit/image_element';
       {url: 'assets/items/book.jpg', state: ImageState.not_changed}
      ],
      price: 999.99,
-     likes: 1,
+     likes: ['aemashev', 'jane_doe'],
      views: 10
    }
 

@@ -5,10 +5,10 @@
           <h1 class="item-title">{{item.title}}</h1>
           <div class="item-icons">
             <span class="item-icon-container">
-              <button mat-icon-button>
-                <i class="material-icons like">favorite</i>
+              <button mat-icon-button (click)="like()">
+                <i class="material-icons like" [ngClass]="{'liked': item.likes.indexOf(userName) >= 0}">favorite</i>
               </button>
-              <span class="like-count">{{item.likes}}</span>
+              <span class="like-count">{{item.likes.length}}</span>
             </span>
             <span class="item-icon-container">
               <i class="material-icons">visibility</i> {{item.views}}

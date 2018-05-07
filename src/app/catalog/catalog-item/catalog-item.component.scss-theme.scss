@@ -18,6 +18,9 @@
       .like {
         color: map-get($primary, darker);
       }
+      .liked {
+        color: map-get($accent, default);
+      }
     }
 
     .catalog-item-edit-menu {

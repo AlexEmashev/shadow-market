@@ -2,6 +2,7 @@
 
 @mixin catalog-item-details-component-theme($theme) {
   $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
 
   app-catalog-item-details {
@@ -10,6 +11,9 @@
 
       .like {
         color: map-get($primary, darker);
+      }
+      .liked {
+        color: map-get($accent, default);
       }
     }
 

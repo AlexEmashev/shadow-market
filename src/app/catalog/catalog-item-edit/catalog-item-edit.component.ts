@@ -52,7 +52,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         description: null,
         photos: [],
         price: null,
-        likes: 0,
+        likes: [],
         views: 0
       };
       this.localizeComponents();

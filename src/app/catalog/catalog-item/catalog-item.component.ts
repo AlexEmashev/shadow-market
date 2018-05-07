@@ -5,6 +5,7 @@ import { DeleteConfirmationComponent } from '../../delete-confirmation/delete-co
 import { CatalogService } from '../catalog.service';
 import { UserSettingsService } from '../../user-settings.service';
 import { BuyDialogComponent } from '../../buy-dialog/buy-dialog.component';
+import { AppRoles } from '../../user-settings';
 
 @Component({
   selector: 'app-catalog-item',
@@ -17,11 +18,14 @@ export class CatalogItemComponent implements OnInit, AfterViewInit {
   @Output() deleteClick: EventEmitter<CatalogItem> = new EventEmitter();
   @Output() editClick: EventEmitter<CatalogItem> = new EventEmitter();
 
+  userName: string;
+
   constructor(private catalogService: CatalogService,
     private cdRef: ChangeDetectorRef,
     private userSettings: UserSettingsService,
     private buyDialog: MatDialog,
     public confirmDeleteDialog: MatDialog) {
+      this.userName = this.userSettings.name;
     }
 
 
@@ -30,6 +34,7 @@ export class CatalogItemComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.catalogService.bumpView(this.catalogItem.id);
+    // Wee need to update changes manually after modifying the model.
     this.cdRef.detectChanges();
   }
 
@@ -43,6 +48,13 @@ export class CatalogItemComponent implements OnInit, AfterViewInit {
         this.deleteItem();
       }
     });
+  }
+
+  /**
+   * Like an item.
+   */
+  like(): void {
+    this.catalogService.like(this.catalogItem.id);
   }
 
   /**

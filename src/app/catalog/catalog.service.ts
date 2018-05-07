@@ -6,6 +6,8 @@ import { filter, max, map, defaultIfEmpty } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { from } from 'rxjs/observable/from';
 import { ImageState } from './images-edit/image_element';
+import { UserSettingsService } from '../user-settings.service';
+import { AppRoles } from '../user-settings';
 
 /**
  * Service to work with catalog items.
@@ -17,7 +19,9 @@ export class CatalogService {
    */
   catalog: CatalogItem[];
 
-  constructor() {
+  constructor(
+    private userSettings: UserSettingsService
+  ) {
     this.catalog = [];
     this.loadDB();
    }
@@ -45,6 +49,24 @@ export class CatalogService {
      this.catalog.map((item: CatalogItem, index: number, ary: CatalogItem[]) => {
       if (item.id === id) {
         item.views += 1;
+      }
+     });
+
+    this.saveDBLocaly();
+   }
+
+   /**
+    * Increase likes.
+    * @param id  item id.
+    */
+   public like(id: number): void {
+    if ( this.userSettings.role === AppRoles.guest ) { return ; }
+
+    this.catalog.map((item: CatalogItem, index: number, ary: CatalogItem[]) => {
+      if (item.id === id && item.likes.indexOf(this.userSettings.name) === -1) {
+        item.likes.push(this.userSettings.name);
+      } else if (item.id === id) {
+        item.likes.splice(item.likes.indexOf(this.userSettings.name), 1);
       }
      });
 

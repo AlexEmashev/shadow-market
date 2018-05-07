@@ -11,10 +11,10 @@
       </h2>
       <div class="catalog-item-description-details">
         <span class="catalog-item-description-icon">
-          <button mat-icon-button>
-            <i class="material-icons like">favorite</i>
+          <button mat-icon-button (click)="like()">
+            <i class="material-icons like" [ngClass]="{'liked': catalogItem.likes.indexOf(userName) >= 0}">favorite</i>
           </button>
-          <span class="catalog-item-description-likes-count">{{catalogItem.likes}}</span>
+          <span class="catalog-item-description-likes-count">{{catalogItem.likes.length}}</span>
         </span>
         <span class="catalog-item-description-icon">
           <i class="material-icons">visibility</i> {{catalogItem.views}}

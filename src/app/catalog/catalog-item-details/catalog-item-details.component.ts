@@ -19,6 +19,7 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
    * Catalog item.
    */
   item: CatalogItem;
+  userName: string;
   /**
    * Native HTML element of photo slider.
    */
@@ -40,6 +41,7 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
     this.catalogService.getItem(itemId)
       .subscribe((item) => {
         this.item = item;
+        this.userName = this.userSettings.name; // Used for displaying likes button contrast.
       });
   }
 
@@ -53,6 +55,10 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
       maxWidth: '640px',
       maxHeight: '300px'
     });
+  }
+
+  like(): void {
+    this.catalogService.like(this.item.id);
   }
 
   /**

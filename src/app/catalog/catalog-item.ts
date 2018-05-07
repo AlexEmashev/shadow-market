@@ -19,7 +19,7 @@ export interface CatalogItem {
   /** Item price */
   price: number;
   /** Likes count of item */
-  likes: number;
+  likes: string[];
   /** Number of views of item */
   views: number;
 }
