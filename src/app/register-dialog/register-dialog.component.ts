@@ -63,7 +63,6 @@ export class RegisterDialogComponent implements OnInit {
       if (result < 0) {
         this.showUserExist = true;
       } else {
-        console.log('Registered');
         // Login user if registered.
         this.userSettings.login(login, password);
       }

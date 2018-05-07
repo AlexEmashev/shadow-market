@@ -8,12 +8,15 @@
     </a>
   </span>
 
-  <button mat-icon-button class="menu-button"  (click)="toggleMenu()">
+  <button mat-icon-button class="menu-button" [matMenuTriggerFor]="mainMenu">
     <i class="material-icons">apps</i>
   </button>
-  <ul class="menu" *ngIf="menuShown">
+  <ul class="menu" *ngIf="menuShown" id="mainMenu">
     <li class="themes">
-      <app-theme-switch></app-theme-switch>
+        <button mat-button [matMenuTriggerFor]="themeMenu">
+          <i class="material-icons md-24">color_lens</i>
+          <span class="button-label">{{ 'themeSwitch.title' | translate }}</span>
+        </button>
     </li>
     <li class="locale">
       <app-locale-switch></app-locale-switch>
@@ -27,6 +30,23 @@
   </ul>
 </mat-toolbar>
 
+<mat-menu #mainMenu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="themeMenu">
+    <i class="material-icons md-24">color_lens</i>
+    <span class="button-label">{{ 'themeSwitch.title' | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="openLoginDialog()" *ngIf="userSettings.id <= 0">
+    <span>{{ 'loginMenu.login' | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="openRegisterDialog()" *ngIf="userSettings.id <= 0">
+    <span>{{ 'loginMenu.register' | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="logOut()" *ngIf="userSettings.id > 0">
+    <span>{{ 'loginMenu.logout' | translate }}</span>
+  </button>
+</mat-menu>
+
+<!-- Login menu  -->
 <mat-menu #userMenu="matMenu">
   <button mat-menu-item (click)="openLoginDialog()" *ngIf="userSettings.id <= 0">
     <span>{{ 'loginMenu.login' | translate }}</span>
@@ -38,3 +58,19 @@
     <span>{{ 'loginMenu.logout' | translate }}</span>
   </button>
 </mat-menu>
+
+<!-- Theme switch menu -->
+<mat-menu #themeMenu="matMenu">
+    <button mat-menu-item (click)="switchTheme('hazyDay')">
+      <span class="hazy-day-swatch theme-preview">
+        <i *ngIf="currentTheme === 'hazy-day-theme'" class="material-icons checkbox">done</i>
+      </span>
+      <span  class="button-label">{{ 'themeSwitch.hazyDay' | translate }}</span>
+    </button>
+    <button mat-menu-item (click)="switchTheme('blackWatch')">
+      <span class="black-watch-swatch theme-preview">
+        <i *ngIf="currentTheme === 'black-watch-theme'" class="material-icons checkbox">done</i>
+      </span>
+      <span>{{ 'themeSwitch.blackWatch' | translate }}</span>
+    </button>
+  </mat-menu>

@@ -5,6 +5,7 @@ import { ThemeSwitchComponent } from '../theme-switch/theme-switch.component';
 import { UserLoginComponent } from '../user-login/user-login.component';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { MatDialog } from '@angular/material';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-header',
@@ -12,14 +13,18 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  menuBreakpoint = 480;
+  menuShown = true;
+  currentTheme = '';
 
   constructor(private toolbar: ToolbarService,
     public userSettings: UserSettingsService,
     private loginDialog: MatDialog,
-    private registerDialog: MatDialog
-  ) { }
-  menuBreakpoint = 480; // ToDo: make actual contract of break point corresponding style
-  menuShown = true;
+    private registerDialog: MatDialog,
+    private themeService: ThemeService
+  ) {
+    this.themeService.currentTheme.subscribe(theme => this.currentTheme = theme);
+   }
 
   ngOnInit() {
     this.setupMenuVisibility();
@@ -33,7 +38,7 @@ export class HeaderComponent implements OnInit {
   }
 
   /**
-   * Setups menu visibility to increase ux.
+   * Setups menu visibility to improve UX.
    */
   setupMenuVisibility() {
     if (window.innerWidth > this.menuBreakpoint) {
@@ -44,10 +49,11 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu() {
-    this.menuShown = !this.menuShown;
+    // this.menuShown = !this.menuShown;
+    this.menuShown ? this.hideMenu() : this.showMenu();
   }
 
-  showMenus() {
+  showMenu() {
     this.menuShown = true;
   }
 
@@ -85,5 +91,9 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.userSettings.logOut();
     window.location.assign(''); // We need to reload window to apply changes.
+  }
+
+  switchTheme(theme: string) {
+    this.themeService.changeTheme(theme);
   }
 }

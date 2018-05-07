@@ -3,6 +3,7 @@
 @mixin header-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
 
   app-header {
     .header-title {
@@ -16,6 +17,13 @@
     .menu {
       @media all and (max-width: $media-width-small) {
         background: map-get($primary, default);
+      }
+    }
+
+
+    app-theme-switch {
+      .checkbox {
+        color: map-get($foreground, text);
       }
     }
   }
