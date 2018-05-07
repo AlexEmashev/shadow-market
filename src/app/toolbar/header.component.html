@@ -11,31 +11,41 @@
   <button mat-icon-button class="menu-button" [matMenuTriggerFor]="mainMenu">
     <i class="material-icons">apps</i>
   </button>
-  <ul class="menu" *ngIf="menuShown" id="mainMenu">
+  <ul class="menu" id="mainMenu">
     <li class="themes">
-        <button mat-button [matMenuTriggerFor]="themeMenu">
+        <button mat-icon-button [matMenuTriggerFor]="themeMenu">
           <i class="material-icons md-24">color_lens</i>
-          <span class="button-label">{{ 'themeSwitch.title' | translate }}</span>
+          <!-- <span class="button-label">{{ 'themeSwitch.title' | translate }}</span> -->
         </button>
     </li>
     <li class="locale">
-      <app-locale-switch></app-locale-switch>
+      <button mat-icon-button [matMenuTriggerFor]="localeMenu">
+        <i class="material-icons md-24">translate</i>
+        <!-- <span class="button-label">{{ 'localeSwitch.locale' | translate }}</span> -->
+      </button>
     </li>
     <li class="user">
-      <button mat-button [matMenuTriggerFor]="userMenu">
+      <button mat-button class="login" [matMenuTriggerFor]="userMenu">
         <i class="material-icons md-24">person</i>
-        <span class="button-label">{{userSettings.name}}</span>
+        <span class="button-label" *ngIf="!userSettings.name">{{ 'loginMenu.login' | translate }}</span>
+        <span class="button-label" *ngIf="userSettings.name">{{userSettings.name}}</span>
       </button>
     </li>
   </ul>
 </mat-toolbar>
 
+<!-- App menu -->
 <mat-menu #mainMenu="matMenu">
   <button mat-menu-item [matMenuTriggerFor]="themeMenu">
     <i class="material-icons md-24">color_lens</i>
     <span class="button-label">{{ 'themeSwitch.title' | translate }}</span>
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="localeMenu">
+    <i class="material-icons md-24">translate</i>
+    <span class="button-label">{{ 'localeSwitch.locale' | translate }}</span>
+  </button>
   <button mat-menu-item (click)="openLoginDialog()" *ngIf="userSettings.id <= 0">
+    <i class="material-icons md-24">person</i>
     <span>{{ 'loginMenu.login' | translate }}</span>
   </button>
   <button mat-menu-item (click)="openRegisterDialog()" *ngIf="userSettings.id <= 0">
@@ -61,16 +71,25 @@
 
 <!-- Theme switch menu -->
 <mat-menu #themeMenu="matMenu">
-    <button mat-menu-item (click)="switchTheme('hazyDay')">
-      <span class="hazy-day-swatch theme-preview">
-        <i *ngIf="currentTheme === 'hazy-day-theme'" class="material-icons checkbox">done</i>
-      </span>
-      <span  class="button-label">{{ 'themeSwitch.hazyDay' | translate }}</span>
-    </button>
-    <button mat-menu-item (click)="switchTheme('blackWatch')">
-      <span class="black-watch-swatch theme-preview">
-        <i *ngIf="currentTheme === 'black-watch-theme'" class="material-icons checkbox">done</i>
-      </span>
-      <span>{{ 'themeSwitch.blackWatch' | translate }}</span>
-    </button>
-  </mat-menu>
+  <button mat-menu-item (click)="switchTheme('hazyDay')">
+    <span class="hazy-day-swatch theme-preview">
+      <i *ngIf="currentTheme === 'hazy-day-theme'" class="material-icons checkbox">done</i>
+    </span>
+    <span  class="button-label">{{ 'themeSwitch.hazyDay' | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="switchTheme('blackWatch')">
+    <span class="black-watch-swatch theme-preview">
+      <i *ngIf="currentTheme === 'black-watch-theme'" class="material-icons checkbox">done</i>
+    </span>
+    <span>{{ 'themeSwitch.blackWatch' | translate }}</span>
+  </button>
+</mat-menu>
+
+<mat-menu #localeMenu="matMenu">
+  <button mat-menu-item (click)="switchLocale('en')">
+    <span class="checkbox-spacer"><i *ngIf="currentLocale === 'en'" class="material-icons">done</i></span><span>English (US)</span>
+  </button>
+  <button mat-menu-item (click)="switchLocale('ru')">
+    <span class="checkbox-spacer"><i *ngIf="currentLocale === 'ru'"class="material-icons">done</i></span><span>Русский (Ru)</span>
+  </button>
+</mat-menu>
