@@ -217,7 +217,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
             if (result) {
               this.location.back();
             } else {
-              console.log('Item hasn\'t been updated. Something went wrong.');
+              console.log('🐞 Item hasn\'t been updated. Something went wrong.');
             }
           }
         );
@@ -229,7 +229,7 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
         );
       }
     } else {
-      console.log('Form is invalid!');
+      console.log('😡 Form is invalid!');
     }
   }
 
