@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef  } from '@angular/core';
 import { CatalogItem } from '../catalog-item';
 import { MatDialog } from '@angular/material';
 import { DeleteConfirmationComponent } from '../../delete-confirmation/delete-confirmation.component';
@@ -14,7 +14,7 @@ import { UserLoginComponent } from '../../user-login/user-login.component';
   templateUrl: './catalog-item.component.html',
   styleUrls: ['./catalog-item.component.scss']
 })
-export class CatalogItemComponent implements OnInit, AfterViewInit {
+export class CatalogItemComponent implements OnInit {
   @Input() catalogItem: CatalogItem;
   @Input() editMode: boolean;
   @Output() deleteClick: EventEmitter<CatalogItem> = new EventEmitter();
@@ -33,12 +33,7 @@ export class CatalogItemComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
-  }
-
-  ngAfterViewInit() {
-    this.catalogService.bumpView(this.catalogItem.id);
-    // Wee need to update changes manually after modifying the model.
-    this.cdRef.detectChanges();
+    this.catalogService.bumpView(this.catalogItem.id).subscribe();
   }
 
   /**
@@ -46,7 +41,7 @@ export class CatalogItemComponent implements OnInit, AfterViewInit {
    */
   openConfirmDeleteDialog(): void {
     const dialogRef = this.confirmDeleteDialog.open(DeleteConfirmationComponent);
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.deleteItem();
       }
@@ -63,7 +58,7 @@ export class CatalogItemComponent implements OnInit, AfterViewInit {
         height: 'auto'
       });
     } else {
-      this.catalogService.like(this.catalogItem.id);
+      this.catalogService.like(this.catalogItem.id).subscribe();
     }
   }
 

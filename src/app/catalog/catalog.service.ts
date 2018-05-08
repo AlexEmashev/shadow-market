@@ -26,6 +26,7 @@ export class CatalogService {
 
    /**
     * Loads DB from LocalStorage if possible, if no, loads mock data.
+    * Note: For demo purposes only.
     * @returns true if data loaded from LocalStoarage.
     */
    private loadDB(): boolean {
@@ -43,33 +44,48 @@ export class CatalogService {
     * Increase views of item by id.
     * @param id: item id.
     */
-   public bumpView(id: number): void {
-     this.catalog.map((item: CatalogItem, index: number, ary: CatalogItem[]) => {
-      if (item.id === id) {
-        item.views += 1;
-      }
-     });
+   public bumpView(id: number): Observable<CatalogItem> {
+     return from(this.catalog).pipe(
+       map((item: CatalogItem) => {
+         if (item.id === id) {
+           item.views += 1;
+         }
+         this.saveDBLocaly();
+         return item;
+       })
+     );
+    //  this.catalog.map((item: CatalogItem, index: number, ary: CatalogItem[]) => {
+    //   if (item.id === id) {
+    //     item.views += 1;
+    //   }
+    //  });
 
-    this.saveDBLocaly();
+    // this.saveDBLocaly();
    }
 
    /**
     * Increase likes.
     * @param id  item id.
     */
-   public like(id: number): void {
+   public like(id: number): Observable<number> {
      // ToDo: return observable, so in case of error we could decrease like count on view.
-    if ( this.userSettings.role === AppRoles.guest ) { return ; }
+    if ( this.userSettings.role === AppRoles.guest ) { return of(0) ; }
 
-    this.catalog.map((item: CatalogItem, index: number, ary: CatalogItem[]) => {
-      if (item.id === id && item.likes.indexOf(this.userSettings.name) === -1) {
-        item.likes.push(this.userSettings.name);
-      } else if (item.id === id) {
-        item.likes.splice(item.likes.indexOf(this.userSettings.name), 1);
-      }
-     });
+    return from(this.catalog).pipe(
+      map((item: CatalogItem) => {
+        if (item.id === id && item.likes.indexOf(this.userSettings.name) === -1) {
+          item.likes.push(this.userSettings.name);
+          return -1;
+        } else if (item.id === id) {
+          item.likes.splice(item.likes.indexOf(this.userSettings.name), 1);
+          return +1;
+        }
 
-    this.saveDBLocaly();
+        this.saveDBLocaly();
+      })
+    );
+
+
    }
 
    /**
@@ -94,7 +110,7 @@ export class CatalogService {
   }
 
   /**
-   * Returns items belonging current user.
+   * Returns items of the current user.
    */
   getItemsByUserID(userId: number): Observable<CatalogItem> {
     return from(this.catalog).pipe(filter(catalogItem => catalogItem.user_id === userId));

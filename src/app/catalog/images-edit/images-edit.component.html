@@ -1,4 +1,16 @@
 <div class="images-container">
+  <div class="image-add">
+    <input type="file" (change)="attachImage($event.target.files)"
+      style="display: none" accept="image/x-png,image/gif,image/jpeg"
+      multiple #addImage />
+    <span>{{ 'imagesEdit.add' | translate }}</span>
+    <button mat-fab color="primary" type="button"
+      [disabled]=disabled
+      color="accent"
+      (click)="addImage.click(); touchControl()">
+      <i class="material-icons catalog-item-add-icon">add_circle_outline</i>
+    </button>
+  </div>
     <div *ngFor="let image of value; let i=index;" class="image-container" [class.image-deleted]="image.state === 1 ">
       <button mat-icon-button title="Remove item"
         [disabled]=disabled
@@ -6,17 +18,5 @@
         <i class="material-icons remove-item">highlight_off</i>
       </button>
       <div class="image-wrapper"><img src="{{image.url}}" alt=""></div>
-    </div>
-    <div class="image-add">
-      <input type="file" (change)="attachImage($event.target.files)"
-        style="display: none" accept="image/x-png,image/gif,image/jpeg"
-        multiple #addImage />
-      <span>{{ 'imagesEdit.add' | translate }}</span>
-      <button mat-fab color="primary" type="button"
-        [disabled]=disabled
-        color="accent"
-        (click)="addImage.click(); touchControl()">
-        <i class="material-icons catalog-item-add-icon">add_circle_outline</i>
-      </button>
     </div>
 </div>

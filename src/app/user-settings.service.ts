@@ -164,28 +164,19 @@ export class UserSettingsService {
    * Loads user as current
    * @param user user object (can be obtained via login() function)
    */
-  public authrizeUser(user: UserSettings) {
-    this.userSettings.id = user.id;
-    this.userSettings.locale = user.locale;
-    this.userSettings.name = user.name;
-    this.userSettings.role = user.role;
-    this.userSettings.session = user.session;
-    this.userSettings.theme = user.theme;
+  public authrizeUser(user: UserSettings): Observable<boolean> {
+    this.userSettings = user;
     this.saveSettings();
+    return of(true);
   }
 
   /**
-   * Lgs out the user.
+   * Lgs user out.
    */
-  public logOut() {
-    const defaults = this.loadDefaults();
-    this.userSettings.id = defaults.id;
-    this.userSettings.locale = defaults.locale;
-    this.userSettings.name = defaults.name;
-    this.userSettings.role = defaults.role;
-    this.userSettings.session = defaults.session;
-    this.userSettings.theme = defaults.theme;
+  public logOut(): Observable<UserSettings> {
+    this.userSettings = this.loadDefaults();
     this.saveSettings();
+    return of(this.userSettings);
   }
 
   /**
@@ -208,8 +199,9 @@ export class UserSettingsService {
   }
 
   /**
-   * Returns user info by ID. Remarks: don't use it in the real app.
+   * Returns user info by ID.
    * @param id user's id
+   * @returns user object
    */
   public getUser(id: number): Observable<UserSettings> {
     return from(USERS)

@@ -26,7 +26,17 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
   /**
    * Current catalog item.
    */
-  item: CatalogItem;
+  item: CatalogItem = {
+    id: null,
+    user_id: null,
+    user_name: '',
+    title: null,
+    description: null,
+    photos: [],
+    price: null,
+    likes: [],
+    views: 0
+  };
   placeholderItemTitle: string;
   placeholderDescription: string;
   placeholderPrice: string;
@@ -45,34 +55,19 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
     private location: Location,
     private userSettings: UserSettingsService,
     private catalogService: CatalogService,
-    private translate: TranslateService) {
-      translate.onLangChange.subscribe(() => { this.localizeComponents(); });
-      this.item = {
-        id: null,
-        user_id: null,
-        user_name: '',
-        title: null,
-        description: null,
-        photos: [],
-        price: null,
-        likes: [],
-        views: 0
-      };
-      this.localizeComponents();
-    }
+    private translate: TranslateService) { }
 
-    /**
-     * Initializes form.
-     */
-    ngOnInit(): void {
-      // If ID is among the parameters, load image. In other case, form in creating mode.
-      if (this.route.snapshot.paramMap.get('id') !== null) {
-        this.getItem(+this.route.snapshot.paramMap.get('id'))
-          .subscribe((item) => this.initForm(item));
-      } else {
-        this.initForm(this.item);
-      }
+  ngOnInit(): void {
+    this.translate.onLangChange.subscribe(() => { this.localizeComponents(); });
+    this.localizeComponents();
+    // If ID is among the parameters, load image. In other case, form in creating mode.
+    if (this.route.snapshot.paramMap.get('id') !== null) {
+      this.getItem(+this.route.snapshot.paramMap.get('id'))
+        .subscribe((item) => this.initForm(item));
+    } else {
+      this.initForm(this.item);
     }
+  }
 
   /**
    * Initializes form with empty values.

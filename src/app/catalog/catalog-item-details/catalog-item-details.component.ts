@@ -67,7 +67,7 @@ export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
         height: 'auto'
       });
     } else {
-      this.catalogService.like(this.item.id);
+      this.catalogService.like(this.item.id).subscribe();
     }
   }
 
