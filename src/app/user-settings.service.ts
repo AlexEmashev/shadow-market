@@ -112,6 +112,7 @@ export class UserSettingsService {
    * Logins user to app using login password.
    * @param login login string
    * @param password password string
+   * @returns user observable of settings or null if not logged in
    */
   public login(login: string, password: string): Observable<UserSettings> {
     return from(USERS).pipe(
@@ -125,7 +126,7 @@ export class UserSettingsService {
    * @param login new user name
    * @param contact user contact
    * @param password user password
-   * @returns new user ID or -1 if user already exists.
+   * @returns new observable of user ID or -1 if user already exists.
    */
   public register(login: string, contact: string, password: string): Observable<number> {
     let lastId = 0; // Used to calculate new user ID.
@@ -148,10 +149,10 @@ export class UserSettingsService {
       USERS.push({
         id: newUserId,
         name: login,
-        locale: this.userSettings.locale,
+        locale: this.userSettings.locale, // Get current locale set by guest
         role: AppRoles.user,
         session: '',
-        theme: this.userSettings.theme,
+        theme: this.userSettings.theme, // Get current theme set by guest
         contact: contact
       });
       return of(newUserId);

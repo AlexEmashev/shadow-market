@@ -1,3 +1,5 @@
+// Auxiliary class for user settings
+
 /**
  * User roles.
  */

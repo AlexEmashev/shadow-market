@@ -17,15 +17,14 @@ export class CatalogService {
   /**
    * Local catalog items storage.
    */
-  catalog: CatalogItem[];
+  catalog: CatalogItem[] = [];
 
   constructor(private userSettings: UserSettingsService) {
-    this.catalog = [];
     this.loadDB();
-   }
+  }
 
    /**
-    * Loads DB from LocalStorage if possible, if no, loads mock data.
+    * Loads DB from LocalStorage if possible. If can't, loads mock data.
     * Note: For demo purposes only.
     * @returns true if data loaded from LocalStoarage.
     */
@@ -66,6 +65,7 @@ export class CatalogService {
    /**
     * Increase likes.
     * @param id  item id.
+    * @returns Observable of like 1 - liked, -1 disliked, 0 - can't set like because of guest role.
     */
    public like(id: number): Observable<number> {
      // ToDo: return observable, so in case of error we could decrease like count on view.
@@ -98,7 +98,7 @@ export class CatalogService {
    /**
     * Clears LocalStorage.
     */
-   public clearDB(): void {
+   clearDB(): void {
      localStorage.removeItem('db');
    }
 
