@@ -66,7 +66,6 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.userSettings.logOut().subscribe(user => {
-      //window.location.assign(''); // We need to reload window to apply changes.
     });
   }
 

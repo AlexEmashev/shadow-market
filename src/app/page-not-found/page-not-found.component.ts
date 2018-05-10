@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-page-not-found',
@@ -9,15 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PageNotFoundComponent implements OnInit {
   documentURL: string;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private translate: TranslateService
   ) {
     this.documentURL = document.location.href;
    }
 
   ngOnInit() {
+    console.log('We are here!');
   }
 
 }

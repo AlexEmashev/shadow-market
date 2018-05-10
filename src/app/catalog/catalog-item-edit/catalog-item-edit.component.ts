@@ -85,8 +85,6 @@ export class CatalogItemEditComponent implements OnInit, OnChanges {
       photos: [this.item.photos, [ValidateImages]],
       price: [this.item.price, [Validators.required, Validators.min(0), ValidatePrice]]
     });
-
-    console.dir(this.formItemEdit);
   }
 
   /**

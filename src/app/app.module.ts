@@ -25,12 +25,9 @@ import { ThemeService } from './theme.service';
  * App pages
  */
 import { CatalogModule } from './catalog/catalog.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 import { SettingsModule } from './settings/settings.module';
 import { HowToModule } from './howto/howto.module';
 import { AboutModule } from './about/about.module';
-import { PageNotFoundModule } from './page-not-found/page-not-found.module';
-import { RouteNotAllowedModule } from './route-not-allowed/route-not-allowed.module';
 /**
  * Module of main routing container.
  */
@@ -62,12 +59,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContentModule,
     SettingsModule,
     CatalogModule,
-    DashboardModule,
     HowToModule,
     AboutModule,
     AppRoutingModule,
-    PageNotFoundModule,
-    RouteNotAllowedModule,
     HttpClientModule,
     LocaleSwitchModule,
     TranslateModule.forRoot({

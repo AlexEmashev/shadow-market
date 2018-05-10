@@ -66,7 +66,7 @@ export class AuthGuardService implements CanActivate {
      * Navigates to 404 page
      */
     private navigateNotfound(): boolean {
-      this.router.navigate(['404']);
+      this.router.navigate(['/404']);
       return false;
     }
 }
