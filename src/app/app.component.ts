@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Themes } from './themes';
-import { ThemeService } from './theme.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { TranslateService } from '@ngx-translate/core';
-import { UserSettingsService } from './user-settings.service';
+import { Themes } from './shared/themes';
+import { ThemeService } from './shared/theme.service';
+import { UserSettingsService } from './shared/user-settings.service';
 
 
 @Component({

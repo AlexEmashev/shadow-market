@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogItem } from '../catalog-item';
-import { CatalogService } from '../catalog.service';
-import { UserSettingsService } from '../../user-settings.service';
+import { CatalogItem } from '../../shared/catalog-item';
+import { CatalogService } from '../../shared/catalog.service';
+import { UserSettingsService } from '../../shared/user-settings.service';
 import { Router } from '@angular/router';
 
 

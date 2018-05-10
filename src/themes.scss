@@ -8,11 +8,11 @@
 @import './app/pages/item-details/item-details.component.scss-theme';
 @import './app/components/catalog-item/catalog-item.component.scss-theme';
 @import './app/pages/my-items/my-items.component.scss-theme';
-@import './app/toolbar/header.component.scss-theme';
-@import './app/theme-switch/theme-switch.component.scss-theme';
-@import './app/theme-switch/theme-switch.component.colors-scss-theme';
-@import './app/side-nav/side-nav.component.scss-theme';
-@import './app/user-login/user-login.component.scss-theme';
+@import './app/components/header/header.component.scss-theme';
+@import './app/components/theme-switch/theme-switch.component.scss-theme';
+@import './app/components/theme-switch/theme-switch.component.colors-scss-theme';
+@import './app/components/side-nav/side-nav.component.scss-theme';
+@import './app/components/user-login/user-login.component.scss-theme';
 
 // Mixin for custom components.
 @mixin custom-components-theme($theme) {

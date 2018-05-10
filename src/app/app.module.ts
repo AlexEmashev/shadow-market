@@ -14,22 +14,18 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 
 // Import application modules
-import { ToolbarModule } from './toolbar/toolbar.module';
-import { SidenavModule } from './side-nav/side-nav.module';
-import { ToolbarService } from './toolbar/toolbar.service';
+import { ToolbarModule } from './components/header/header.module';
+import { SidenavModule } from './components/side-nav/side-nav.module';
+import { HeaderService } from './components/header/header.service';
 import { AppRoutingModule } from './app-routing.module';
-import { UserSettingsService } from './user-settings.service';
+import { UserSettingsService } from './shared/user-settings.service';
 import { AuthGuardService } from './shared/auth-guard.service';
-import { ThemeService } from './theme.service';
-/**
- * App pages
- */
-import { SettingsModule } from './settings/settings.module';
-
-import { ContentModule } from './content/content.module';
-import { ThemeSwitchModule } from './theme-switch/theme-switch.module';
-import { LocaleSwitchModule } from './locale-switch/locale-switch.module';
-import { UserLoginModule } from './user-login/user-login.module';
+import { ThemeService } from './shared/theme.service';
+import { CatalogService } from './shared/catalog.service';
+import { ThemeSwitchModule } from './components/theme-switch/theme-switch.module';
+import { LocaleSwitchModule } from './components/locale-switch/locale-switch.module';
+import { UserLoginModule } from './components/user-login/user-login.module';
+import { ContentModule } from './components/content/content.module';
 
 /**
  * Function for creating TranslateLoader.
@@ -47,14 +43,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToolbarModule,
     ThemeSwitchModule,
     SidenavModule,
     UserLoginModule,
     ContentModule,
-    SettingsModule,
     AppRoutingModule,
-    HttpClientModule,
     LocaleSwitchModule,
     TranslateModule.forRoot({
       loader: {
@@ -69,10 +64,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
-    ToolbarService,
+    HeaderService,
     UserSettingsService,
     AuthGuardService,
     ThemeService,
+    CatalogService
+
   ],
   bootstrap: [AppComponent]
 })

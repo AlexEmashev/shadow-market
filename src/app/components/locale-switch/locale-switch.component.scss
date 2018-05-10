@@ -1,0 +1,22 @@
+@import '../../breakpoints';
+button {
+  width: 100%;
+  padding: 10px;
+  height: auto;
+  min-width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.button-label {
+  display: none;
+  @media all and (max-width: $media-width-small) {
+    display: inline;
+  }
+
+}
+
+.checkbox-spacer {
+  width: 32px;
+}

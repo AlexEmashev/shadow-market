@@ -1,0 +1,7 @@
+@import '../../breakpoints';
+
+@media all and (max-width: $media-width-small) {
+  .close-button, .register-button {
+    min-width: 100%;
+  }
+}

@@ -1,15 +1,15 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CatalogComponent } from './catalog.component';
-import { ItemDetailsComponent } from './item-details/item-details.component';
+import { MyItemsComponent } from './my-items.component';
+import { ItemEditComponent } from './item-edit/item-edit.component';
 import { AuthGuardService } from '../../shared/auth-guard.service';
-
 /**
  * List of available routes in the app.
  */
 const routes: Routes = [
-  { path: '', component: CatalogComponent},
-  { path: ':id', component: ItemDetailsComponent, canActivate: [AuthGuardService] }
+  { path: '', component: MyItemsComponent},
+  { path: 'create', component: ItemEditComponent},
+  { path: ':id', component: ItemEditComponent, canActivate: [AuthGuardService] },
 ];
 
 /**
@@ -19,12 +19,12 @@ const routes: Routes = [
   imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ]
 })
-export class CatalogRoutingModule {
+export class MyItemsRoutingModule {
   // Allowing access to the shared module of the root module
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: CatalogRoutingModule,
+      ngModule: MyItemsRoutingModule,
       providers: [AuthGuardService]
     };
-  }
  }
+}

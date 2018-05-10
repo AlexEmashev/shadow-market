@@ -6,8 +6,8 @@ import { filter, max, map, defaultIfEmpty } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { from } from 'rxjs/observable/from';
 import { ImageState } from './image_element';
-import { UserSettingsService } from '../user-settings.service';
-import { AppRoles } from '../user-settings';
+import { UserSettingsService } from './user-settings.service';
+import { AppRoles } from './user-settings';
 
 /**
  * Service to work with catalog items.
@@ -20,6 +20,7 @@ export class CatalogService {
   catalog: CatalogItem[] = [];
 
   constructor(private userSettings: UserSettingsService) {
+    console.log('🤖 Catalog service has been created.');
     this.loadDB();
   }
 

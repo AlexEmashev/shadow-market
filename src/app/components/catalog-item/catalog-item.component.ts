@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef  } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { CatalogItem } from '../../shared/catalog-item';
-import { DeleteConfirmationComponent } from '../../delete-confirmation/delete-confirmation.component';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import { CatalogService } from '../../shared/catalog.service';
-import { UserSettingsService } from '../../user-settings.service';
-import { BuyDialogComponent } from '../../buy-dialog/buy-dialog.component';
-import { AppRoles } from '../../user-settings';
-import { UserLoginComponent } from '../../user-login/user-login.component';
+import { UserSettingsService } from '../../shared/user-settings.service';
+import { BuyDialogComponent } from '../buy-dialog/buy-dialog.component';
+import { AppRoles } from '../../shared/user-settings';
+import { UserLoginComponent } from '../user-login/user-login.component';
 
 
 @Component({
