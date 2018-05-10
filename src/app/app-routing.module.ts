@@ -21,8 +21,8 @@ const routes: Routes = [
   { path: 'howto', component: HowToComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'not-allowed', loadChildren: './route-not-allowed/route-not-allowed.module#RouteNotAllowedModule' },
-  { path: '404', loadChildren: './page-not-found/page-not-found.module#PageNotFoundModule' },
+  { path: 'not-allowed', loadChildren: './pages/not-allowed/not-allowed.module#NotAllowedModule' },
+  { path: '404', loadChildren: './pages/page-not-found/page-not-found.module#PageNotFoundModule' },
   { path: '**', redirectTo: '404' }
 ];
 

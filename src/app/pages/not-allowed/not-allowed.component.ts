@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-route-not-allowed',
-  templateUrl: './route-not-allowed.component.html',
-  styleUrls: ['./route-not-allowed.component.scss']
+  selector: 'app-not-allowed',
+  templateUrl: './not-allowed.component.html',
+  styleUrls: ['./not-allowed.component.scss']
 })
-export class RouteNotAllowedComponent implements OnInit {
+export class NotAllowedComponent implements OnInit {
 
   constructor(private location: Location) { }
 

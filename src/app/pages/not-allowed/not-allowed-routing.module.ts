@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouteNotAllowedComponent } from './route-not-allowed.component';
+import { NotAllowedComponent } from './not-allowed.component';
 /**
  * List of available routes in the app.
  */
 const routes: Routes = [
-  { path: '', component: RouteNotAllowedComponent},
+  { path: '', component: NotAllowedComponent},
 ];
 
 /**
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ]
 })
-export class RouteNotAllowedRoutingModule { }
+export class NotAllowedRoutingModule { }

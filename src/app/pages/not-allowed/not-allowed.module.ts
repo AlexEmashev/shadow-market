@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatIconModule } from '@angular/material';
-import { RouteNotAllowedComponent } from './route-not-allowed.component';
-import { RouteNotAllowedRoutingModule } from './route-not-allowed-routing.module';
+import { NotAllowedComponent } from './not-allowed.component';
+import { NotAllowedRoutingModule } from './not-allowed-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
@@ -10,9 +10,9 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     MatButtonModule,
     MatIconModule,
-    RouteNotAllowedRoutingModule,
+    NotAllowedRoutingModule,
     TranslateModule
   ],
-  declarations: [RouteNotAllowedComponent]
+  declarations: [NotAllowedComponent]
 })
-export class RouteNotAllowedModule { }
+export class NotAllowedModule { }
