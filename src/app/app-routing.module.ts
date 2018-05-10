@@ -5,8 +5,6 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { CatalogItemDetailsComponent } from './catalog/catalog-item-details/catalog-item-details.component';
 import { MyItemsComponent } from './catalog/my-items/my-items.component';
 import { CatalogItemEditComponent } from './catalog/catalog-item-edit/catalog-item-edit.component';
-import { AboutComponent } from './pages/about/about.component';
-import { HowToComponent } from './howto/howto.component';
 import { AuthGuardService } from './auth-guard.service';
 /**
  * List of available routes in the app.
@@ -18,8 +16,8 @@ const routes: Routes = [
   { path: 'my-items', component: MyItemsComponent },
   { path: 'my-items/create', component: CatalogItemEditComponent},
   { path: 'my-items/:id', component: CatalogItemEditComponent, canActivate: [AuthGuardService] },
-  { path: 'howto', component: HowToComponent },
   { path: 'settings', component: SettingsComponent },
+  { path: 'howto', loadChildren: './pages/howto/howto.module#HowToModule' },
   { path: 'about', loadChildren: './pages/about/about.module#AboutModule' },
   { path: 'not-allowed', loadChildren: './pages/not-allowed/not-allowed.module#NotAllowedModule' },
   { path: '404', loadChildren: './pages/page-not-found/page-not-found.module#PageNotFoundModule' },

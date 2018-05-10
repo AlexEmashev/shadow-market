@@ -26,10 +26,7 @@ import { ThemeService } from './theme.service';
  */
 import { CatalogModule } from './catalog/catalog.module';
 import { SettingsModule } from './settings/settings.module';
-import { HowToModule } from './howto/howto.module';
-/**
- * Module of main routing container.
- */
+
 import { ContentModule } from './content/content.module';
 import { ThemeSwitchModule } from './theme-switch/theme-switch.module';
 import { LocaleSwitchModule } from './locale-switch/locale-switch.module';
@@ -58,7 +55,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContentModule,
     SettingsModule,
     CatalogModule,
-    HowToModule,
     AppRoutingModule,
     HttpClientModule,
     LocaleSwitchModule,
