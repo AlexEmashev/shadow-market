@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ImageElement, ImageState } from './image_element';
+import { ImageElement, ImageState } from '../../shared/image_element';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**

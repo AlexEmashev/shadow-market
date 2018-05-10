@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { filter, max, map, defaultIfEmpty } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { from } from 'rxjs/observable/from';
-import { ImageState } from './images-edit/image_element';
+import { ImageState } from './image_element';
 import { UserSettingsService } from '../user-settings.service';
 import { AppRoles } from '../user-settings';
 
@@ -53,13 +53,6 @@ export class CatalogService {
          return item;
        })
      );
-    //  this.catalog.map((item: CatalogItem, index: number, ary: CatalogItem[]) => {
-    //   if (item.id === id) {
-    //     item.views += 1;
-    //   }
-    //  });
-
-    // this.saveDBLocaly();
    }
 
    /**
@@ -68,7 +61,6 @@ export class CatalogService {
     * @returns Observable of like 1 - liked, -1 disliked, 0 - can't set like because of guest role.
     */
    public like(id: number): Observable<number> {
-     // ToDo: return observable, so in case of error we could decrease like count on view.
     if ( this.userSettings.role === AppRoles.guest ) { return of(0) ; }
 
     return from(this.catalog).pipe(
@@ -84,8 +76,6 @@ export class CatalogService {
         this.saveDBLocaly();
       })
     );
-
-
    }
 
    /**

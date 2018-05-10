@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogItem } from './catalog-item';
-import { CatalogService } from './catalog.service';
+import { CatalogItem } from '../../shared/catalog-item';
+import { CatalogService } from '../../shared/catalog.service';
+
 
 @Component({
   selector: 'app-catalog',

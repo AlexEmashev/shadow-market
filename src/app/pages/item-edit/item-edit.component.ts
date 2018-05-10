@@ -1,15 +1,15 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { CatalogItem } from '../catalog-item';
-import { CatalogService } from '../catalog.service';
+import { CatalogItem } from '../../shared/catalog-item';
+import { CatalogService } from '../../shared/catalog.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import { ValidateImages } from '../images-edit/images-edit.component';
-import { ImageElement, ImageState } from '../images-edit/image_element';
+import { ValidateImages } from '../../components/images-edit/images-edit.component';
+import { ImageElement, ImageState } from '../../shared/image_element';
 import { UserSettingsService } from '../../user-settings.service';
 import {ErrorStateMatcher} from '@angular/material/core';
 

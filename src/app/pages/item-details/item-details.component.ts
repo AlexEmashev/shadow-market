@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { CatalogItem } from '../catalog-item';
-import { CatalogService } from '../catalog.service';
+import { CatalogItem } from '../../shared/catalog-item';
+import { CatalogService } from '../../shared/catalog.service';
 import { MatDialog } from '@angular/material';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,11 +12,11 @@ import { UserLoginComponent } from '../../user-login/user-login.component';
 
 
 @Component({
-  selector: 'app-catalog-item-details',
-  templateUrl: './catalog-item-details.component.html',
-  styleUrls: ['./catalog-item-details.component.scss']
+  selector: 'app-item-details',
+  templateUrl: './item-details.component.html',
+  styleUrls: ['./item-details.component.scss']
 })
-export class CatalogItemDetailsComponent implements OnInit, AfterViewInit {
+export class ItemDetailsComponent implements OnInit, AfterViewInit {
   /**
    * Catalog item.
    */

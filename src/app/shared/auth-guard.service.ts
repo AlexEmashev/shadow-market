@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { UserSettingsService } from './user-settings.service';
-import { CatalogService } from './catalog/catalog.service';
+import { UserSettingsService } from '../user-settings.service';
+import { CatalogService } from './catalog.service';
 import { Observable } from 'rxjs/Observable';
 import { map, defaultIfEmpty } from 'rxjs/operators';
 import { from } from 'rxjs/observable/from';

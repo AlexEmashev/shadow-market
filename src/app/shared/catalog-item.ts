@@ -1,4 +1,4 @@
-import { ImageElement, ImageState } from './images-edit/image_element';
+import { ImageElement, ImageState } from './image_element';
 
 /**
  * Describes single catalog item.

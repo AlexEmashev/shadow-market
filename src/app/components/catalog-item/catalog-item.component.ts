@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef  } from '@angular/core';
-import { CatalogItem } from '../catalog-item';
 import { MatDialog } from '@angular/material';
+import { CatalogItem } from '../../shared/catalog-item';
 import { DeleteConfirmationComponent } from '../../delete-confirmation/delete-confirmation.component';
-import { CatalogService } from '../catalog.service';
+import { CatalogService } from '../../shared/catalog.service';
 import { UserSettingsService } from '../../user-settings.service';
 import { BuyDialogComponent } from '../../buy-dialog/buy-dialog.component';
 import { AppRoles } from '../../user-settings';
