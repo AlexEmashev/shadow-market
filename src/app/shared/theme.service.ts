@@ -21,6 +21,10 @@ export class ThemeService {
   ) {
     this.themeProvider = new BehaviorSubject<string>(this.userSettings.theme);
     this.currentTheme = this.themeProvider.asObservable();
+    // On user switch change theme.
+    userSettings.getUserSettings().subscribe(
+      user => { this.changeTheme(user.theme); }
+    );
   }
 
   /**
@@ -28,7 +32,7 @@ export class ThemeService {
    */
   changeTheme(theme: string) {
     from(Themes).pipe(
-      filter(elem => elem.name === theme),
+      filter(elem => elem.class === theme),
       defaultIfEmpty(Themes[0])
     ).subscribe(elem => {
       this.themeProvider.next(elem.class);

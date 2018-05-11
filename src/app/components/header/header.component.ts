@@ -7,6 +7,7 @@ import { UserLoginComponent } from '../user-login/user-login.component';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { UserSettingsService } from '../../shared/user-settings.service';
 import { ThemeService } from '../../shared/theme.service';
+import { LocaleService } from '../../shared/locale.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ import { ThemeService } from '../../shared/theme.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  currentTheme = '';
+  currentTheme: string;
   currentLocale: string;
 
   constructor(private toolbar: HeaderService,
@@ -22,8 +23,10 @@ export class HeaderComponent implements OnInit {
     private loginDialog: MatDialog,
     private registerDialog: MatDialog,
     private translate: TranslateService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private localeService: LocaleService
   ) {
+    this.localeService.localeTheme.subscribe(locale => this.currentLocale = locale);
     this.themeService.currentTheme.subscribe(theme => this.currentTheme = theme);
    }
 
@@ -78,8 +81,6 @@ export class HeaderComponent implements OnInit {
    * @param locale locale string e.g. "en", "ru".
    */
   switchLocale(locale: string) {
-    this.translate.use(locale);
-    this.userSettings.locale = locale;
-    this.currentLocale = this.translate.currentLang;
+    this.localeService.changeLocale(locale);
   }
 }

@@ -4,13 +4,13 @@
 </button>
 
 <mat-menu #themeMenu="matMenu">
-  <button mat-menu-item (click)="switchTheme('hazyDay')">
+  <button mat-menu-item (click)="switchTheme('hazy-day-theme')">
     <span class="hazy-day-swatch theme-preview">
       <i *ngIf="currentTheme === 'hazy-day-theme'" class="material-icons checkbox">done</i>
     </span>
     <span>{{ 'themeSwitch.hazyDay' | translate }}</span>
   </button>
-  <button mat-menu-item (click)="switchTheme('blackWatch')">
+  <button mat-menu-item (click)="switchTheme('black-watch-theme')">
     <span class="black-watch-swatch theme-preview">
       <i *ngIf="currentTheme === 'black-watch-theme'" class="material-icons checkbox">done</i>
     </span>

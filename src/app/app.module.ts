@@ -23,6 +23,7 @@ import { AuthGuardService } from './shared/auth-guard.service';
 import { ThemeService } from './shared/theme.service';
 import { CatalogService } from './shared/catalog.service';
 import { ContentModule } from './components/content/content.module';
+import { LocaleService } from './shared/locale.service';
 
 /**
  * Function for creating TranslateLoader.
@@ -62,6 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserSettingsService,
     AuthGuardService,
     ThemeService,
+    LocaleService,
     CatalogService
 
   ],

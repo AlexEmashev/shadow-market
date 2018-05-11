@@ -23,9 +23,6 @@ import { AppRoutingModule } from '../../app-routing.module';
   exports: [
     SidenavComponent
   ],
-  providers: [
-
-  ],
   declarations: [
     SidenavComponent
   ]

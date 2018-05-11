@@ -51,12 +51,12 @@ export class UserLoginComponent implements OnInit {
    */
   login(login, password): void {
     this.userSettings.login(login, password)
-      .subscribe(item => {
-        if (item) {
-          this.userSettings.authrizeUser(item).subscribe((result: boolean) => {
+      .subscribe(user => {
+        if (user) {
+          this.userSettings.authrizeUser(user).subscribe((result: boolean) => {
+            console.log('User authorized:', user);
             this.showUserNotFound = false;
             this.dialogRef.close();
-            window.location.assign(''); // We need to reload window to apply changes.
           });
         } else {
           this.showUserNotFound = true;

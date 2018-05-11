@@ -7,14 +7,34 @@ import { map, defaultIfEmpty } from 'rxjs/operators';
 import { filter } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { from } from 'rxjs/observable/from';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class UserSettingsService {
-
   private userSettings: UserSettings;
+  private userSubject = new BehaviorSubject<UserSettings>(this.loadDefaults());
+  private currentUserObservable = this.userSubject.asObservable();
 
   constructor() {
     this.loadSettings();
+  }
+
+  /**
+   * Use this property to switch the user.
+   * So other parts of an app got notified about change.
+   */
+  private set setUserSettings(user: UserSettings) {
+    this.userSettings = user;
+    this.saveSettings(); // Save user to LocalStorage.
+    this.userSubject.next(this.userSettings);
+  }
+
+  /**
+   * Returns current user as observable.
+   * Used to notify if user changed, to switch app properties.
+   */
+  public getUserSettings(): Observable<UserSettings> {
+    return this.currentUserObservable;
   }
 
   get id(): number {
@@ -101,10 +121,10 @@ export class UserSettingsService {
    */
   private loadSettings() {
     if (localStorage.getItem('settings') === null) {
-      this.userSettings = this.loadDefaults();
+      this.setUserSettings = this.loadDefaults();
       this.saveSettings();
     } else {
-      this.userSettings = JSON.parse(localStorage.getItem('settings'));
+      this.setUserSettings = JSON.parse(localStorage.getItem('settings'));
     }
   }
 
@@ -166,8 +186,7 @@ export class UserSettingsService {
    * @param user user object (can be obtained via login() function)
    */
   public authrizeUser(user: UserSettings): Observable<boolean> {
-    this.userSettings = user;
-    this.saveSettings();
+    this.setUserSettings = user;
     return of(true);
   }
 
@@ -175,7 +194,7 @@ export class UserSettingsService {
    * Lgs user out.
    */
   public logOut(): Observable<UserSettings> {
-    this.userSettings = this.loadDefaults();
+    this.setUserSettings = this.loadDefaults();
     this.saveSettings();
     return of(this.userSettings);
   }

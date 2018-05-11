@@ -19,6 +19,9 @@ export class LocaleSwitchComponent implements OnInit {
 
   ngOnInit() {
     this.currentLocale = this.translate.defaultLang;
+    this.userSettings.getUserSettings().subscribe(user => {
+      this.switchLocale(user.locale);
+    });
   }
   /**
    * Switches app locale.
