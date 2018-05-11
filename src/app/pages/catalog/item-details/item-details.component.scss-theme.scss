@@ -8,13 +8,6 @@
   app-item-details {
     .item-icons {
       color: map-get($primary, default);
-
-      .like {
-        color: map-get($primary, darker);
-      }
-      .liked {
-        color: map-get($accent, default);
-      }
     }
 
     .item-by {

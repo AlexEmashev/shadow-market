@@ -9,6 +9,7 @@ import { MatButtonModule, MatIconModule, MatDialogModule } from '@angular/materi
 import { MatCardModule } from '@angular/material/card';
 import { CatalogService } from '../../shared/catalog.service';
 import { UserSettingsService } from '../../shared/user-settings.service';
+import { LikeModule } from '../../components/like/like.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { UserSettingsService } from '../../shared/user-settings.service';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    LikeModule
   ],
   declarations: [ CatalogComponent, ItemDetailsComponent ],
   exports: [ CatalogComponent, ItemDetailsComponent ],

@@ -22,7 +22,7 @@ export class ItemDetailsComponent implements OnInit, AfterViewInit {
    */
   item: CatalogItem;
   userName: string;
-  liked = false;
+
   /**
    * Native HTML element of photo slider.
    */
@@ -47,52 +47,22 @@ export class ItemDetailsComponent implements OnInit, AfterViewInit {
         this.item = item;
         this.userName = this.userSettings.name;
       });
-      this.userSettings.getUserSettings().subscribe(user => {
-        this.liked = this.checkLiked(user.name);
-      });
-  }
-
-  /**
-   * Returns true if item liked by user.
-   * @param userName username.
-   */
-  private checkLiked(userName: string): boolean {
-    if (this.item.likes.indexOf(userName) >= 0)  {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   ngAfterViewInit(): void {
     $('#photos').swipeslider();
   }
 
+  /**
+   * Shows buy dialog.
+   * @param item CatalogItem
+   */
   buyItem(item): void {
     this.buyDialog.open(BuyDialogComponent, {
       data: item,
       maxWidth: '640px',
       maxHeight: '300px'
     });
-  }
-
-  like(): void {
-    if (this.userSettings.role === AppRoles.guest) {
-      this.loginDialog.open(UserLoginComponent, {
-        width: '250px',
-        height: 'auto'
-      });
-    } else {
-      this.catalogService.like(this.item.id).subscribe(
-        result => {
-          // If result "1" - item liked, "-1" - item unliked, "0" - like count unchanged.
-          if (result > 0) {
-            this.liked = true;
-          } else if (result < 0) {
-            this.liked = false;
-          }
-        });
-    }
   }
 
   /**

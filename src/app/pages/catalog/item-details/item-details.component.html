@@ -5,10 +5,7 @@
           <h1 class="item-title">{{item.title}}</h1>
           <div class="item-icons">
             <span class="item-icon-container">
-              <button mat-icon-button (click)="like()">
-                <i class="material-icons like" [ngClass]="{'liked': liked}">favorite</i>
-              </button>
-              <span class="like-count">{{item.likes.length}}</span>
+              <app-like [catalogItem]="item"></app-like>
             </span>
             <span class="item-icon-container">
               <i class="material-icons">visibility</i> {{item.views}}
