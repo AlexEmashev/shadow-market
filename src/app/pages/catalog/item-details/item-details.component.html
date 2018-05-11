@@ -6,7 +6,7 @@
           <div class="item-icons">
             <span class="item-icon-container">
               <button mat-icon-button (click)="like()">
-                <i class="material-icons like" [ngClass]="{'liked': item.likes.indexOf(userName) >= 0}">favorite</i>
+                <i class="material-icons like" [ngClass]="{'liked': liked}">favorite</i>
               </button>
               <span class="like-count">{{item.likes.length}}</span>
             </span>

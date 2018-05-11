@@ -3,6 +3,7 @@ import { CatalogItem } from '../../shared/catalog-item';
 import { CatalogService } from '../../shared/catalog.service';
 import { UserSettingsService } from '../../shared/user-settings.service';
 import { Router } from '@angular/router';
+import { AppRoles } from '../../shared/user-settings';
 
 
 @Component({
@@ -21,6 +22,12 @@ export class MyItemsComponent implements OnInit {
 
   ngOnInit() {
     this.getCatalogItems();
+    // When user sign outs redirect them to catalog page.
+    this.userSettings.getUserSettings().subscribe(user => {
+      if (user.role === AppRoles.guest) {
+        this.router.navigate(['']);
+      }
+    });
   }
 
   /**

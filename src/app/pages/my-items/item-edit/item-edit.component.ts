@@ -12,6 +12,7 @@ import { ValidateImages } from '../../../components/images-edit/images-edit.comp
 import { ImageElement, ImageState } from '../../../shared/image_element';
 import { UserSettingsService } from '../../../shared/user-settings.service';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { AppRoles } from '../../../shared/user-settings';
 
 export function ValidatePrice(c: FormControl) {
   return Number.parseFloat(c.value) < 1000 ? null : {ValidatePrice: {valid: false}};
@@ -67,6 +68,13 @@ export class ItemEditComponent implements OnInit, OnChanges {
     } else {
       this.initForm(this.item);
     }
+
+    // When user sign outs redirect them to catalog page.
+    this.userSettings.getUserSettings().subscribe(user => {
+      if (user.role === AppRoles.guest) {
+        this.router.navigate(['']);
+      }
+    });
   }
 
   /**
