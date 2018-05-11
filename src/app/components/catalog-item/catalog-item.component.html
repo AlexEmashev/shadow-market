@@ -11,10 +11,10 @@
       </h2>
       <div class="catalog-item-description-details">
         <span class="catalog-item-description-icon">
-          <app-like [catalogItem]="catalogItem" *ngIf="catalogItem.likes"></app-like>
+          <app-like [catalogItem]="catalogItem"></app-like>
         </span>
         <span class="catalog-item-description-icon">
-          <i class="material-icons">visibility</i> {{catalogItem.views}}
+          <app-views [catalogItem]="catalogItem" [bump]="!editMode"></app-views>
         </span>
         <span class="item-by"><span [innerHTML]="'catalogItemPreview.itemBy' | translate"></span>&nbsp;<span class="user-name">{{catalogItem.user_name}}</span></span>
       </div>

@@ -25,7 +25,6 @@ export class CatalogComponent implements OnInit {
    * Returns catalog items.
    */
   getCatalogItems(): void {
-    console.log('Get catalog');
     this.catalogService.getItems()
       .subscribe(items => this.catalog = items);
   }

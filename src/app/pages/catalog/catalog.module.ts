@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CatalogService } from '../../shared/catalog.service';
 import { UserSettingsService } from '../../shared/user-settings.service';
 import { LikeModule } from '../../components/like/like.module';
+import { ViewsModule } from '../../components/views/views.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { LikeModule } from '../../components/like/like.module';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    LikeModule
+    LikeModule,
+    ViewsModule
   ],
   declarations: [ CatalogComponent, ItemDetailsComponent ],
   exports: [ CatalogComponent, ItemDetailsComponent ],

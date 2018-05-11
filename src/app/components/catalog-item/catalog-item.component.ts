@@ -31,7 +31,6 @@ export class CatalogItemComponent implements OnInit {
 
 
   ngOnInit() {
-    this.catalogService.bumpView(this.catalogItem.id).subscribe();
     this.userSettings.getUserSettings().subscribe(user => {
     });
   }

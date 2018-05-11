@@ -8,7 +8,7 @@
               <app-like [catalogItem]="item"></app-like>
             </span>
             <span class="item-icon-container">
-              <i class="material-icons">visibility</i> {{item.views}}
+                <app-views [catalogItem]="item"></app-views>
             </span>
             <span class="item-by">{{ 'catalogItemPreview.itemBy' | translate }}  <span class="user-name">{{item.user_name}}</span></span>
           </div>
