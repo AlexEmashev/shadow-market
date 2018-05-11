@@ -1,5 +1,5 @@
 <mat-card class="catalog-item">
-  <mat-card-content class="catalog-item-content">
+  <mat-card-content class="catalog-item-content" *ngIf="catalogItem">
     <div class="catalog-item-image-container">
       <img src="{{catalogItem.photos[0].url}}"
           alt="{{catalogItem.title}}">
@@ -11,10 +11,7 @@
       </h2>
       <div class="catalog-item-description-details">
         <span class="catalog-item-description-icon">
-          <button mat-icon-button (click)="like()">
-            <i class="material-icons like" [ngClass]="{'liked': liked}">favorite</i>
-          </button>
-          <span class="catalog-item-description-likes-count">{{catalogItem.likes.length}}</span>
+          <app-like [catalogItem]="catalogItem" *ngIf="catalogItem.likes"></app-like>
         </span>
         <span class="catalog-item-description-icon">
           <i class="material-icons">visibility</i> {{catalogItem.views}}

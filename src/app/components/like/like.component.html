@@ -1,0 +1,3 @@
+<button mat-icon-button (click)="like()" class="like-component">
+  <i class="material-icons like" [ngClass]="{'liked': liked}">favorite</i>
+</button>&nbsp;<span class="likes-count">{{catalogItem.likes.length}}</span>

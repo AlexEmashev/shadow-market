@@ -7,6 +7,7 @@ import { MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule, MatCard
 import { CatalogService } from '../../shared/catalog.service';
 import { BuyDialogModule } from '../buy-dialog/buy-dialog.module';
 import { DeleteConfirmationModule } from '../delete-confirmation/delete-confirmation.module';
+import { LikeModule } from '../like/like.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { DeleteConfirmationModule } from '../delete-confirmation/delete-confirma
     MatDialogModule,
     MatCardModule,
     BuyDialogModule,
-    DeleteConfirmationModule
+    DeleteConfirmationModule,
+    LikeModule
   ],
   declarations: [ CatalogItemComponent ],
   exports: [ CatalogItemComponent ],

@@ -6,6 +6,7 @@ $secondary-active-color: #676b6e;
 .catalog-item {
   margin: 20px;
   padding: 20px 20px;
+  
   // height: 160px;
   @media all and (max-width: $media-width-small) {
     //height: 380px;
@@ -13,8 +14,11 @@ $secondary-active-color: #676b6e;
 
   &-title {
     font-size: 24px;
-    font-weight: 500;
+    height: 30px;
     margin: 0;
+    overflow: hidden;
+    font-weight: 500;
+    line-height: 30px;
   }
 
   &-content {
@@ -58,11 +62,6 @@ $secondary-active-color: #676b6e;
       }
       margin-right: 10px;
     }
-    &-likes-count {
-      left: -5px;
-      margin-right: 7px;
-      position: relative;
-    }
     &-text {
       margin-top: 9px;
       height: 82px;
@@ -75,7 +74,6 @@ $secondary-active-color: #676b6e;
       right: 0;
       padding-left: 25px;
       width: 100px;
-      // background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 100%);
     }
     .item-by {
       @media all and (max-width: $media-width-small) {
@@ -85,13 +83,6 @@ $secondary-active-color: #676b6e;
     .user-name {
       font-weight: 500;
     }
-  }
-
-  &-title {
-    font-size: 24px;
-    line-height: 30px;
-    height: 30px;
-    overflow: hidden;
   }
 
   &-price {
@@ -120,7 +111,6 @@ $secondary-active-color: #676b6e;
       margin: 0 auto 7px;
       @media all and (max-width: $media-width-small) {
         flex-grow: 1;
-        //margin-left: 15px;
         min-width: 100%;
       }
     }
@@ -129,11 +119,8 @@ $secondary-active-color: #676b6e;
       margin: 0 auto 7px;
       @media all and (max-width: $media-width-small) {
         flex-grow: 1;
-        //margin-left: 15px;
         min-width: 100%;
       }
     }
   }
 }
-
-// ToDo: check layout around 484px, when the title is relatively long.

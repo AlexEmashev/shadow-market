@@ -48,6 +48,7 @@ export class UserLoginComponent implements OnInit {
    * Logs in to app using credentials.
    * @param login users's login
    * @param password user's password
+   * @returns true if logged in succesfully.
    */
   login(login, password): void {
     this.userSettings.login(login, password)
@@ -56,7 +57,7 @@ export class UserLoginComponent implements OnInit {
           this.userSettings.authrizeUser(user).subscribe((result: boolean) => {
             console.log('User authorized:', user);
             this.showUserNotFound = false;
-            this.dialogRef.close();
+            this.dialogRef.close(true);
           });
         } else {
           this.showUserNotFound = true;

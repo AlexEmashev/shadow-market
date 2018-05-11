@@ -7,6 +7,7 @@
 @import './app/pages/my-items/item-edit/item-edit.component.scss-theme';
 @import './app/pages/catalog/item-details/item-details.component.scss-theme';
 @import './app/components/catalog-item/catalog-item.component.scss-theme';
+@import './app/components/like/like.component.scss-theme';
 @import './app/pages/my-items/my-items.component.scss-theme';
 @import './app/components/header/header.component.scss-theme';
 @import './app/components/theme-switch/theme-switch.component.scss-theme';
@@ -24,6 +25,7 @@
   @include side-nav-component-theme($theme);
   @include my-items-component-theme($theme);
   @include login-component-theme($theme);
+  @include like-component-theme($theme);
 }
 
 // Hazy Day, theme with primarily shades of grey.
