@@ -4,8 +4,8 @@
 @include mat-core();
 
 // Components themes import:
-@import './app/pages/item-edit/item-edit.component.scss-theme';
-@import './app/pages/item-details/item-details.component.scss-theme';
+@import './app/pages/my-items/item-edit/item-edit.component.scss-theme';
+@import './app/pages/catalog/item-details/item-details.component.scss-theme';
 @import './app/components/catalog-item/catalog-item.component.scss-theme';
 @import './app/pages/my-items/my-items.component.scss-theme';
 @import './app/components/header/header.component.scss-theme';

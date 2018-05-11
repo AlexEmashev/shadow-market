@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule, MatCardModule } from '@angular/material';
 import { CatalogService } from '../../shared/catalog.service';
 import { BuyDialogModule } from '../buy-dialog/buy-dialog.module';
+import { DeleteConfirmationModule } from '../delete-confirmation/delete-confirmation.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { BuyDialogModule } from '../buy-dialog/buy-dialog.module';
     MatMenuModule,
     MatDialogModule,
     MatCardModule,
-    BuyDialogModule
+    BuyDialogModule,
+    DeleteConfirmationModule
   ],
   declarations: [ CatalogItemComponent ],
   exports: [ CatalogItemComponent ],
