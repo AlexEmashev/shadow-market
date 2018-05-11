@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogItem } from '../../shared/catalog-item';
 import { CatalogService } from '../../shared/catalog.service';
+import { UserSettingsService } from '../../shared/user-settings.service';
 
 
 @Component({
@@ -12,7 +13,9 @@ export class CatalogComponent implements OnInit {
 
   catalog: CatalogItem[];
 
-  constructor(private catalogService: CatalogService) { }
+  constructor(private catalogService: CatalogService,
+    private userSettings: UserSettingsService
+  ) { }
 
   ngOnInit() {
     this.getCatalogItems();
@@ -22,6 +25,7 @@ export class CatalogComponent implements OnInit {
    * Returns catalog items.
    */
   getCatalogItems(): void {
+    console.log('Get catalog');
     this.catalogService.getItems()
       .subscribe(items => this.catalog = items);
   }

@@ -21,6 +21,7 @@ export class CatalogItemComponent implements OnInit {
   @Output() editClick: EventEmitter<CatalogItem> = new EventEmitter();
 
   userName: string;
+  liked = false;
 
   constructor(private catalogService: CatalogService,
     private cdRef: ChangeDetectorRef,
@@ -34,6 +35,21 @@ export class CatalogItemComponent implements OnInit {
 
   ngOnInit() {
     this.catalogService.bumpView(this.catalogItem.id).subscribe();
+    this.userSettings.getUserSettings().subscribe(user => {
+      this.liked = this.checkLiked(user.name);
+    });
+  }
+
+  /**
+   * Returns true if item liked by user.
+   * @param userName username.
+   */
+  private checkLiked(userName: string): boolean {
+    if (this.catalogItem.likes.indexOf(userName) >= 0)  {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
@@ -58,7 +74,15 @@ export class CatalogItemComponent implements OnInit {
         height: 'auto'
       });
     } else {
-      this.catalogService.like(this.catalogItem.id).subscribe();
+      this.catalogService.like(this.catalogItem.id).subscribe(
+        result => {
+          // If result "1" - item liked, "-1" - item unliked, "0" - like count unchanged.
+          if (result > 0) {
+            this.liked = true;
+          } else if (result < 0) {
+            this.liked = false;
+          }
+        });
     }
   }
 

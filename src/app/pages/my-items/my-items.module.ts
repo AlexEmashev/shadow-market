@@ -10,6 +10,7 @@ import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/ma
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ImagesEditModule } from '../../components/images-edit/image-edit.module';
+import { UserSettingsService } from '../../shared/user-settings.service';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ export class MyItemsModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: CatalogItemModule,
-      providers: [CatalogService]
+      providers: [ CatalogService, UserSettingsService ]
     };
   }
 }

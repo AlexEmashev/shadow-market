@@ -65,15 +65,15 @@ export class CatalogService {
     if ( this.userSettings.role === AppRoles.guest ) { return of(0) ; }
 
     return from(this.catalog).pipe(
+      filter((item: CatalogItem) => item.id === id),
       map((item: CatalogItem) => {
         if (item.id === id && item.likes.indexOf(this.userSettings.name) === -1) {
           item.likes.push(this.userSettings.name);
-          return -1;
+          return 1;
         } else if (item.id === id) {
           item.likes.splice(item.likes.indexOf(this.userSettings.name), 1);
-          return +1;
+          return -1;
         }
-
         this.saveDBLocaly();
       })
     );

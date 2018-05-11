@@ -26,12 +26,4 @@ import { DeleteConfirmationModule } from '../delete-confirmation/delete-confirma
   bootstrap: [],
   providers: []
 })
-export class CatalogItemModule {
-  // Allowing access to the shared module of the root module
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: CatalogItemModule,
-      providers: [CatalogService]
-    };
-  }
- }
+export class CatalogItemModule { }

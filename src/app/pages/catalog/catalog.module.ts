@@ -8,6 +8,7 @@ import { CatalogRoutingModule } from './catalog-routing.module';
 import { MatButtonModule, MatIconModule, MatDialogModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { CatalogService } from '../../shared/catalog.service';
+import { UserSettingsService } from '../../shared/user-settings.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ export class CatalogModule {
     static forRoot(): ModuleWithProviders {
       return {
         ngModule: CatalogRoutingModule,
-        providers: [CatalogService]
+        providers: [CatalogService, UserSettingsService]
       };
  }
 }
