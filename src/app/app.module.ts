@@ -22,9 +22,6 @@ import { UserSettingsService } from './shared/user-settings.service';
 import { AuthGuardService } from './shared/auth-guard.service';
 import { ThemeService } from './shared/theme.service';
 import { CatalogService } from './shared/catalog.service';
-import { ThemeSwitchModule } from './components/theme-switch/theme-switch.module';
-import { LocaleSwitchModule } from './components/locale-switch/locale-switch.module';
-import { UserLoginModule } from './components/user-login/user-login.module';
 import { ContentModule } from './components/content/content.module';
 
 /**
@@ -45,12 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     HttpClientModule,
     ToolbarModule,
-    ThemeSwitchModule,
     SidenavModule,
-    UserLoginModule,
     ContentModule,
     AppRoutingModule,
-    LocaleSwitchModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
