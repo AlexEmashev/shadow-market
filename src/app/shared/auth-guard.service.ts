@@ -26,7 +26,6 @@ export class AuthGuardService implements CanActivate {
      */
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
       const item_id: number = +route.params.id;
-
       if (route.routeConfig.path === 'catalog/:id') { // Get item by ID, if not exists go to 404
         return this.catalogService.getItem(item_id)
           .pipe(map(item => true),
@@ -38,7 +37,7 @@ export class AuthGuardService implements CanActivate {
             return reqResult;
           })
         );
-      } else if (route.routeConfig.path === 'my-items/:id') { // Get user's item, if not exists not-allowed
+      } else if (route.routeConfig.path === ':id') { // Get user's item, if not exists not-allowed
         return  this.catalogService.getItemByUserID(item_id, this.userSettingsService.id)
           .pipe(
             map(item => true),

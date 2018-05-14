@@ -16,7 +16,10 @@ export class LikeComponent implements OnInit {
   @Input() catalogItem: CatalogItem;
   @Input() disabled: boolean;
 
-  liked: boolean;
+  /**
+   * True if item is liked by user.
+   */
+  public liked: boolean;
 
   constructor(
     private userSettings: UserSettingsService,

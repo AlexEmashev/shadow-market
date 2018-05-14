@@ -65,7 +65,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ThemeService,
     LocaleService,
     CatalogService
-
   ],
   bootstrap: [AppComponent]
 })

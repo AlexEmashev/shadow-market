@@ -55,7 +55,6 @@ export class UserLoginComponent implements OnInit {
       .subscribe(user => {
         if (user) {
           this.userSettings.authrizeUser(user).subscribe((result: boolean) => {
-            console.log('User authorized:', user);
             this.showUserNotFound = false;
             this.dialogRef.close(true);
           });
