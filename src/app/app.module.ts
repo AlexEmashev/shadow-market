@@ -8,6 +8,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
+// Import ngrx Redux modules
+import { StoreModule } from '@ngrx/store';
+
 // NGX-Translate modules
 import { TranslateModule, TranslateLoader, TranslateCompiler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -24,6 +27,8 @@ import { ThemeService } from './shared/theme.service';
 import { CatalogService } from './shared/catalog.service';
 import { ContentModule } from './components/content/content.module';
 import { LocaleService } from './shared/locale.service';
+// Import User Settings state modules
+import {reducers, metaRducers} from './shared/reducers/reducers';
 
 /**
  * Function for creating TranslateLoader.
@@ -46,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SidenavModule,
     ContentModule,
     AppRoutingModule,
+    StoreModule.forRoot(reducers),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

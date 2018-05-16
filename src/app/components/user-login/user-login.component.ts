@@ -4,6 +4,10 @@ import { UserSettingsService } from '../../shared/user-settings.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { UserSettings } from '../../shared/user-settings';
+import * as userActions from '../../shared/actions/actions';
 
 @Component({
   selector: 'app-user-login',
@@ -17,6 +21,8 @@ export class UserLoginComponent implements OnInit {
   placeholderLogin: string;
   placeholderPassword: string;
 
+  userState: Observable<UserSettings>;
+
   constructor(
     public dialogRef: MatDialogRef<UserLoginComponent>,
     private userSettings: UserSettingsService,
@@ -24,11 +30,15 @@ export class UserLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
+    private store: Store<UserSettings>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
       this.showUserNotFound = false;
       translate.get('loginForm.login_input').subscribe((res: string) => this.placeholderLogin = res);
       translate.get('loginForm.password_input').subscribe((res: string) => this.placeholderPassword = res);
+      store.subscribe(state => {
+        console.log('State:', state);
+      });
      }
 
   ngOnInit() {
@@ -39,6 +49,7 @@ export class UserLoginComponent implements OnInit {
    * @param keyCode scan keycode for Enter press
    */
   onKeyPress(keyCode: number) {
+    this.store.dispatch(new userActions.UserSignIn());
     if (keyCode === 13) {
       this.login(this.login_str, this.password_str);
     }

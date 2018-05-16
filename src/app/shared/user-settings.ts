@@ -28,7 +28,7 @@ export enum AppThemes {
 /**
  * Class represents user settings.
  */
-export class UserSettings {
+export interface UserSettings {
   /**
    * User unique id.
    */

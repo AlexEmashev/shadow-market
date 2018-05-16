@@ -208,15 +208,15 @@ export class UserSettingsService {
    * So this missed setting will be set in default.
    */
   private loadDefaults(): UserSettings {
-    const userSettings = new UserSettings();
-    userSettings.id = 0;
-    userSettings.name = '';
-    userSettings.theme = Themes[0].class;
-    userSettings.role = AppRoles.guest;
-    userSettings.session = '';
-    userSettings.locale = 'en';
-
-    return userSettings;
+    return{
+      id: 0,
+      name: '',
+      theme: Themes[0].class,
+      role: AppRoles.guest,
+      session: '',
+      locale: 'en',
+      contact: ''
+    };
   }
 
   /**
