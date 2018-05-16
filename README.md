@@ -11,21 +11,29 @@ See [the demo page](https://alexemashev.github.io/shadow-market/).
 Following features have been utilized by the app:
 
 - TypeScript language and it's features
-- Angular components and modules
-- Angular services to pass data between unrelated components
+- Angular architecture components and modules
+- Angular services to share data between unrelated components
+- Angular dependency injection mechanism
+- Angular lifecycle hooks
+- Angular template syntax
+- Angular pipes to modify displayed data
 - Material design for Angular
 - Application routing
 - RxJS and Observable pattern
-- Angular forms: reactive forms
+- ngrx library and Redux pattern
+- Angular forms: reactive forms, template driven
 - Custom form controls
+- Form validation and custom validation
 - SCSS markup-language
 - Angular themisation
 - Mobile friendly markup
 - I18n and l10n
 - Pluralization
 - Transcluding components
-- Hash and Slash location strategies
+- Hash and Path location strategies
+- Lazy-loading aplication modules
 - Compilation JIT and AOT
+- Npm modules creation, publishing and installation
 
 ## Installation
 
