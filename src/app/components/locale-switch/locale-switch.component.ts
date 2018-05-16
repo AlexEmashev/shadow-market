@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { UserSettingsService } from '../../shared/user-settings.service';
+import { Store } from '@ngrx/store';
+import * as fromReducer from '../../shared/reducers/reducers';
 
 @Component({
   selector: 'app-locale-switch',
@@ -14,13 +16,14 @@ export class LocaleSwitchComponent implements OnInit {
   currentLocale: string;
 
   constructor( private translate: TranslateService,
+    private store: Store<fromReducer.State>,
     private userSettings: UserSettingsService
   ) { }
 
   ngOnInit() {
     this.currentLocale = this.translate.defaultLang;
-    this.userSettings.getUserSettings().subscribe(user => {
-      this.switchLocale(user.locale);
+    this.store.subscribe(state => {
+      this.switchLocale(state.user.locale);
     });
   }
   /**

@@ -4,6 +4,8 @@ import { CatalogService } from '../../shared/catalog.service';
 import { UserSettingsService } from '../../shared/user-settings.service';
 import { Router } from '@angular/router';
 import { AppRoles } from '../../shared/user-settings';
+import { Store } from '@ngrx/store';
+import * as fromReducer from '../../shared/reducers/reducers';
 
 
 @Component({
@@ -16,15 +18,17 @@ export class MyItemsComponent implements OnInit {
   itemsCount = 0; // Set default to 0, since if user doesn't have lots catalog service won't fire
   constructor(private catalogService: CatalogService,
               public userSettings: UserSettingsService,
-              private router: Router) {
+              private router: Router,
+              private store: Store<fromReducer.State>
+            ) {
     this.catalog = [];
   }
 
   ngOnInit() {
     this.getCatalogItems();
     // When user sign outs redirect them to catalog page.
-    this.userSettings.getUserSettings().subscribe(user => {
-      if (user.role === AppRoles.guest) {
+    this.store.subscribe(state => {
+      if (state.user.role === AppRoles.guest) {
         this.router.navigate(['']);
       }
     });

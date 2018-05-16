@@ -3,6 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { UserSettingsService } from './user-settings.service';
 import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import * as fromReducer from '../shared/reducers/reducers';
 
 /**
  * Service controlling theme setting.
@@ -13,14 +15,15 @@ export class LocaleService {
   localeTheme: Observable<string>;
 
   constructor(private userSettings: UserSettingsService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private store: Store<fromReducer.State>
   ) {
     this.localeProvider = new BehaviorSubject<string>(this.userSettings.locale);
     this.localeTheme = this.localeProvider.asObservable();
-    // On user switch change theme.
-    userSettings.getUserSettings().subscribe(
-      user => { this.changeLocale(user.locale); }
-    );
+
+    store.select('user').subscribe(state => {
+      this.changeLocale(state.locale);
+    });
   }
 
   /**

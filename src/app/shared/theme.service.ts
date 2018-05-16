@@ -6,7 +6,8 @@ import { filter, defaultIfEmpty } from 'rxjs/operators';
 import {AppRoles, AppThemes, UserSettings } from './user-settings';
 import { UserSettingsService } from './user-settings.service';
 import { Observable } from 'rxjs/Observable';
-
+import { Store } from '@ngrx/store';
+import * as fromReducer from '../shared/reducers/reducers';
 
 
 /**
@@ -18,13 +19,14 @@ export class ThemeService {
   currentTheme: Observable<string>;
 
   constructor(private userSettings: UserSettingsService,
+    private store: Store<fromReducer.State>,
   ) {
     this.themeProvider = new BehaviorSubject<string>(this.userSettings.theme);
     this.currentTheme = this.themeProvider.asObservable();
     // On user switch change theme.
-    userSettings.getUserSettings().subscribe(
-      user => { this.changeTheme(user.theme); }
-    );
+    this.store.subscribe(state => {
+       this.changeTheme(state.user.theme);
+     });
   }
 
   /**

@@ -7,6 +7,8 @@ import { UserSettingsService } from '../../shared/user-settings.service';
 import { BuyDialogComponent } from '../buy-dialog/buy-dialog.component';
 import { AppRoles } from '../../shared/user-settings';
 import { UserLoginComponent } from '../user-login/user-login.component';
+import { Store } from '@ngrx/store';
+import * as fromReducer from '../../shared/reducers/reducers';
 
 @Component({
   selector: 'app-catalog-item',
@@ -22,6 +24,7 @@ export class CatalogItemComponent implements OnInit {
   userName: string;
 
   constructor(private catalogService: CatalogService,
+    private store: Store<fromReducer.State>,
     private userSettings: UserSettingsService,
     private buyDialog: MatDialog,
     private loginDialog: MatDialog,
@@ -31,8 +34,7 @@ export class CatalogItemComponent implements OnInit {
 
 
   ngOnInit() {
-    this.userSettings.getUserSettings().subscribe(user => {
-    });
+    this.store.subscribe(state => { });
   }
 
   /**

@@ -5,7 +5,8 @@ import { UserLoginComponent } from '../user-login/user-login.component';
 import { UserSettingsService } from '../../shared/user-settings.service';
 import { CatalogService } from '../../shared/catalog.service';
 import { AppRoles } from '../../shared/user-settings';
-
+import { Store } from '@ngrx/store';
+import * as fromReducer from '../../shared/reducers/reducers';
 
 @Component({
   selector: 'app-like',
@@ -23,13 +24,14 @@ export class LikeComponent implements OnInit {
 
   constructor(
     private userSettings: UserSettingsService,
+    private store: Store<fromReducer.State>,
     private loginDialog: MatDialog,
     private catalogService: CatalogService
   ) { }
 
   ngOnInit() {
-    this.userSettings.getUserSettings().subscribe( user => {
-      this.liked = this.checkItemLiked(user.name);
+    this.store.subscribe(state => {
+      this.liked = this.checkItemLiked(state.user.name);
     });
   }
 

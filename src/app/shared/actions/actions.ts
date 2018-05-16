@@ -1,4 +1,5 @@
 import {Action} from '@ngrx/store';
+import { UserSettings } from '../user-settings';
 
 export const USER_SIGN_IN = 'USER_SIGN_IN';
 export const USER_SIGN_OUT = 'USER_SIGN_OUT';
@@ -8,6 +9,8 @@ export const USER_SIGN_OUT = 'USER_SIGN_OUT';
  */
 export class UserSignIn implements Action {
   readonly type = USER_SIGN_IN;
+
+  constructor(public payload: UserSettings) {}
 }
 
 /**
@@ -15,6 +18,8 @@ export class UserSignIn implements Action {
  */
 export class UserSignOut implements Action {
   readonly type = USER_SIGN_OUT;
+
+  constructor(public payload: UserSettings) {}
 }
 
 export type All = UserSignIn | UserSignOut;

@@ -9,6 +9,9 @@ import { filter } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { from } from 'rxjs/observable/from';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Store } from '@ngrx/store';
+import * as fromReducer from '../shared/reducers/reducers';
+import * as userActions from '../shared/actions/actions';
 
 @Injectable()
 export class UserSettingsService {
@@ -16,8 +19,9 @@ export class UserSettingsService {
   private userSubject = new BehaviorSubject<UserSettings>(this.loadDefaults());
   private currentUserObservable = this.userSubject.asObservable();
 
-  constructor() {
+  constructor(private store: Store<fromReducer.State>) {
     this.loadSettings();
+    this.store.dispatch(new userActions.UserSignIn(this.userSettings));
   }
 
   /**
@@ -188,6 +192,7 @@ export class UserSettingsService {
    */
   public authrizeUser(user: UserSettings): Observable<boolean> {
     this.setUserSettings = user;
+    this.store.dispatch(new userActions.UserSignIn(this.userSettings));
     return of(true);
   }
 
@@ -197,6 +202,7 @@ export class UserSettingsService {
   public logOut(): Observable<UserSettings> {
     this.setUserSettings = this.loadDefaults();
     this.saveSettings();
+    this.store.dispatch(new userActions.UserSignOut(this.userSettings));
     return of(this.userSettings);
   }
 
