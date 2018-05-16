@@ -3,6 +3,7 @@ import {AppRoles, AppThemes, UserSettings} from './user-settings';
 import { USERS } from './users-mock';
 import { Themes } from './themes';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/operators/map';
 import { map, defaultIfEmpty } from 'rxjs/operators';
 import { filter } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
