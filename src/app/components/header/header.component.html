@@ -49,6 +49,7 @@
     <span>{{ 'loginMenu.login' | translate }}</span>
   </button>
   <button mat-menu-item (click)="openRegisterDialog()" *ngIf="userSettings.id <= 0">
+    <i class="material-icons md-24">person_add</i>
     <span>{{ 'loginMenu.register' | translate }}</span>
   </button>
   <button mat-menu-item (click)="logOut()" *ngIf="userSettings.id > 0">

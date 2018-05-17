@@ -64,7 +64,17 @@ export class RegisterDialogComponent implements OnInit {
         this.showUserExist = true;
       } else {
         // Login user if registered.
-        this.userSettings.login(login, password);
+        this.userSettings.login(login, password).subscribe( user => {
+          if (user) {
+            this.userSettings.authrizeUser(user).subscribe(authorized => {
+              if (authorized) {
+                this.dialogRef.close();
+              } else {
+                console.log('😱 Authorization has failed.');
+              }
+            });
+          }
+        });
       }
     });
   }

@@ -1,7 +1,23 @@
 @import '../../breakpoints';
 
+mat-form-field {
+  width: 100%;
+}
+
 @media all and (max-width: $media-width-small) {
   .close-button, .register-button {
     min-width: 100%;
+  }
+  // Remove default margin on a smaller screens.
+  .mat-accent.register-button {
+    margin: 0;
+  }
+
+  .register-button {
+    order: 1;
+  }
+
+  .close-button {
+    order: 2;
   }
 }

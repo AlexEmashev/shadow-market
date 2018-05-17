@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
    */
   openRegisterDialog() {
     this.registerDialog.open(RegisterDialogComponent, {
-      width: '260px',
+      width: '300px',
       height: 'auto'
     });
   }

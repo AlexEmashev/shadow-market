@@ -189,6 +189,7 @@ export class UserSettingsService {
   /**
    * Loads user as current
    * @param user user object (can be obtained via login() function)
+   * @returns Observable of true if authorized or false if not.
    */
   public authrizeUser(user: UserSettings): Observable<boolean> {
     this.setUserSettings = user;

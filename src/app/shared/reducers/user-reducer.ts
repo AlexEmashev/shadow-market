@@ -8,7 +8,6 @@ import { UserSettings } from '../user-settings';
  * @param action action which should be performed on user.
  */
 export function userReducer(state: UserSettings, action: userActions.All): UserSettings {
-  console.log('state:', state, 'action:', action);
   switch (action.type) {
     case userActions.USER_SIGN_IN: {
       return action.payload;

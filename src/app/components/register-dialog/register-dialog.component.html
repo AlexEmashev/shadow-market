@@ -12,8 +12,22 @@
       #loginField="ngModel"
     >
     <mat-error *ngIf="!loginField.valid">
-      {{ 'registerForm.required' | translate }}
+      {{ 'registerForm.login_required' | translate }}
     </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input 
+      matInput [(ngModel)]="password" 
+      type="password" placeholder="{{placeholderPassword}}" 
+      (keydown)="onKeyPress($event.keyCode)"
+      name="password"
+      required
+      #passwordField="ngModel"
+      >
+      <mat-error *ngIf="!passwordField.valid">
+          {{ 'registerForm.password_required' | translate }}
+      </mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -22,28 +36,30 @@
       placeholder="{{placeholderContact}}" 
       (keydown)="onKeyPress($event.keyCode)"
       name="contact"
-      minlength="4"
+      minlength="7"
       required
       #contactField="ngModel"
       >
     <mat-error *ngIf="!contactField.valid">
-        {{ 'registerForm.required' | translate }}
+        {{ 'registerForm.contact_required' | translate }}
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <input 
-      matInput [(ngModel)]="password" 
-      type="password" placeholder="{{placeholderPassword}}" 
-      (keydown)="onKeyPress($event.keyCode)"
-      name="password"
-      >
-  </mat-form-field>
+  <mat-error *ngIf="showUserExist">
+      {{ 'registerForm.user_exits' | translate }}
+  </mat-error>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close class="close-button">{{ 'registerForm.cancel' | translate }}</button>
-  <button mat-button 
+  <button mat-button
+    mat-dialog-close
+    class="close-button">
+    {{ 'registerForm.cancel' | translate }}
+  </button>
+  <button mat-button
+    class="register-button"
     [disabled]="!registerForm.form.valid"
     (click)="register(login, contact, password)" 
-    color="accent">{{ 'registerForm.register' | translate }}</button>
+    color="accent">
+    {{ 'registerForm.register' | translate }}
+  </button>
 </mat-dialog-actions>
 </form>

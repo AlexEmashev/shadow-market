@@ -20,7 +20,6 @@ export class CatalogService {
   catalog: CatalogItem[] = [];
 
   constructor(private userSettings: UserSettingsService) {
-    console.log('🤖 Catalog service has been created.');
     this.loadDB();
   }
 
