@@ -9,7 +9,7 @@ import { AuthGuardService } from '../../shared/auth-guard.service';
  */
 const routes: Routes = [
   { path: '', component: CatalogComponent},
-  { path: ':id', component: ItemDetailsComponent, canActivate: [AuthGuardService] }
+  { path: ':id', component: ItemDetailsComponent}
 ];
 
 /**
