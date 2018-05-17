@@ -8,6 +8,7 @@ import { from } from 'rxjs/observable/from';
 import { ImageState } from './image_element';
 import { UserSettingsService } from './user-settings.service';
 import { AppRoles } from './user-settings';
+import { DBService } from '../shared/db.service';
 
 /**
  * Service to work with catalog items.
@@ -18,26 +19,14 @@ export class CatalogService {
    * Local catalog items storage.
    */
   catalog: CatalogItem[] = [];
+  private dbKey = 'catalog';
 
-  constructor(private userSettings: UserSettingsService) {
-    this.loadDB();
+  constructor(
+    private userSettings: UserSettingsService,
+    private dbService: DBService
+  ) {
+    this.catalog = this.dbService.loadData(this.dbKey, CATALOG);
   }
-
-   /**
-    * Loads DB from LocalStorage if possible. If can't, loads mock data.
-    * Note: For demo purposes only.
-    * @returns true if data loaded from LocalStoarage.
-    */
-   private loadDB(): boolean {
-    if (localStorage.getItem('db') === null) {
-      CATALOG.map(item => this.catalog.push(item));
-      this.saveDBLocaly();
-      return false;
-    } else {
-      this.catalog = JSON.parse(localStorage.getItem('db'));
-      return true;
-    }
-   }
 
    /**
     * Increase views of item by id.
@@ -49,7 +38,7 @@ export class CatalogService {
          if (item.id === id) {
            item.views += 1;
          }
-         this.saveDBLocaly();
+         this.dbService.saveData(this.dbKey, this.catalog);
          return item;
        })
      );
@@ -73,16 +62,9 @@ export class CatalogService {
           item.likes.splice(item.likes.indexOf(this.userSettings.name), 1);
           return -1;
         }
-        this.saveDBLocaly();
+        this.dbService.saveData(this.dbKey, this.catalog);
       })
     );
-   }
-
-   /**
-    * Saves DB in LocalStorage.
-    */
-   private saveDBLocaly(): void {
-     localStorage.setItem('db', JSON.stringify(this.catalog));
    }
 
    /**
@@ -132,7 +114,7 @@ export class CatalogService {
     });
     if (removeIndex >= 0) {
       this.catalog.splice(removeIndex, 1);
-      this.saveDBLocaly();
+      this.dbService.saveData(this.dbKey, this.catalog);
       return of(true);
     } else {
       return of(false);
@@ -153,7 +135,7 @@ export class CatalogService {
       }),
       map((item: CatalogItem) => {
         this.catalog.push(item);
-        this.saveDBLocaly();
+        this.dbService.saveData(this.dbKey, this.catalog);
         return item.id;
       })
     );
@@ -173,7 +155,7 @@ export class CatalogService {
         item.photos = filteredItems;
         item.price = catalogItem.price;
         item.title = catalogItem.title;
-        this.saveDBLocaly();
+        this.dbService.saveData(this.dbKey, this.catalog);
         return true;
       }),
       defaultIfEmpty(false)

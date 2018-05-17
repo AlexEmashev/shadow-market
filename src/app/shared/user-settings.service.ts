@@ -12,15 +12,33 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Store } from '@ngrx/store';
 import * as fromReducer from '../shared/reducers/reducers';
 import * as userActions from '../shared/actions/actions';
+import { DBService } from '../shared/db.service';
 
 @Injectable()
 export class UserSettingsService {
   private userSettings: UserSettings;
   private userSubject = new BehaviorSubject<UserSettings>(this.loadDefaults());
   private currentUserObservable = this.userSubject.asObservable();
+  /**
+   * Key for loading users DB.
+   */
+  private usersDBKey = 'users';
+  /**
+   * Key for loading saved user.
+   */
+  private userDBKey = 'user';
 
-  constructor(private store: Store<fromReducer.State>) {
-    this.loadSettings();
+  /**
+   * List of existing users.
+   */
+  private users: UserSettings[];
+
+  constructor(
+    private dbService: DBService,
+    private store: Store<fromReducer.State>
+  ) {
+    this.users = this.dbService.loadData(this.usersDBKey, USERS);
+    this.userSettings = this.loadUser();
     this.store.dispatch(new userActions.UserSignIn(this.userSettings));
   }
 
@@ -30,7 +48,7 @@ export class UserSettingsService {
    */
   private set setUserSettings(user: UserSettings) {
     this.userSettings = user;
-    this.saveSettings(); // Save user to LocalStorage.
+    this.saveUser();
     this.userSubject.next(this.userSettings);
   }
 
@@ -43,94 +61,65 @@ export class UserSettingsService {
   }
 
   get id(): number {
-    if (this.userSettings.id) {
-      return this.userSettings.id;
-    } else {
-      return this.loadDefaults().id;
-    }
+    return this.userSettings.id;
   }
   set id(value: number) {
     this.userSettings.id = value;
-    this.saveSettings();
+    this.saveUser();
   }
 
   get name(): string {
-    if (this.userSettings.name) {
-      return this.userSettings.name;
-    } else {
-      return this.loadDefaults().name;
-    }
+    return this.userSettings.name;
   }
   set name(value: string) {
     this.userSettings.name = value;
-    this.saveSettings();
+    this.saveUser();
   }
 
   get theme(): string {
-    if (this.userSettings.theme) {
-      return this.userSettings.theme;
-    } else {
-      return this.loadDefaults().theme;
-    }
+    return this.userSettings.theme;
   }
   set theme(value: string) {
     this.userSettings.theme = value;
-    this.saveSettings();
+    this.saveUser();
   }
 
   get role(): AppRoles {
-    if (this.userSettings.role) {
-      return this.userSettings.role;
-    } else {
-      return this.loadDefaults().role;
-    }
+    return this.userSettings.role;
   }
   set role(value: AppRoles) {
     this.userSettings.role = value;
-    this.saveSettings();
+    this.saveUser();
   }
 
   get session(): string {
-    if (this.userSettings.session) {
-      return this.userSettings.session;
-    } else {
-      return this.loadDefaults().session;
-    }
+    return this.userSettings.session;
   }
   set session(value: string) {
     this.userSettings.session = value;
-    this.saveSettings();
+    this.saveUser();
   }
 
   get locale(): string {
-    if (this.userSettings.locale) {
-      return this.userSettings.locale;
-    } else {
-      return this.loadDefaults().locale;
-    }
+    return this.userSettings.locale;
   }
   set locale(value: string) {
     this.userSettings.locale = value;
-    this.saveSettings();
+    this.saveUser();
   }
 
   /**
    * Saves user settings to storage.
    */
-  private saveSettings(): void {
-    localStorage.setItem('settings', JSON.stringify(this.userSettings));
+  private saveUser(): void {
+    this.dbService.saveData(this.userDBKey, this.userSettings);
   }
 
   /**
-   * Loads user settings from storage
+   * Loads saved user, or defaults if not present.
    */
-  private loadSettings() {
-    if (localStorage.getItem('settings') === null) {
-      this.setUserSettings = this.loadDefaults();
-      this.saveSettings();
-    } else {
-      this.setUserSettings = JSON.parse(localStorage.getItem('settings'));
-    }
+  private loadUser(): UserSettings {
+    return this.dbService.loadData(this.userDBKey, this.loadDefaults());
   }
 
   /**
@@ -157,29 +146,30 @@ export class UserSettingsService {
     let lastId = 0; // Used to calculate new user ID.
     let userExists = false; // Check if user already exists
 
-    // Find last user id
-    USERS.forEach((item, index, ary) => {
-      lastId = item.id > lastId ? item.id : lastId;
-    });
-
-    const newUserId = lastId + 1;
     // Check if user exists
-    USERS.forEach((item, index, ary) => {
-      if (item.name === login) {
+    this.users.forEach(user => {
+      if (user.name === login) {
         userExists = true;
       }
     });
 
+    // Find last user id
+    this.users.forEach(user => {
+      lastId = user.id > lastId ? user.id : lastId;
+    });
+
+    const newUserId = lastId + 1;
+
     if (!userExists) {
-      USERS.push({
-        id: newUserId,
-        name: login,
-        locale: this.userSettings.locale, // Get current locale set by guest
-        role: AppRoles.user,
-        session: '',
-        theme: this.userSettings.theme, // Get current theme set by guest
-        contact: contact
-      });
+      const newUser = this.loadDefaults();
+      newUser.id = newUserId;
+      newUser.name = login;
+      newUser.locale = this.userSettings.locale;
+      newUser.role = AppRoles.user;
+      newUser.theme = this.userSettings.theme;
+      newUser.contact = contact;
+      this.users.push(newUser);
+      this.dbService.saveData(this.usersDBKey, this.users);
       return of(newUserId);
     } else {
       return of(-1);
@@ -193,6 +183,7 @@ export class UserSettingsService {
    */
   public authrizeUser(user: UserSettings): Observable<boolean> {
     this.setUserSettings = user;
+    this.saveUser();
     this.store.dispatch(new userActions.UserSignIn(this.userSettings));
     return of(true);
   }
@@ -202,7 +193,7 @@ export class UserSettingsService {
    */
   public logOut(): Observable<UserSettings> {
     this.setUserSettings = this.loadDefaults();
-    this.saveSettings();
+    this.saveUser();
     this.store.dispatch(new userActions.UserSignOut(this.userSettings));
     return of(this.userSettings);
   }
@@ -232,7 +223,7 @@ export class UserSettingsService {
    * @returns user object
    */
   public getUser(id: number): Observable<UserSettings> {
-    return from(USERS)
+    return from(this.users)
     .pipe(
       filter(user => user.id === id),
       defaultIfEmpty(null)

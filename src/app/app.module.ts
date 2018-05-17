@@ -27,6 +27,7 @@ import { ThemeService } from './shared/theme.service';
 import { CatalogService } from './shared/catalog.service';
 import { ContentModule } from './components/content/content.module';
 import { LocaleService } from './shared/locale.service';
+import { DBService } from './shared/db.service';
 // Import User Settings state modules
 import {reducers, metaRducers} from './shared/reducers/reducers';
 
@@ -70,7 +71,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthGuardService,
     ThemeService,
     LocaleService,
-    CatalogService
+    CatalogService,
+    DBService
   ],
   bootstrap: [AppComponent]
 })
