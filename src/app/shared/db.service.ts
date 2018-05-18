@@ -9,6 +9,14 @@ export class DBService {
   }
 
   /**
+   * Returns true if key exists.
+   * @param key key to check
+   */
+  keyExists(key: string): boolean {
+    return localStorage.getItem(key) === null;
+  }
+
+  /**
    * Saves data using key parameter.
    * @param key key value to save the data
    * @param data data to save ()
@@ -25,7 +33,7 @@ export class DBService {
    * @returns loaded data if existed, returns null if not also returns @param default_val if passed.
    */
   loadData(key: string, default_val: any  = null): any {
-    if (localStorage.getItem(key) === null) {
+    if (!this.keyExists(key)) {
       this.saveData(key, default_val);
       return default_val;
     } else {
