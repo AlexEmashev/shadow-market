@@ -129,7 +129,7 @@ export class UserSettingsService {
    * @returns user observable of settings or null if not logged in
    */
   public login(login: string, password: string): Observable<UserSettings> {
-    return from(USERS).pipe(
+    return from(this.users).pipe(
       filter(user => user.name === login),
       defaultIfEmpty(null)
     );

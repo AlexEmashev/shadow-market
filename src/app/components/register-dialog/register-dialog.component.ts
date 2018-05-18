@@ -65,7 +65,6 @@ export class RegisterDialogComponent implements OnInit {
       } else {
         // Login user if registered.
         this.userSettings.login(login, password).subscribe( user => {
-          
           if (user) {
             this.userSettings.authrizeUser(user).subscribe(authorized => {
               if (authorized) {
