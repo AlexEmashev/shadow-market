@@ -37,7 +37,9 @@ export class UserSettingsService {
     private dbService: DBService,
     private store: Store<fromReducer.State>
   ) {
+    // Load users from storage.
     this.users = this.dbService.loadData(this.usersDBKey, USERS);
+    // Load either default or saved user.
     this.userSettings = this.loadUser();
     this.store.dispatch(new userActions.UserSignIn(this.userSettings));
   }
