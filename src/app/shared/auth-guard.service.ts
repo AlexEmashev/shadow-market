@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { UserSettingsService } from './user-settings.service';
 import { CatalogService } from './catalog.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  from ,  of } from 'rxjs';
 import { map, defaultIfEmpty } from 'rxjs/operators';
-import { from } from 'rxjs/observable/from';
-import { of } from 'rxjs/observable/of';
 
 /**
  * The class for cheching the authorization of a user and redirecting them

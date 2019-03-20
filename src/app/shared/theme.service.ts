@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { from } from 'rxjs/observable/from';
+import { BehaviorSubject ,  from ,  Observable } from 'rxjs';
 import { Themes, Theme } from './themes';
 import { filter, defaultIfEmpty } from 'rxjs/operators';
 import {AppRoles, AppThemes, UserSettings } from './user-settings';
 import { UserSettingsService } from './user-settings.service';
-import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import * as fromReducer from '../shared/reducers/reducers';
 

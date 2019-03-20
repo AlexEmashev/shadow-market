@@ -4,7 +4,7 @@ import { UserSettingsService } from '../../shared/user-settings.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { UserSettings } from '../../shared/user-settings';
 
 @Component({

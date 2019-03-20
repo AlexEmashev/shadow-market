@@ -4,7 +4,7 @@ import { CatalogService } from '../../../shared/catalog.service';
 import { MatDialog } from '@angular/material';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { BuyDialogComponent } from '../../../components/buy-dialog/buy-dialog.component';
 import { UserLoginComponent } from '../../../components/user-login/user-login.component';
 import { UserSettingsService } from '../../../shared/user-settings.service';
@@ -50,7 +50,7 @@ export class ItemDetailsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    $('#photos').swipeslider();
+    //$('#photos').swipeslider();
   }
 
   /**

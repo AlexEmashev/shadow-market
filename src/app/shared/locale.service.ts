@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject ,  Observable } from 'rxjs';
 import { UserSettingsService } from './user-settings.service';
-import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import * as fromReducer from '../shared/reducers/reducers';
 

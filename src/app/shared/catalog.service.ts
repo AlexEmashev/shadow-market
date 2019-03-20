@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CatalogItem } from './catalog-item';
 import { CATALOG } from './mock-catalog-items';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  of ,  from } from 'rxjs';
 import { filter, max, map, defaultIfEmpty } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
-import { from } from 'rxjs/observable/from';
 import { ImageState } from './image_element';
 import { UserSettingsService } from './user-settings.service';
 import { AppRoles } from './user-settings';

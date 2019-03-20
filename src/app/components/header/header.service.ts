@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 // Connect BehaviorSubject, to make sure, every subscriber recieves
 // the value on subscription.
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 /**
 * Service emitting messages from the app Toolbar.
