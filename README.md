@@ -2,11 +2,11 @@
 
 ## Description
 
-This app is created to explore [Angular 5](https://angular.io) features. In the current state the app is in serverless mode.
+This app is created to explore [Angular 7](https://angular.io) features. In the current state the app is in serverless mode.
 
 See [the demo page](https://alexemashev.github.io/shadow-market/).
 
-## Angular 5 features utilized in project
+## Angular 7 features utilized in project
 
 Following features have been utilized by the app:
 
@@ -40,7 +40,7 @@ Following features have been utilized by the app:
 To install the app follow the steps below:
 
 1. Install NodeJS using link https://nodejs.org/en/download/
-2. From the command line install Angular 5: `npm install -g @angular/cli`
+2. From the command line install Angular 7: `npm install -g @angular/cli`
 3. From the command line navigate to project directory and launch: `ng serve`
 4. By default the application located at [http://localhost:4200](http://localhost:4200).
 

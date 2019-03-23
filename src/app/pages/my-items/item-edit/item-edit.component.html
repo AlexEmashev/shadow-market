@@ -1,7 +1,7 @@
 <div class="catalog-item-container">
   <mat-card class="catalog-item">
     <mat-card-content class="catalog-item-content">
-      <form [formGroup]="formItemEdit" (ngSubmit)="onSubmit()" novalidate>
+      <form class="catalog-edit-form" [formGroup]="formItemEdit" (ngSubmit)="onSubmit()" novalidate>
         <div class="catalog-item-title">
           <mat-form-field floatLabel="never">
             <input matInput placeholder="{{placeholderItemTitle}}" formControlName="title">
@@ -12,7 +12,7 @@
               {{ 'catalogItemEdit.titleMinLength' | translate }}
             </mat-error>
           </mat-form-field>
-          
+
         </div>
 
         <app-images-edit formControlName="photos"></app-images-edit>
@@ -53,8 +53,8 @@
           </mat-form-field>
         </div>
         <div class="catalog-item-footer">
-          <button mat-raised-button color="primary" 
-            type="button" 
+          <button mat-raised-button color="primary"
+            type="button"
             class="cancel"
             (click)="cancelClick()"
             >

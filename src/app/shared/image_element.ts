@@ -14,3 +14,5 @@ export enum ImageState {
   deleted = 1,
   not_changed = 2
 }
+
+export const NoImageAvailableUrl = 'assets/items/no_image_available.svg';

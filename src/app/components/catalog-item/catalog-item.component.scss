@@ -75,6 +75,7 @@ $secondary-active-color: #676b6e;
       width: 100px;
     }
     .item-by {
+      display: inline-block;
       @media all and (max-width: $media-width-small) {
         display: block;
       }
@@ -106,19 +107,23 @@ $secondary-active-color: #676b6e;
       min-width: 100%;
     }
     &-details {
+      min-width: 100%;
       display: block;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
       margin: 0 auto 7px;
       @media all and (max-width: $media-width-small) {
         flex-grow: 1;
-        min-width: 100%;
       }
     }
     &-buy {
+      min-width: 100%;
       display: block;
       margin: 0 auto 7px;
       @media all and (max-width: $media-width-small) {
         flex-grow: 1;
-        min-width: 100%;
       }
     }
   }

@@ -109,7 +109,7 @@ export class ImagesEditComponent implements ControlValueAccessor, OnInit {
       reader.readAsDataURL(files[i]);
       reader.onload = () => {
         this.value.unshift({ url: reader.result.toString(), state: ImageState.added });
-        // Send event outside, that item has been added
+        // Send image added event outside.
         this.imageAdded.emit(reader.result.toString());
         // Trigger element changed.
         this.onChange(this.value);

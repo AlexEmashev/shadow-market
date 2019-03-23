@@ -9,6 +9,7 @@ import { BuyDialogComponent } from '../../../components/buy-dialog/buy-dialog.co
 import { UserLoginComponent } from '../../../components/user-login/user-login.component';
 import { UserSettingsService } from '../../../shared/user-settings.service';
 import { AppRoles } from '../../../shared/user-settings';
+import { ImageElement, NoImageAvailableUrl, ImageState } from '../../../shared/image_element';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class ItemDetailsComponent implements OnInit, AfterViewInit {
    */
   item: CatalogItem;
   userName: string;
+  selectedPhoto: ImageElement;
 
   /**
    * Native HTML element of photo slider.
@@ -47,6 +49,15 @@ export class ItemDetailsComponent implements OnInit, AfterViewInit {
         this.item = item;
         this.userName = this.userSettings.name;
       });
+    // Set image
+    if (this.item.photos.length > 0) {
+      this.selectedPhoto = this.item.photos[0]
+    } else {
+      this.selectedPhoto = {
+        url: NoImageAvailableUrl,
+        state: ImageState.not_changed
+      }
+    }
   }
 
   ngAfterViewInit(): void {
@@ -70,6 +81,10 @@ export class ItemDetailsComponent implements OnInit, AfterViewInit {
    */
   cancelClick(): void {
     this.location.back();
+  }
+
+  photoSelected(index: number): void {
+    this.selectedPhoto = this.item.photos[index];
   }
 
 }

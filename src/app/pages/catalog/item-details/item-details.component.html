@@ -15,13 +15,20 @@
 
           <div class="carousel">
             <!-- Photos carousel  -->
-            <div class="swipeslider" #itemPhotos id="photos">
-              <ul class="sw-slides">
-                <li class="sw-slide" *ngFor="let photo of item.photos; let i=index;">
-                  <img src="{{photo.url}}" alt="Photo {{i+1}}">
+            <div class="full-image">
+                <img src="{{selectedPhoto.url}}" alt="Item image">
+            </div>
+              <ul class="previews">
+                <li
+                class="preview"
+                *ngFor="let photo of item.photos; let i=index;">
+                <img
+                  [className]="(photo.url === selectedPhoto.url) ? 'active' : 'inactive' "
+                  (click)="photoSelected(i)"
+                  src="{{photo.url}}"
+                  alt="Photo {{i+1}}">
                 </li>
               </ul>
-            </div>
           </div>
           <div class="description">
             {{item.description}}
@@ -29,14 +36,14 @@
         </div>
 
         <div class="controls">
-            <span class="price-amount">{{ item.price | currency: 'USD':'1.2-2' }}</span>
+            <span class="price-amount">{{ item.price | currency: 'USD':'symbol':'1.2-2' }}</span>
             <button class="buy-button" mat-raised-button color="accent"
             (click)="buyItem(item)"
             >{{ 'catalogItemDetails.buy' | translate }}</button>
 
             <button mat-raised-button color="primary"
             class="back-button"
-            type="button" 
+            type="button"
             (click)="cancelClick()"
             >
               {{ 'catalogItemPreview.back' | translate }}

@@ -17,5 +17,9 @@
     .user-name {
       color: map-get($foreground, text);
     }
+
+    img.active {
+      outline: 2px solid map-get($accent, default);
+    }
   }
 }

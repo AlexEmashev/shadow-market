@@ -9,7 +9,7 @@ import { ImageElement, ImageState } from './image_element';
      user_id: 2,
      user_name: 'aemashev',
      title: 'Angular App Shadow Market',
-     description: 'This very app you are looking at. You pay for exactly what you see. Fully functional Angular 5 web-app at your service.',
+     description: 'This very app you are looking at. You pay for exactly what you see. Fully functional Angular 7 web-app at your service.',
      photos: [
        {url: 'assets/items/mock.svg', state: ImageState.not_changed}
      ],
